@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed top-0 w-full px-12 py-5 bg-transparent font-poppins">
+    <nav class="px-12 py-5 bg-transparent font-poppins">
         <div class="h-12 flex justify-between">
             <AppBrand />
             <ul class="flex items-center justify-center space-x-6">
