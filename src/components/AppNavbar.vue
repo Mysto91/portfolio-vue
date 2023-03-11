@@ -1,45 +1,19 @@
 <template>
-    <nav class="px-12 py-5 bg-transparent font-poppins">
-        <div class="h-12 flex justify-between">
-            <a
-                href="/"
-                class="flex items-center justify-center text-lg font-semibold"
-            >
-                Etienne TRAN
-            </a>
-            <ul class="flex items-center justify-center space-x-6">
-                <li>
-                    <NavigationLink url="/about">
-                        About
-                    </NavigationLink>
-                </li>
-                <li>
-                    <NavigationLink url="/">
-                            Contact
-                    </NavigationLink>
-                </li>
-                <li>
-                    <NavigationLink
-                        url="/"
-                        class="px-6 py-4 bg-black text-white rounded-lg"
-                    >
-                        View Work
-                    </NavigationLink>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <NavbarDesktop class="hidden lg:block" />
+    <NavbarMobile class="flex lg:hidden" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NavigationLink from './NavigationLink.vue';
+import NavbarDesktop from './desktop/NavbarDesktop.vue';
+import NavbarMobile from './mobile/NavbarMobile.vue';
 
 export default defineComponent({
   name: 'AppNavbar',
 
   components: {
-    NavigationLink,
+    NavbarDesktop,
+    NavbarMobile,
   },
 });
 </script>
