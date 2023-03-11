@@ -1,13 +1,19 @@
 <template>
-    <div>
-        <NavigationLinkMobile url="/about">
+    <div class="flex flex-col space-y-3">
+        <NavigationLinkMobile
+            url="/about"
+            @click="$emit('closeMenu')"
+        >
             About
         </NavigationLinkMobile>
-        <NavigationLinkMobile url="/contact">
+        <NavigationLinkMobile
+            url="/contact"
+            @click="$emit('closeMenu')"
+        >
             Contact
         </NavigationLinkMobile>
         <div class="flex items-center justify-center" >
-            <ViewWorkLink />
+            <ViewWorkLink @click="$emit('closeMenu')" />
         </div>
     </div>
 </template>
@@ -19,6 +25,8 @@ import NavigationLinkMobile from './NavigationLinkMobile.vue';
 
 export default defineComponent({
   name: 'MenuContent',
+
+  emits: ['closeMenu'],
 
   components: {
     NavigationLinkMobile,

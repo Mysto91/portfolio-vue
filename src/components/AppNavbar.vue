@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 w-full transition ease-in-out duration-[600ms] -translate-y-full"
+    class="fixed top-0 w-full transition ease-in-out duration-600 -translate-y-full"
     :class="{
       'translate-y-1': visible,
       'opacity-0': !visible

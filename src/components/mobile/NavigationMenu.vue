@@ -10,9 +10,11 @@
             leave-to-class="translate-x-full"
         >
           <PopoverPanel
-              :as="MenuContent"
-              class="absolute z-10 top-0 -right-7 mt-14 pb-5 w-80 flex flex-col space-y-3 rounded-lg bg-white opacity-90 shadow-md"
-          />
+              v-slot="{ close }"
+              class="absolute z-10 top-0 -right-7 mt-14 py-5 w-80 rounded-lg bg-white opacity-90 shadow-md"
+          >
+            <MenuContent @close-menu="close" />
+          </PopoverPanel>
         </transition>
     </Popover>
 </template>
@@ -30,12 +32,12 @@ export default defineComponent({
     Popover,
     PopoverButton,
     PopoverPanel,
+    MenuContent,
   },
 
   setup() {
     return {
       MenuButton,
-      MenuContent,
     };
   },
 });
