@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>View work</h1>
+    <h1>View work (grid with cards)</h1>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <AppNavbar />
   <DecorativeBar />
-  <router-view class="mt-1" />
+  <router-view class="mx-auto px-7 max-w-[1140px]" />
 </template>
 
 <script lang="ts">
