@@ -1,5 +1,9 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div
+    class="
+      flex flex-col items-center
+      lg:space-y-36 space-y-10"
+  >
     <div
       class="
         w-full
@@ -38,7 +42,6 @@
     </div>
     <div
       class="
-        mt-36
         w-full
         flex lg:flex-row flex-col
         lg:space-x-12 space-y-12"
