@@ -15,30 +15,30 @@ import { defineComponent } from 'vue';
 import AppTag from './AppTag.vue';
 
 export default defineComponent({
-    name: "TagSection",
+  name: 'TagSection',
 
-    components: { 
-        AppTag,
-    },
+  components: {
+    AppTag,
+  },
 
-    setup() {
-        const tags: string[] = [
-            "ui design",
-            "ux-design",
-            "prototyping",
-            "branding",
-            "html/css",
-            "wireframing",
-            "information architecture",
-            "user search",
-            "user interviews",
-            "leadership",
-            "figma",
-            "adobe suite",
-        ];
-        return {
-            tags,
-        };
-    },
+  setup() {
+    const tags: string[] = [
+      'ui design',
+      'ux-design',
+      'prototyping',
+      'branding',
+      'html/css',
+      'wireframing',
+      'information architecture',
+      'user search',
+      'user interviews',
+      'leadership',
+      'figma',
+      'adobe suite',
+    ];
+    return {
+      tags,
+    };
+  },
 });
 </script>

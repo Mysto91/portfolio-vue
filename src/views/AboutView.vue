@@ -1,22 +1,23 @@
 <template>
   <div class="flex flex-col items-center">
-    <div class="
-      w-full 
-      flex md:flex-row flex-col items-center
-      md:space-x-12 md:space-y-0 space-y-10"
+    <div
+      class="
+        w-full
+        flex md:flex-row flex-col items-center
+        md:space-x-12 md:space-y-0 space-y-10"
     >
-        <AuthorPicture 
+        <AuthorPicture
           class="
-            flex-initial 
+            flex-initial
             lg:w-[330px] md:w-[300px] sm:w-[425px] w-[430px]"
         />
-        <div 
+        <div
           class="
-            flex-initial 
-            lg:w-[670px] md:w-[580px] 
+            flex-initial
+            lg:w-[670px] md:w-[580px]
             flex flex-col justify-center"
         >
-          <PageTitle 
+          <PageTitle
             title="Hi there !"
             class="
               lg:text-7xl md:text-6xl sm:text-5xl text-[48px]
@@ -26,16 +27,34 @@
           <p
             class="
               sm:text-2xl text-xl
-              font-light 
+              font-light
               sm:leading-10 leading-8"
             >
-            Fuelled by a passion for designing compelling products, I have a deep desire to excel and continuously improve in my work. Learn more about my journey below.
+            Fuelled by a passion for designing compelling products,
+            I have a deep desire to excel and continuously improve in my work.
+            Learn more about my journey below.
           </p>
         </div>
     </div>
-    <div class="mt-36 w-full flex space-x-12">
-      <!-- <CareerSection class="flex-initial w-[600px]" /> -->
-      <!-- <TagSection class="flex-initial w-[440px] flex items-center" /> -->
+    <div
+      class="
+        mt-36
+        w-full
+        flex lg:flex-row flex-col
+        lg:space-x-12 space-y-12"
+    >
+      <CareerSection
+        class="
+          lg:pr-14
+          flex-initial
+          lg:w-[600px]"
+      />
+      <TagSection
+        class="
+          flex-initial
+          lg:w-[440px]
+          flex items-center"
+      />
     </div>
     <div>
       Autre section
@@ -57,8 +76,8 @@ export default defineComponent({
     AuthorPicture,
     TagSection,
     CareerSection,
-    PageTitle
-},
+    PageTitle,
+  },
 });
 </script>
 

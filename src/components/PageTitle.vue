@@ -8,13 +8,13 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'PageTitle',
+  name: 'PageTitle',
 
-    props: {
-        title: {
-            type: String,
-            required: true,
-        },
+  props: {
+    title: {
+      type: String,
+      required: true,
     },
+  },
 });
 </script>
