@@ -15,11 +15,11 @@
             >
             <stop
                 offset="0%"
-                style="stop-color:#0061ff;stop-opacity:1"
+                style="stop-color:#1c92d2;stop-opacity:1"
             />
             <stop
                 offset="100%"
-                style="stop-color:#60efff;stop-opacity:1"
+                style="stop-color:#f2fcfe;stop-opacity:1"
             />
             </linearGradient>
         </defs>
