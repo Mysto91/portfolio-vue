@@ -1,5 +1,5 @@
 <template>
-    <nav class="px-7 py-6 h-20 flex justify-between bg-transparent font-poppins">
+    <nav class="px-7 py-6 h-20 flex justify-between bg-transparent">
         <AppBrand />
         <NavigationMenu />
     </nav>

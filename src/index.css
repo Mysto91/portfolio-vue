@@ -8,4 +8,10 @@
     img {
         outline: none;
     }
+
+    html {
+        @apply font-poppins;
+        @apply text-black;
+        @apply bg-slate-100
+    }
 } 
