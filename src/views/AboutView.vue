@@ -13,26 +13,26 @@
         <AuthorPicture
           class="
             flex-initial
-            lg:w-[330px] md:w-[300px] sm:w-[425px] w-[430px]"
+            w-[430px] sm:w-[425px] md:w-[300px] lg:w-[330px]"
         />
         <div
           class="
             flex-initial
-            lg:w-[670px] md:w-[580px]
+            md:w-[580px] lg:w-[670px]
             flex flex-col justify-center"
         >
           <PageTitle
             title="Hi there !"
             class="
-              lg:text-7xl md:text-6xl sm:text-5xl text-[48px]
+              text-[48px] md:text-6xl sm:text-5xl lg:text-7xl
               font-medium
-              lg:leading-[90px] md:leading-[70px] sm:leading-[64px] leading-[48px]"
+              leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]"
           />
           <p
             class="
-              sm:text-2xl text-xl
+              text-xl sm:text-2xl
               font-light
-              sm:leading-10 leading-8"
+              leading-8 sm:leading-10"
             >
             Fuelled by a passion for designing compelling products,
             I have a deep desire to excel and continuously improve in my work.
@@ -43,8 +43,8 @@
     <div
       class="
         w-full
-        flex lg:flex-row flex-col
-        lg:space-x-12 space-y-12"
+        flex flex-col lg:flex-row
+        space-y-12 lg:space-x-12"
     >
       <CareerSection
         class="
