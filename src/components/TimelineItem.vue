@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-2">
+    <div class="ml-2 md:ml-4">
         <span class="
           absolute -left-5 md:-left-6
           w-10 h-10 md:w-12 md:h-12
@@ -20,7 +20,7 @@
             </span>
         </h3>
         <time class="block mb-2 text-sm font-normal leading-none text-gray-400">
-            <slot name="date"></slot>
+          {{ interval }} ({{ periodOfTime }})
         </time>
         <p class="mb-4 text-base font-normal text-gray-500">
              <slot name="content"></slot>
@@ -29,16 +29,69 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed, PropType } from 'vue';
+import { DateTime, DurationObjectUnits } from 'luxon';
 
 export default defineComponent({
   name: 'TimelineItem',
 
   props: {
-    isCurrent: {
-      type: Boolean,
-      default: false,
+    startDate: {
+      type: Object as PropType<DateTime>,
+      required: true,
     },
+    endDate: {
+      type: Object as PropType<DateTime | null>,
+      default: null,
+    },
+  },
+  setup(props) {
+    const isCurrent = computed<boolean>(() => props.endDate === null);
+
+    const formatDate = (date: DateTime): string => date?.toFormat('MMM yyyy', { locale: 'fr' });
+
+    const interval = computed<string>(() => {
+      if (!props.endDate) {
+        return `${formatDate(props.startDate)} - aujourd'hui`;
+      }
+
+      return `${formatDate(props.startDate)} - ${formatDate(props.endDate)}`;
+    });
+
+    const periodOfTime = computed<string | null>(() => {
+      const endDate: DateTime = props.endDate ? props.endDate : DateTime.now();
+
+      const duration: DurationObjectUnits = endDate
+        .diff(props.startDate, ['years', 'months'])
+        .toObject();
+
+      let yearStr: string | null = null;
+      let monthStr: string | null = null;
+
+      if (duration.years !== 0) {
+        yearStr = `${duration.years} ans`;
+      }
+
+      if (duration.months !== 0) {
+        monthStr = `${Math.round(duration.months as number)} mois`;
+      }
+
+      if (!monthStr) {
+        return yearStr;
+      }
+
+      if (!yearStr) {
+        return monthStr;
+      }
+
+      return `${yearStr} et ${monthStr}`;
+    });
+
+    return {
+      isCurrent,
+      periodOfTime,
+      interval,
+    };
   },
 });
 </script>
