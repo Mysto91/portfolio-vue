@@ -1,6 +1,13 @@
 <template>
     <div class="ml-2">
-        <span class="absolute flex items-center justify-center w-10 h-10 rounded-full -left-5 bg-blue-100">
+        <span class="
+          absolute -left-5 md:-left-6
+          w-10 h-10 md:w-12 md:h-12
+          flex items-center justify-center
+          rounded-full  bg-blue-100
+          transition ease-in-out duration-200
+          hover:scale-150"
+        >
             <slot name="icon"></slot>
         </span>
         <h3 class="flex items-center mb-1 text-lg font-semibold">
