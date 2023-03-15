@@ -8,16 +8,15 @@
             v-for="(experience, index) in experiences"
             :key="index"
           >
-              <TimelineItem :is-current="!experience.endDate">
+              <TimelineItem
+                  :start-date="experience.startDate"
+                  :end-date="experience.endDate"
+              >
                   <template #title>
                       {{ experience.title }}
                   </template>
                   <template #icon>
                       <img :src="experience.icon" alt="">
-                  </template>
-                  <template #date>
-                    {{ experience.startDate.toFormat('MMM yyyy', {locale: 'fr'}) }} -
-                    {{ experience.endDate?.toFormat('MMM yyyy', {locale: 'fr'}) }}
                   </template>
                   <template #content>
                       {{ experience.content }}
@@ -61,8 +60,8 @@ export default defineComponent({
       },
       {
         title: 'Airbus Defense & Space (Stage)',
-        startDate: DateTime.fromFormat('01/09/2017', dateFormat),
-        endDate: DateTime.fromFormat('01/04/2017', dateFormat),
+        startDate: DateTime.fromFormat('01/04/2017', dateFormat),
+        endDate: DateTime.fromFormat('01/09/2017', dateFormat),
         icon: 'images/airbus.png',
         content: 'Développeur de base de données J\'ai travaillé en tant que développeur junior pendant un an chez une entreprise de développement de logiciels. Mon travail consistait à développer des applications web pour les clients de l\'entreprise. J\'ai travaillé sur plusieurs projets différents, en utilisant des langages de programmation tels que JavaScript, HTML, CSS, et des frameworks tels que React et Angular.',
       },
