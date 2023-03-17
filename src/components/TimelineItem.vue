@@ -1,15 +1,21 @@
 <template>
     <div class="ml-2 md:ml-4">
-        <span class="
+        <div class="
           absolute -left-5 md:-left-6
           w-10 h-10 md:w-12 md:h-12
-          flex items-center justify-center
           rounded-full  bg-blue-100
           transition ease-in-out duration-200
-          hover:scale-150"
+          group hover:scale-150 hover:bg-transparent"
         >
+          <span class="
+            w-full h-full
+            rounded-full border-blue-100 border-0 group-hover:border-2
+            flex items-center justify-center
+            transition ease-in-out duration-200"
+          >
             <slot name="icon"></slot>
-        </span>
+          </span>
+        </div>
         <h3 class="flex items-center mb-1 text-lg font-semibold">
             <slot name="title"></slot>
             <span
