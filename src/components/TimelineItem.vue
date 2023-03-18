@@ -7,14 +7,21 @@
           transition ease-in-out duration-200
           group hover:scale-150 hover:bg-transparent"
         >
-          <span class="
+          <div class="
+            relative
             w-full h-full
-            rounded-full border-blue-100 border-0 group-hover:border-2
-            flex items-center justify-center
-            transition ease-in-out duration-200"
+            flex items-center justify-center"
           >
-            <slot name="icon"></slot>
-          </span>
+            <span class="absolute z-10">
+              <slot name="icon"></slot>
+            </span>
+            <span class="
+              w-0 h-0 group-hover:w-full group-hover:h-full
+              rounded-full border-blue-100 border-0 group-hover:border-2
+              bg-gray-100
+              transition ease-in-out duration-200">
+            </span>
+          </div>
         </div>
         <h3 class="flex items-center mb-1 text-lg font-semibold">
             <slot name="title"></slot>
