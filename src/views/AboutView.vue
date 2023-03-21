@@ -2,13 +2,14 @@
   <div
     class="
       flex flex-col items-center
-      lg:space-y-36 space-y-10"
+      space-y-10 lg:space-y-36"
   >
     <div
       class="
         w-full
         flex md:flex-row flex-col items-center
-        md:space-x-12 md:space-y-0 space-y-10"
+        space-y-10 md:space-x-12 md:space-y-0
+        animate-slide-up"
     >
         <AuthorPicture
           class="
@@ -85,5 +86,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
+  .animate-slide-up {
+    animation-name: slide-up;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+  }
 </style>

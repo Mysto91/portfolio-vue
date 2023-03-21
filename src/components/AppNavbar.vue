@@ -1,10 +1,6 @@
 <template>
   <div
-    class="fixed top-0 w-full transition ease-in-out duration-600 -translate-y-full"
-    :class="{
-      'translate-y-1': visible,
-      'opacity-0': !visible
-    }"
+    class="fixed top-0 w-full animate-slide-down"
   >
     <NavbarDesktop class="hidden lg:block" />
     <NavbarMobile class="flex lg:hidden" />
@@ -12,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent } from 'vue';
 import NavbarDesktop from './desktop/NavbarDesktop.vue';
 import NavbarMobile from './mobile/NavbarMobile.vue';
 
@@ -23,19 +19,24 @@ export default defineComponent({
     NavbarDesktop,
     NavbarMobile,
   },
-
-  setup() {
-    const visible = ref<boolean>(false);
-
-    onMounted(() => {
-      setTimeout(() => {
-        visible.value = true;
-      }, 200);
-    });
-
-    return {
-      visible,
-    };
-  },
 });
 </script>
+
+<style scoped>
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-down {
+    animation-name: slide-down;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+  }
+</style>
