@@ -3,19 +3,19 @@
     <div class="w-full h-[680px] flex items-center justify-center">
       <div class="relative w-10 animate-spin-slow">
         <EllipseBlurred
-          class="absolute -top-40 -left-16 bg-red-200"
+          class="absolute -top-40 lg:-top-72 -left-16 lg:-left-32 bg-red-200"
           :class="[sizeClasses]"
         />
         <EllipseBlurred
-          class="absolute -top-20 left-10 bg-purple-300"
+          class="absolute -top-20 lg:-top-36 left-10 lg:left-0 bg-purple-300"
           :class="[sizeClasses]"
         />
         <EllipseBlurred
-          class="absolute top-0 -left-16 bg-cyan-200"
+          class="absolute top-0 -left-16 lg:-left-32 bg-cyan-200"
           :class="[sizeClasses]"
         />
         <EllipseBlurred
-          class="absolute -top-20 -left-40 bg-orange-300"
+          class="absolute -top-20 lg:-top-36 -left-40 lg:-left-64 bg-orange-300"
           :class="[sizeClasses]"
         />
       </div>
