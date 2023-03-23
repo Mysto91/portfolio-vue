@@ -1,55 +1,38 @@
 <template>
-  <div>
+  <div class="relative">
     <div class="w-full h-[680px] flex items-center justify-center">
-      <div class="relative w-10 animate-spin-slow">
-        <EllipseBlurred
-          class="absolute -top-40 lg:-top-72 -left-16 lg:-left-32 bg-red-200"
-          :class="[sizeClasses]"
-        />
-        <EllipseBlurred
-          class="absolute -top-20 lg:-top-36 left-10 lg:left-0 bg-purple-300"
-          :class="[sizeClasses]"
-        />
-        <EllipseBlurred
-          class="absolute top-0 -left-16 lg:-left-32 bg-cyan-200"
-          :class="[sizeClasses]"
-        />
-        <EllipseBlurred
-          class="absolute -top-20 lg:-top-36 -left-40 lg:-left-64 bg-orange-300"
-          :class="[sizeClasses]"
-        />
-      </div>
+      <EllipseAnimated />
+    </div>
+    <div class="absolute top-0">
+      <h1 class="my-2.5
+        text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+        leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]
+        font-medium">
+        A designer passionate about creating beautiful user friendly products
+      </h1>
+      <h3 class="my-2.5
+        text:xl sm:text-2xl
+        leading-[30px] sm:leading-[46px]
+        font-extralight text-gray-500">
+        Senior Product Designer at Linktree. Previously Lead UX/UI Designer at VideoMyJob. Alumni, Y Combinator 2015.
+      </h3>
+      <br>
+      <ViewWorkLink />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import EllipseBlurred from '@/components/EllipseBlurred.vue';
+import EllipseAnimated from '@/components/EllipseAnimated.vue';
+import ViewWorkLink from '@/components/ViewWorkLink.vue';
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
-    EllipseBlurred,
-  },
-
-  setup() {
-    return {
-      sizeClasses: 'w-40 h-40 md:w-48 md:h-48 lg:w-72 lg:h-72',
-    };
+    ViewWorkLink,
+    EllipseAnimated,
   },
 });
 </script>
-
-<style scoped>
-  @keyframes spin-slow {
-    to {
-      transform: rotate(180deg);
-    }
-  }
-
-  .animate-spin-slow {
-    animation: spin-slow 15s linear infinite alternate;
-  }
-</style>
