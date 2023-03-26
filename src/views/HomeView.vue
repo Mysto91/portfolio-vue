@@ -1,28 +1,15 @@
 <template>
   <div class="relative">
     <div class="
-      absolute -top-28
+      absolute top-52
       w-full
-      h-[589px] sm:h-[680px] md:h-[859px] lg:h-[810px]
       flex items-center justify-center"
     >
       <EllipseAnimated />
     </div>
     <div class="absolute top-0 pr-7">
-      <h1 class="my-2.5
-        text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-        leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]
-        font-medium">
-        A designer passionate about creating beautiful user friendly products
-      </h1>
-      <h3 class="my-2.5
-        text:xl sm:text-2xl
-        leading-[30px] sm:leading-[46px]
-        font-extralight text-gray-500">
-        Senior Product Designer at Linktree. Previously Lead UX/UI Designer at VideoMyJob. Alumni, Y Combinator 2015.
-      </h3>
-      <br>
-      <ViewWorkLink />
+      <HomepageHeader />
+      <WorkList class="mt-20 sm:mt-40" />
     </div>
   </div>
 </template>
@@ -30,13 +17,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import EllipseAnimated from '@/components/EllipseAnimated.vue';
-import ViewWorkLink from '@/components/ViewWorkLink.vue';
+import HomepageHeader from '@/components/homepage/HomepageHeader.vue';
+import WorkList from '@/components/homepage/WorkList.vue';
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
-    ViewWorkLink,
+    WorkList,
+    HomepageHeader,
     EllipseAnimated,
   },
 });
