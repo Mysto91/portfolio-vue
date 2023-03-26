@@ -1,9 +1,14 @@
 <template>
   <div class="relative">
-    <div class="w-full h-[680px] flex items-center justify-center">
+    <div class="
+      absolute -top-28
+      w-full
+      h-[589px] sm:h-[680px] md:h-[859px] lg:h-[810px]
+      flex items-center justify-center"
+    >
       <EllipseAnimated />
     </div>
-    <div class="absolute top-0">
+    <div class="absolute top-0 pr-7">
       <h1 class="my-2.5
         text-4xl sm:text-5xl md:text-6xl lg:text-7xl
         leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]
