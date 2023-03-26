@@ -5,22 +5,22 @@
   ">
     <WorkItem url="/">
       <template #title>
-        Video Publishing/Sharing Experience
+        Projet A
       </template>
     </WorkItem>
     <WorkItem url="/">
       <template #title>
-        Video Publishing/Sharing Experience
+        Projet B
       </template>
     </WorkItem>
     <WorkItem url="/">
       <template #title>
-        Video Publishing/Sharing Experience
+        Projet C
       </template>
     </WorkItem>
     <WorkItem url="/">
       <template #title>
-        Video Publishing/Sharing Experience
+        Projet D
       </template>
     </WorkItem>
   </section>
