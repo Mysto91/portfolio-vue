@@ -8,8 +8,8 @@
       <EllipseAnimated />
     </div>
     <div class="absolute top-0 pr-7">
-      <HomepageHeader />
-      <WorkList class="mt-20 sm:mt-40" />
+      <HomepageHeader class="animate-slide-up" />
+      <WorkList class="mt-20 sm:mt-40 animate-slide-up" />
     </div>
   </div>
 </template>

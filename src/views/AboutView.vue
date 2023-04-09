@@ -84,22 +84,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-slide-up {
-    animation-name: slide-up;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
-  }
-</style>
