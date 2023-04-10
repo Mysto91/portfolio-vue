@@ -14,7 +14,7 @@
             >
             <stop
                 offset="0%"
-                style="stop-color:#1c92d2;stop-opacity:1"
+                style="stop-color:rgb(147 197 253);stop-opacity:1"
             />
             <stop
                 offset="100%"
