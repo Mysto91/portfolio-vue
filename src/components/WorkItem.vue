@@ -7,15 +7,20 @@
     rounded-2xl
     drop-shadow-2xl
     bg-auto bg-cover bg-image
+    ease-in-out duration-300
+    group hover:scale-105
   ">
     <slot name="image"></slot>
     <div class="
       relative
+      h-24
       p-5 sm:px-7 sm:pb-14
       text-white
       text-2xl sm:text-3xl
       sm:leading-7
       rounded-b-2xl
+      ease-in-out duration-300
+      group-hover:h-full
     ">
       <div class="absolute inset-0 bg-blue-300 overlay rounded-b-2xl"></div>
       <p class="relative z-10">

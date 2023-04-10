@@ -28,7 +28,7 @@
         </BulletLink>
       </li>
     </ul>
-    <p class="mt-2 md:mt-5 text-xs md:text-sm text-white font-normal">
+    <p class="hidden md:block mt-5 text-sm text-white font-normal">
       Copyright © 2023 Etienne TRAN. All rights reserved.
     </p>
   </div>
