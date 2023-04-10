@@ -7,9 +7,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import AppFooter from '@/components/footer/AppFooter.vue';
 import AppNavbar from './components/AppNavbar.vue';
 import DecorativeBar from './components/DecorativeBar.vue';
-import AppFooter from '@/components/Footer.vue';
 
 export default defineComponent({
   name: 'App',
