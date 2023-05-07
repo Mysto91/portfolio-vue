@@ -2,7 +2,7 @@
   <div class="relative">
     <div class="
       absolute top-52
-      w-full
+      w-1/2
       flex items-center justify-center"
     >
       <EllipseAnimated />

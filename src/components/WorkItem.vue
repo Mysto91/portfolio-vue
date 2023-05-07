@@ -7,29 +7,70 @@
     rounded-2xl
     drop-shadow-2xl
     bg-auto bg-cover bg-image
-  ">
+    ease-in-out duration-300
+    group hover:scale-105"
+  >
     <slot name="image"></slot>
     <div class="
       relative
+      h-24
       p-5 sm:px-7 sm:pb-14
       text-white
-      text-2xl sm:text-3xl
-      sm:leading-7
       rounded-b-2xl
+      ease-in-out duration-300
+      group-hover:h-full
     ">
-      <div class="absolute inset-0 bg-blue-300 overlay rounded-b-2xl"></div>
-      <p class="relative z-10">
-        <slot name="title"></slot>
-      </p>
+      <div class="
+        absolute
+        inset-0
+        bg-blue-300 overlay
+        rounded-b-2xl
+        ease-in-out duration-300
+        group-hover:bg-black"
+      ></div>
+      <div class="relative z-10 h-full flex flex-col">
+        <h4 class="
+          flex-none
+          text-xl sm:text-2xl md:text-3xl
+          sm:leading-7"
+        >
+          <slot name="title"></slot>
+        </h4>
+        <div class="
+          flex-grow
+          flex flex-col justify-center
+          opacity-0
+          ease-in-out duration-300
+          group-hover:opacity-100"
+        >
+          <p class="
+            flex-grow
+            flex items-center justify-center
+            text-sm sm:text-base md:text-lg"
+          >
+            Projet de développement d'une application
+          </p>
+          <div class="flex justify-end space-x-2">
+            <IconVue />
+            <IconReact />
+          </div>
+        </div>
+      </div>
     </div>
   </a>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import IconVue from '@/components/icons/IconVue.vue';
+import IconReact from '@/components/icons/IconReact.vue';
 
 export default defineComponent({
   name: 'WorkItem',
+  components: {
+    IconReact,
+    IconVue,
+  },
 
   props: {
     url: {
