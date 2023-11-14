@@ -1,6 +1,6 @@
 <template>
   <section>
-    <TitleH1 title="A designer passionate about creating beautiful user friendly products" />
+    <h1>A designer passionate about creating beautiful user friendly products" </h1>
     <h3 class="my-2.5
           text:xl sm:text-2xl
           leading-[30px] sm:leading-[46px]
@@ -16,13 +16,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ViewWorkLink from '@/components/ViewWorkLink.vue';
-import TitleH1 from '@/components/TitleH1.vue';
 
 export default defineComponent({
   name: 'HomepageHeader',
 
   components: {
-    TitleH1,
     ViewWorkLink,
   },
 });

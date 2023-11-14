@@ -1,13 +1,13 @@
 <template>
-  <section class="
-    lg:grid lg:grid-cols-2
-    space-y-7 lg:space-y-0 lg:gap-16
-  ">
-    <ul
-        v-for="workItem in workItems"
-        v-bind:key="workItem.id"
+  <section>
+    <ul class="
+      lg:grid lg:grid-cols-2
+      space-y-7 lg:space-y-0 lg:gap-16"
     >
-      <li>
+      <li
+        v-for="workItem in getAllWorks()"
+        v-bind:key="workItem.id"
+      >
         <WorkItem :url="workItem.url">
           <template #title>
             {{ workItem.title }}
@@ -44,22 +44,9 @@ import IconVue from '@/components/icons/IconVue.vue';
 import IconReact from '@/components/icons/IconReact.vue';
 import IconTypescript from '@/components/icons/IconTypescript.vue';
 import IconJavascript from '@/components/icons/IconJavascript.vue';
-
-enum Technology {
-  REACT = 'react',
-  VUE = 'vue',
-  TYPESCRIPT = 'typescript',
-  JAVASCRIPT = 'javascript',
-  TAILWINDCSS = 'tailwindcss',
-}
-
-interface Workitem {
-  id: number;
-  title: string;
-  url: string;
-  description: string;
-  technologies: Technology[]
-}
+import { Technology } from '@/enums/technology';
+import { Workitem } from '@/interfaces/workitem';
+import { getAllWorks } from '@/services/workService';
 
 export default defineComponent({
   name: 'WorkList',
@@ -73,36 +60,12 @@ export default defineComponent({
   },
 
   setup() {
-    const workItems: Workitem[] = [
-      {
-        id: 1,
-        title: 'Calcul cote',
-        url: '/works/1',
-        description: 'un projet de paris sportifs',
-        technologies: [Technology.REACT, Technology.JAVASCRIPT],
-      },
-      {
-        id: 2,
-        title: 'Calcul cote v2',
-        url: '/works/2',
-        description: 'la refonte du projet de paris sportifs',
-        technologies: [Technology.REACT, Technology.TYPESCRIPT, Technology.TAILWINDCSS],
-      },
-      {
-        id: 3,
-        title: 'Portfolio',
-        url: '/works/2',
-        description: 'Un premier portfolio en react',
-        technologies: [Technology.REACT, Technology.JAVASCRIPT],
-      },
-    ];
-
     function hasTechnology(workItem: Workitem, technology: Technology): boolean {
       return workItem.technologies.some((workItemTechnology) => workItemTechnology === technology);
     }
 
     return {
-      workItems,
+      getAllWorks,
       hasTechnology,
       Technology,
     };

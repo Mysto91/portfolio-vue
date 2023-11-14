@@ -1,9 +1,7 @@
 <template>
     <div>
-        <h1 class="my-5 text-5xl leading-[62px] font-medium">
-            My Career So Far
-        </h1>
-        <p class="text-xl leading-8 font-light">
+        <h2>My Career So Far</h2>
+        <p>
             Always up for a challenge, I have worked for lean start-ups
             and was a member of the first New Zealand start-up to attend Y Combinator,
             the largest start-up accelerator in the world. From there,

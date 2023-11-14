@@ -12,7 +12,27 @@
     html {
         @apply font-poppins;
         @apply text-black;
-        @apply bg-slate-100
+        @apply bg-slate-100;
+    }
+
+    h1 {
+        @apply my-2.5;
+        @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+        @apply leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px];
+        @apply font-medium;
+    }
+
+    h2 {
+        @apply my-5;
+        @apply text-5xl;
+        @apply leading-[62px];
+        @apply font-medium;
+    }
+
+    p {
+        @apply text-xl;
+        @apply leading-8;
+        @apply font-light;
     }
 }
 
