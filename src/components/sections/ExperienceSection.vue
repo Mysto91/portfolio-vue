@@ -31,7 +31,7 @@
 import { defineComponent } from 'vue';
 import { Experience } from '@/interfaces/Experience';
 import { DateTime } from 'luxon';
-import TimelineItem from './TimelineItem.vue';
+import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
   name: 'ExperienceSection',

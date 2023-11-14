@@ -1,6 +1,6 @@
 <template>
     <NavigationLink
-        url="/work"
+        url="/works"
         class="px-6 py-4 bg-black text-white rounded-lg"
     >
         View Work

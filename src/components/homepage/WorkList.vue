@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import WorkItem from '@/components/WorkItem.vue';
+import WorkItem from '@/components/work/WorkItem.vue';
 import IconVue from '@/components/icons/IconVue.vue';
 import IconReact from '@/components/icons/IconReact.vue';
 import IconTypescript from '@/components/icons/IconTypescript.vue';
@@ -77,21 +77,21 @@ export default defineComponent({
       {
         id: 1,
         title: 'Calcul cote',
-        url: '/work/1',
+        url: '/works/1',
         description: 'un projet de paris sportifs',
         technologies: [Technology.REACT, Technology.JAVASCRIPT],
       },
       {
         id: 2,
         title: 'Calcul cote v2',
-        url: '/work/2',
+        url: '/works/2',
         description: 'la refonte du projet de paris sportifs',
         technologies: [Technology.REACT, Technology.TYPESCRIPT, Technology.TAILWINDCSS],
       },
       {
         id: 3,
         title: 'Portfolio',
-        url: '/work/2',
+        url: '/works/2',
         description: 'Un premier portfolio en react',
         technologies: [Technology.REACT, Technology.JAVASCRIPT],
       },

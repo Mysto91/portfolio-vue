@@ -1,11 +1,10 @@
 <template>
-    <h1 class="
-        py-3
-        text-[48px] md:text-6xl sm:text-5xl lg:text-7xl
-        font-medium
-        leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]"
+    <h1 class="my-2.5
+            text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+            leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]
+            font-medium"
     >
-        {{ title }}
+      {{ title }}
     </h1>
 </template>
 
@@ -13,7 +12,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'PageTitle',
+  name: 'TitleH1',
 
   props: {
     title: {

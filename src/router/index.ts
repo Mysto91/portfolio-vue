@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import ContactView from '../views/ContactView.vue';
+import WorkViewList from '../views/WorkViewList.vue';
 import WorkView from '../views/WorkView.vue';
 
 const routes: Array<RouteRecordRaw> = [
@@ -23,7 +24,12 @@ const routes: Array<RouteRecordRaw> = [
     component: ContactView,
   },
   {
-    path: '/work',
+    path: '/works',
+    name: 'worklist',
+    component: WorkViewList,
+  },
+  {
+    path: '/works/:workId',
     name: 'work',
     component: WorkView,
   },

@@ -1,6 +1,6 @@
 <template>
-  <a
-    href="/"
+  <router-link
+    :to="url"
     class="
     flex flex-col justify-end
     w-full h-[400px] lg:h-[600px]
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script lang="ts">
