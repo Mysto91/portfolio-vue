@@ -48,11 +48,10 @@
             flex items-center justify-center
             text-sm sm:text-base md:text-lg"
           >
-            Projet de développement d'une application
+            <slot name="description"></slot>
           </p>
-          <div class="flex justify-end space-x-2">
-            <IconVue />
-            <IconReact />
+          <div>
+            <slot name="technologies"></slot>
           </div>
         </div>
       </div>
@@ -62,15 +61,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import IconVue from '@/components/icons/IconVue.vue';
-import IconReact from '@/components/icons/IconReact.vue';
 
 export default defineComponent({
   name: 'WorkItem',
-  components: {
-    IconReact,
-    IconVue,
-  },
 
   props: {
     url: {
