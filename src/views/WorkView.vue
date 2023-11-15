@@ -53,12 +53,42 @@
 
         <div class="lg:flex-1">
           <h2>Technologies</h2>
-          <ul>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
-          </ul>
+          <div class="space-y-4">
+            <h4>Frameworks</h4>
+            <ul class="space-y-2.5">
+              <li
+                v-for="framework in workItem.technologies.frameworks"
+                :key="framework"
+              >
+                 + {{ framework }} (lien vers le site officiel)
+              </li>
+            </ul>
+            <h4>Languages</h4>
+            <ul class="space-y-2.5">
+              <li
+                v-for="language in workItem.technologies.languages"
+                :key="language"
+              >
+                + {{ language }} (lien vers le site officiel)
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+
+      <div>
+        <h2>Functionalities</h2>
+        <ul>
+          <li>+ Improve visibility</li>
+          <li>+ Allow to centralise all worked done so fare</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Credits</h2>
+        <ul>
+          Thanks to Sebastian Petravic for giving me the inspiration, visit his website : https://www.sebastianpetravic.com/
+        </ul>
       </div>
 
       <div>
@@ -68,7 +98,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            View app
+            Demo app
           </a>
         </div>
         <div>
@@ -95,6 +125,7 @@ import WorkPhoto from '@/components/work/WorkPhoto.vue';
 import { useRoute } from 'vue-router';
 import { getWorkById } from '@/services/workService';
 import { Routes } from '@/constants/routes';
+import { Workitem } from '@/interfaces/workitem';
 
 export default defineComponent({
   name: 'WorkViewList',
@@ -105,7 +136,7 @@ export default defineComponent({
 
   setup() {
     const route = useRoute();
-    const workItem = getWorkById(Number(route.params.workId));
+    const workItem: Workitem | undefined = getWorkById(Number(route.params.workId));
 
     return {
       workItem,

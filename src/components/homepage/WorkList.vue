@@ -8,7 +8,7 @@
         v-for="workItem in getAllWorks()"
         v-bind:key="workItem.id"
       >
-        <WorkItem :url="workItem.url">
+        <WorkItem :url="`/works/${workItem.id}`">
           <template #title>
             {{ workItem.title }}
           </template>
@@ -17,16 +17,16 @@
           </template>
           <template #technologies>
             <ul class="flex justify-end space-x-2">
-              <li v-if="hasTechnology(workItem, Technology.VUE)">
+              <li v-if="hasFramework(workItem, Framework.VUE)">
                 <IconVue />
               </li>
-              <li v-if="hasTechnology(workItem, Technology.REACT)">
+              <li v-if="hasFramework(workItem, Framework.REACT)">
                 <IconReact />
               </li>
-              <li v-if="hasTechnology(workItem, Technology.TYPESCRIPT)">
+              <li v-if="hasLanguage(workItem, Language.TYPESCRIPT)">
                 <IconTypescript />
               </li>
-              <li v-if="hasTechnology(workItem, Technology.JAVASCRIPT)">
+              <li v-if="hasLanguage(workItem, Language.JAVASCRIPT)">
                 <IconJavascript />
               </li>
             </ul>
@@ -44,9 +44,10 @@ import IconVue from '@/components/icons/IconVue.vue';
 import IconReact from '@/components/icons/IconReact.vue';
 import IconTypescript from '@/components/icons/IconTypescript.vue';
 import IconJavascript from '@/components/icons/IconJavascript.vue';
-import { Technology } from '@/enums/technology';
-import { Workitem } from '@/interfaces/workitem';
 import { getAllWorks } from '@/services/workService';
+import { Framework } from '@/enums/framework';
+import { Language } from '@/enums/language';
+import { Workitem } from '@/interfaces/workitem';
 
 export default defineComponent({
   name: 'WorkList',
@@ -60,14 +61,20 @@ export default defineComponent({
   },
 
   setup() {
-    function hasTechnology(workItem: Workitem, technology: Technology): boolean {
-      return workItem.technologies.some((workItemTechnology) => workItemTechnology === technology);
+    function hasFramework(workItem: Workitem, searchedFramework: Framework): boolean {
+      return workItem.technologies.frameworks.some((framework) => framework === searchedFramework);
+    }
+
+    function hasLanguage(workItem: Workitem, searchedLanguage: Language): boolean {
+      return workItem.technologies.languages.some((language) => language === searchedLanguage);
     }
 
     return {
       getAllWorks,
-      hasTechnology,
-      Technology,
+      hasFramework,
+      hasLanguage,
+      Framework,
+      Language,
     };
   },
 });

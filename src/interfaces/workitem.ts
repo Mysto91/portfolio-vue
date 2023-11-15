@@ -1,11 +1,16 @@
-import { Technology } from '@/enums/technology';
+import { Framework } from '@/enums/framework';
+import { Language } from '@/enums/language';
+
+interface Technologies {
+  frameworks: Framework[];
+  languages: Language[];
+}
 
 export interface Workitem {
   id: number;
   title: string;
-  url: string;
   description: string;
-  technologies: Technology[];
+  technologies: Technologies;
   appUrl: string;
   githubUrl: string;
 }

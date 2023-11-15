@@ -21,6 +21,13 @@ export const Experiences: Experience[] = [
     content: 'Développeur back end ...',
   },
   {
+    title: 'University of Dundee (Stage)',
+    startDate: DateTime.fromFormat('01/03/2018', dateFormat),
+    endDate: DateTime.fromFormat('31/08/2018', dateFormat),
+    icon: '',
+    content: 'Développeur back end ...',
+  },
+  {
     title: 'Airbus Defense & Space (Stage)',
     startDate: DateTime.fromFormat('01/04/2017', dateFormat),
     endDate: DateTime.fromFormat('01/09/2017', dateFormat),
