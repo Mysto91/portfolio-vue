@@ -26,12 +26,14 @@
             photo1
           </template>
         </WorkPhoto>
+
         <div class="block lg:w-1/2 space-y-5">
           <WorkPhoto class="lg:h-[400px] ">
             <template #default>
               photo2
             </template>
           </WorkPhoto>
+
           <WorkPhoto class="lg:h-[400px]">
             <template #default>
               photo3
@@ -43,33 +45,46 @@
       <div class="lg:flex space-x-0 lg:space-x-5 space-y-5 lg:space-y-0">
         <div class="lg:flex-1">
           <h2>Project Overview</h2>
+
           <p>
-            Publishing and sharing videos is a core part of the video creation journey within VideoMyJob.
-            Videos created by users need to be shared with others in order for them to experience the core value of the product.
-            Through user interviews, we were able to uncover several problems with this part of the video creation journey.
-            It was my task to design an improved video sharing experience.
+            Le projet a pour but de ...
+            Le projet est herbergé sur ..
           </p>
         </div>
 
         <div class="lg:flex-1">
           <h2>Technologies</h2>
+
           <div class="space-y-4">
-            <h4>Frameworks</h4>
+            <h3>Frameworks</h3>
+
             <ul class="space-y-2.5">
               <li
                 v-for="framework in workItem.technologies.frameworks"
                 :key="framework"
+                class="flex space-x-2"
               >
-                 + {{ framework }} (lien vers le site officiel)
+                <TechnologyIcon :technology="framework"/>
+
+                <span class="flex items-center">
+                  {{ framework }}
+                </span>
               </li>
             </ul>
-            <h4>Languages</h4>
+
+            <h3>Languages</h3>
+
             <ul class="space-y-2.5">
               <li
                 v-for="language in workItem.technologies.languages"
                 :key="language"
+                class="flex space-x-2"
               >
-                + {{ language }} (lien vers le site officiel)
+                <TechnologyIcon :technology="language"/>
+
+                <span class="flex items-center">
+                  {{ language }}
+                </span>
               </li>
             </ul>
           </div>
@@ -78,6 +93,7 @@
 
       <div>
         <h2>Functionalities</h2>
+
         <ul>
           <li>+ Improve visibility</li>
           <li>+ Allow to centralise all worked done so fare</li>
@@ -86,6 +102,7 @@
 
       <div>
         <h2>Credits</h2>
+
         <ul>
           Thanks to Sebastian Petravic for giving me the inspiration, visit his website : https://www.sebastianpetravic.com/
         </ul>
@@ -126,11 +143,13 @@ import { useRoute } from 'vue-router';
 import { getWorkById } from '@/services/workService';
 import { Routes } from '@/constants/routes';
 import { Workitem } from '@/interfaces/workitem';
+import TechnologyIcon from '@/components/TechnologyIcon.vue';
 
 export default defineComponent({
   name: 'WorkViewList',
 
   components: {
+    TechnologyIcon,
     WorkPhoto,
   },
 

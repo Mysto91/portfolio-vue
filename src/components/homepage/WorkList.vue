@@ -17,17 +17,18 @@
           </template>
           <template #technologies>
             <ul class="flex justify-end space-x-2">
-              <li v-if="hasFramework(workItem, Framework.VUE)">
-                <IconVue />
+              <li
+                v-for="framework in workItem.technologies.frameworks"
+                :key="framework"
+              >
+                <TechnologyIcon :technology="framework"/>
               </li>
-              <li v-if="hasFramework(workItem, Framework.REACT)">
-                <IconReact />
-              </li>
-              <li v-if="hasLanguage(workItem, Language.TYPESCRIPT)">
-                <IconTypescript />
-              </li>
-              <li v-if="hasLanguage(workItem, Language.JAVASCRIPT)">
-                <IconJavascript />
+
+              <li
+                v-for="language in workItem.technologies.languages"
+                :key="language"
+              >
+                <TechnologyIcon :technology="language"/>
               </li>
             </ul>
           </template>
@@ -40,23 +41,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import WorkItem from '@/components/work/WorkItem.vue';
-import IconVue from '@/components/icons/IconVue.vue';
-import IconReact from '@/components/icons/IconReact.vue';
-import IconTypescript from '@/components/icons/IconTypescript.vue';
-import IconJavascript from '@/components/icons/IconJavascript.vue';
 import { getAllWorks } from '@/services/workService';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
 import { Workitem } from '@/interfaces/workitem';
+import TechnologyIcon from '@/components/TechnologyIcon.vue';
 
 export default defineComponent({
   name: 'WorkList',
 
   components: {
-    IconJavascript,
-    IconTypescript,
-    IconReact,
-    IconVue,
+    TechnologyIcon,
     WorkItem,
   },
 
