@@ -22,19 +22,8 @@
             md:w-[580px] lg:w-[670px]
             flex flex-col justify-center"
         >
-          <PageTitle
-            title="Hi there !"
-            class="
-              text-[48px] md:text-6xl sm:text-5xl lg:text-7xl
-              font-medium
-              leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px]"
-          />
-          <p
-            class="
-              text-xl sm:text-2xl
-              font-light
-              leading-8 sm:leading-10"
-            >
+          <h1>Hi there !</h1>
+          <p class="sm:text-2xl">
             Fuelled by a passion for designing compelling products,
             I have a deep desire to excel and continuously improve in my work.
             Learn more about my journey below.
@@ -67,9 +56,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import AuthorPicture from '@/components/AuthorPicture.vue';
-import CareerSection from '@/components/CareerSection.vue';
-import ExperienceSection from '@/components/ExperienceSection.vue';
-import PageTitle from '@/components/PageTitle.vue';
+import CareerSection from '@/components/sections/CareerSection.vue';
+import ExperienceSection from '@/components/sections/ExperienceSection.vue';
 import TagSection from '@/components/TagSection.vue';
 
 export default defineComponent({
@@ -79,7 +67,6 @@ export default defineComponent({
     AuthorPicture,
     TagSection,
     CareerSection,
-    PageTitle,
     ExperienceSection,
   },
 });

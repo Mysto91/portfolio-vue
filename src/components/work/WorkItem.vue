@@ -1,6 +1,6 @@
 <template>
-  <a
-    href="/"
+  <router-link
+    :to="url"
     class="
     flex flex-col justify-end
     w-full h-[400px] lg:h-[600px]
@@ -48,29 +48,22 @@
             flex items-center justify-center
             text-sm sm:text-base md:text-lg"
           >
-            Projet de développement d'une application
+            <slot name="description"></slot>
           </p>
-          <div class="flex justify-end space-x-2">
-            <IconVue />
-            <IconReact />
+          <div>
+            <slot name="technologies"></slot>
           </div>
         </div>
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import IconVue from '@/components/icons/IconVue.vue';
-import IconReact from '@/components/icons/IconReact.vue';
 
 export default defineComponent({
   name: 'WorkItem',
-  components: {
-    IconReact,
-    IconVue,
-  },
 
   props: {
     url: {
