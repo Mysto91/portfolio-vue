@@ -14,6 +14,15 @@ export const Works: Workitem[] = [
     },
     appUrl: 'https://calcul-cote.web.app/',
     githubUrl: 'https://github.com/Mysto91/calcul-cote',
+    content: {
+      overview: 'Pourquoi ce projet ?',
+    },
+    functionalities: [
+      'Fournit les cotes sécurisée avec les meilleurs gains possibles',
+      'Donne les différentes combinaisons de pari possibles sans avoir à changer les valeurs',
+      'Pas besoin de submit, le calcul se fait en temps réel',
+      'Les cotes boostées étant limitées, prend en considération cette limite pour calculer chacun des paris',
+    ],
   },
   {
     id: 2,
@@ -25,6 +34,15 @@ export const Works: Workitem[] = [
     },
     appUrl: 'https://calcul-cote-v2.web.app/',
     githubUrl: 'https://github.com/Mysto91/calcul-cote-v2',
+    content: {
+      overview: 'fake overview',
+    },
+    functionalities: [
+      'Fournit les fonctionalités de Calcul Cote',
+      "Donner la possibilité de partager une capture d'écran",
+      "Une meilleure gestion d'erreur",
+      'Déploiement automatique (CI) vers firebase',
+    ],
   },
   {
     id: 3,
@@ -36,6 +54,10 @@ export const Works: Workitem[] = [
     },
     appUrl: 'https://portfolio-55b74.web.app/',
     githubUrl: 'https://github.com/Mysto91/portfolio',
+    content: {
+      overview: 'fake overview',
+    },
+    functionalities: [],
   },
   {
     id: 4,
@@ -47,5 +69,10 @@ export const Works: Workitem[] = [
     },
     appUrl: '/',
     githubUrl: 'https://github.com/Mysto91/portfolio-vue',
+    content: {
+      overview: 'fake overview',
+      credits: 'Thanks to Sebastian Petravic for giving me the inspiration, visit his website : https://www.sebastianpetravic.com/',
+    },
+    functionalities: [],
   },
 ];

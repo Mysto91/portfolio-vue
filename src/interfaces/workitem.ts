@@ -6,6 +6,13 @@ interface Technologies {
   languages: Language[];
 }
 
+interface Content {
+  overview: string;
+  credits?: string;
+}
+
+type Funtionality = string;
+
 export interface Workitem {
   id: number;
   title: string;
@@ -13,4 +20,6 @@ export interface Workitem {
   technologies: Technologies;
   appUrl: string;
   githubUrl: string;
+  content: Content;
+  functionalities: Funtionality[]
 }

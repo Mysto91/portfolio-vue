@@ -1,7 +1,14 @@
 <template>
   <div>
-    <router-link :to="{ name: Routes.WORKLIST }">
-      Back to works
+    <router-link
+      :to="{ name: Routes.WORKLIST }"
+      class="btn w-64 flex justify-center items-center"
+    >
+      <IconLeftArrow class="fill-white" />
+
+      <span class="ml-2">
+        Retour vers les projets
+      </span>
     </router-link>
 
     <div
@@ -44,11 +51,10 @@
 
       <div class="lg:flex space-x-0 lg:space-x-5 space-y-5 lg:space-y-0">
         <div class="lg:flex-1">
-          <h2>Project Overview</h2>
+          <h2>Présentation</h2>
 
           <p>
-            Le projet a pour but de ...
-            Le projet est herbergé sur ..
+            {{ workItem.content.overview }}
           </p>
         </div>
 
@@ -72,17 +78,17 @@
               </li>
             </ul>
 
-            <h3>Languages</h3>
+            <h3>Langages</h3>
 
             <ul class="space-y-2.5">
               <li
-                v-for="language in workItem.technologies.languages"
-                :key="language"
-                class="flex space-x-2"
+                v-for="(language, index) in workItem.technologies.languages"
+                :key="index"
+                class="flex"
               >
                 <TechnologyIcon :technology="language"/>
 
-                <span class="flex items-center">
+                <span class="ml-2 flex items-center">
                   {{ language }}
                 </span>
               </li>
@@ -92,39 +98,62 @@
       </div>
 
       <div>
-        <h2>Functionalities</h2>
+        <h2>Fonctionalités</h2>
 
-        <ul>
-          <li>+ Improve visibility</li>
-          <li>+ Allow to centralise all worked done so fare</li>
+        <ul class="space-y-2.5">
+          <li
+            v-for="(functionality, index) in workItem.functionalities"
+            :key="index"
+            class="flex"
+          >
+            <IconRocket />
+
+            <span class="flex items-center ml-2">
+              {{ functionality }}
+            </span>
+          </li>
         </ul>
       </div>
 
-      <div>
-        <h2>Credits</h2>
+      <div v-if="workItem.content.credits">
+        <h2>Remerciements</h2>
 
-        <ul>
-          Thanks to Sebastian Petravic for giving me the inspiration, visit his website : https://www.sebastianpetravic.com/
-        </ul>
+        <p>
+          {{ workItem.content.credits }}
+        </p>
       </div>
 
       <div>
-        <div>
+        <h2>En voir davantage</h2>
+
+        <div class="lg:flex lg:space-x-10 space-y-10 lg:space-y-0">
           <a
             :href="workItem.appUrl"
             target="_blank"
             rel="noopener noreferrer"
+            class="btn flex"
           >
-            Demo app
+            <span class="flex items-center">
+              <IconPlay class="fill-white"/>
+            </span>
+
+            <span class="ml-2 flex items-center">
+              Voir l'application
+            </span>
           </a>
-        </div>
-        <div>
           <a
             :href="workItem.githubUrl"
             target="_blank"
             rel="noopener noreferrer"
+            class="btn flex"
           >
-            View github project
+            <span class="flex items-center">
+              <IconGithub class="fill-white" />
+            </span>
+
+            <span class="ml-2">
+              Voir le github
+            </span>
           </a>
         </div>
       </div>
@@ -144,11 +173,19 @@ import { getWorkById } from '@/services/workService';
 import { Routes } from '@/constants/routes';
 import { Workitem } from '@/interfaces/workitem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
+import IconRocket from '@/components/icons/IconRocket.vue';
+import IconGithub from '@/components/icons/IconGithub.vue';
+import IconPlay from '@/components/icons/IconPlay.vue';
+import IconLeftArrow from '@/components/icons/IconLeftArrow.vue';
 
 export default defineComponent({
   name: 'WorkViewList',
 
   components: {
+    IconLeftArrow,
+    IconPlay,
+    IconGithub,
+    IconRocket,
     TechnologyIcon,
     WorkPhoto,
   },
