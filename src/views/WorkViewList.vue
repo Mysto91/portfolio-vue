@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>My works</h1>
+    <h1>Mes projets</h1>
     <div class="mt-10">
       <WorkList />
     </div>

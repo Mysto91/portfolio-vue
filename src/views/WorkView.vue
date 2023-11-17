@@ -28,24 +28,12 @@
         lg:h-[820px]
         lg:flex space-y-5 lg:space-x-5 lg:space-y-0"
       >
-        <WorkPhoto class="lg:h-full lg:w-1/2">
-          <template #default>
-            photo1
-          </template>
-        </WorkPhoto>
+        <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-full lg:w-1/2" />
 
         <div class="block lg:w-1/2 space-y-5">
-          <WorkPhoto class="lg:h-[400px] ">
-            <template #default>
-              photo2
-            </template>
-          </WorkPhoto>
+          <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px] " />
 
-          <WorkPhoto class="lg:h-[400px]">
-            <template #default>
-              photo3
-            </template>
-          </WorkPhoto>
+          <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px]" />
         </div>
       </div>
 
@@ -58,7 +46,7 @@
           </p>
         </div>
 
-        <div class="lg:flex-1">
+        <div>
           <h2>Technologies</h2>
 
           <div class="space-y-4">
@@ -167,7 +155,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import WorkPhoto from '@/components/work/WorkPhoto.vue';
+import WorkImage from '@/components/work/WorkImage.vue';
 import { useRoute } from 'vue-router';
 import { getWorkById } from '@/services/workService';
 import { Routes } from '@/constants/routes';
@@ -187,7 +175,7 @@ export default defineComponent({
     IconGithub,
     IconRocket,
     TechnologyIcon,
-    WorkPhoto,
+    WorkImage,
   },
 
   setup() {
