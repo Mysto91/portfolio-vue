@@ -5,7 +5,7 @@
       space-y-7 lg:space-y-0 lg:gap-16"
     >
       <li
-        v-for="projectItem in getAllWorks()"
+        v-for="projectItem in projects"
         v-bind:key="projectItem.id"
       >
         <ProjectItem :url="`/projects/${projectItem.id}`">
@@ -39,13 +39,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ProjectItem from '@/components/project/ProjectItem.vue';
-import { getAllWorks } from '@/services/workService';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
 import { ProjectItem as Project } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
+import { getProjects } from '@/api/projectApi';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -56,18 +56,16 @@ export default defineComponent({
   },
 
   setup() {
-    function hasFramework(projectItem: Project, searchedFramework: Framework): boolean {
-      return projectItem.technologies.frameworks.some((framework) => framework === searchedFramework);
+    const projects = ref<Project[]>([]);
+
+    async function setProjects() {
+      projects.value = await getProjects();
     }
 
-    function hasLanguage(projectItem: Project, searchedLanguage: Language): boolean {
-      return projectItem.technologies.languages.some((language) => language === searchedLanguage);
-    }
+    setProjects();
 
     return {
-      getAllWorks,
-      hasFramework,
-      hasLanguage,
+      projects,
       Framework,
       Language,
     };

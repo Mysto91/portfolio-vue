@@ -1,9 +1,12 @@
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
+import { TechnologyType } from '@/enums/technologyType';
 
-interface Technologies {
-  frameworks: Framework[];
-  languages: Language[];
+export interface Technology {
+  id: number;
+  name: Framework | Language;
+  type: TechnologyType;
+  url: string;
 }
 
 interface Content {
@@ -11,15 +14,19 @@ interface Content {
   credits?: string;
 }
 
-type Funtionality = string;
+interface Funtionality {
+  id: number;
+  description: string;
+}
 
 export interface ProjectItem {
   id: number;
   title: string;
   description: string;
-  technologies: Technologies;
+  technologies: Technology[];
   appUrl: string;
   githubUrl?: string;
   content: Content;
-  functionalities: Funtionality[]
+  functionalities: Funtionality[];
+  overview: string;
 }

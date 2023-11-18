@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link
-      :to="{ name: Routes.WORKLIST }"
+      :to="{ name: Routes.PROJECTLIST }"
       class="btn w-64 flex justify-center items-center"
     >
       <IconLeftArrow class="fill-white" />
@@ -21,11 +21,11 @@
         lg:h-[820px]
         lg:flex space-y-5 lg:space-x-5 lg:space-y-0"
       >
-        <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-full lg:w-1/2" />
+        <ProjectImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-full lg:w-1/2" />
 
         <div class="block lg:w-1/2 space-y-5">
-          <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px] " />
-          <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px]" />
+          <ProjectImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px] " />
+          <ProjectImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px]" />
         </div>
       </div>
 
@@ -34,7 +34,7 @@
           <h2>Présentation</h2>
 
           <p>
-            {{ projectItem.content.overview }}
+            {{ projectItem.description }}
           </p>
         </div>
 
@@ -46,14 +46,14 @@
 
             <ul class="space-y-2.5">
               <li
-                v-for="framework in projectItem.technologies.frameworks"
+                v-for="framework in frameworks"
                 :key="framework"
                 class="flex space-x-2"
               >
-                <TechnologyIcon :technology="framework"/>
+                <TechnologyIcon :technology="framework.name"/>
 
                 <span class="flex items-center">
-                  {{ framework }}
+                  {{ framework.name }}
                 </span>
               </li>
             </ul>
@@ -62,14 +62,14 @@
 
             <ul class="space-y-2.5">
               <li
-                v-for="(language, index) in projectItem.technologies.languages"
-                :key="index"
+                v-for="language in languages"
+                :key="`language-${language.id}`"
                 class="flex"
               >
-                <TechnologyIcon class="flex-none" :technology="language"/>
+                <TechnologyIcon class="flex-none" :technology="language.name"/>
 
                 <span class="ml-2 flex items-center">
-                  {{ language }}
+                  {{ language.name }}
                 </span>
               </li>
             </ul>
@@ -82,19 +82,19 @@
 
         <ul class="space-y-2.5">
           <li
-            v-for="(functionality, index) in projectItem.functionalities"
-            :key="index"
+            v-for="functionality in projectItem.functionalities"
+            :key="`functionality-${functionality.id}`"
             class="flex"
           >
             <IconRocket class="flex-none" />
 
             <span class="flex items-center ml-2">
-              {{ functionality }}
+              {{ functionality.description }}
             </span>
           </li>
         </ul>
       </div>
-
+<!--
       <div v-if="projectItem.content.credits">
         <h2>Remerciements</h2>
 
@@ -102,7 +102,7 @@
           {{ projectItem.content.credits }}
         </p>
       </div>
-
+-->
       <div>
         <h2>En voir davantage</h2>
 
@@ -147,17 +147,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import WorkImage from '@/components/project/ProjectImage.vue';
+import { computed, defineComponent, ref } from 'vue';
+import ProjectImage from '@/components/project/ProjectImage.vue';
 import { useRoute } from 'vue-router';
-import { getWorkById } from '@/services/workService';
 import { Routes } from '@/constants/routes';
-import { ProjectItem } from '@/interfaces/projectItem';
+import { ProjectItem, Technology } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import IconRocket from '@/components/icons/IconRocket.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
 import IconPlay from '@/components/icons/IconPlay.vue';
 import IconLeftArrow from '@/components/icons/IconLeftArrow.vue';
+import { getProjectById } from '@/api/projectApi';
+import { TechnologyType } from '@/enums/technologyType';
 
 export default defineComponent({
   name: 'WorkViewList',
@@ -168,15 +169,26 @@ export default defineComponent({
     IconGithub,
     IconRocket,
     TechnologyIcon,
-    WorkImage,
+    ProjectImage,
   },
 
   setup() {
+    const projectItem = ref<ProjectItem | null>(null);
     const route = useRoute();
-    const projectItem: ProjectItem | undefined = getWorkById(Number(route.params.workId));
+
+    async function setProjectItem(): Promise<void> {
+      projectItem.value = await getProjectById(Number(route.params.workId));
+    }
+
+    const languages = computed<Technology[]>(() => projectItem.value?.technologies.filter((technology) => technology.type === TechnologyType.LANGUAGE) ?? []);
+    const frameworks = computed<Technology[]>(() => projectItem.value?.technologies.filter((technology) => technology.type === TechnologyType.FRAMEWORK) ?? []);
+
+    setProjectItem();
 
     return {
       projectItem,
+      languages,
+      frameworks,
       Routes,
     };
   },
