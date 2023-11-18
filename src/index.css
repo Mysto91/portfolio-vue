@@ -24,7 +24,7 @@
 
     h2 {
         @apply my-5;
-        @apply text-5xl;
+        @apply text-3xl md:text-4xl lg:text-5xl;
         @apply leading-[62px];
         @apply font-medium;
     }
@@ -35,7 +35,7 @@
     }
 
     p {
-        @apply text-xl;
+        @apply text-lg lg:text-xl;
         @apply leading-8;
         @apply font-light;
     }

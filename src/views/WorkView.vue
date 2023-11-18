@@ -15,14 +15,7 @@
       v-if="workItem"
       class="space-y-10"
     >
-      <div>
-        <h1>{{ workItem.title }}</h1>
-
-        <p class="flex space-x-5">
-            <span>Side project</span>
-            <span>Developer</span>
-        </p>
-      </div>
+      <h1>{{ workItem.title }}</h1>
 
       <div class="
         lg:h-[820px]
@@ -32,7 +25,6 @@
 
         <div class="block lg:w-1/2 space-y-5">
           <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px] " />
-
           <WorkImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px]" />
         </div>
       </div>
@@ -74,7 +66,7 @@
                 :key="index"
                 class="flex"
               >
-                <TechnologyIcon :technology="language"/>
+                <TechnologyIcon class="flex-none" :technology="language"/>
 
                 <span class="ml-2 flex items-center">
                   {{ language }}
@@ -94,7 +86,7 @@
             :key="index"
             class="flex"
           >
-            <IconRocket />
+            <IconRocket class="flex-none" />
 
             <span class="flex items-center ml-2">
               {{ functionality }}
@@ -119,7 +111,7 @@
             :href="workItem.appUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn flex"
+            class="btn flex justify-center"
           >
             <span class="flex items-center">
               <IconPlay class="fill-white"/>
@@ -130,10 +122,11 @@
             </span>
           </a>
           <a
+            v-if="workItem.githubUrl"
             :href="workItem.githubUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn flex"
+            class="btn flex justify-center"
           >
             <span class="flex items-center">
               <IconGithub class="fill-white" />

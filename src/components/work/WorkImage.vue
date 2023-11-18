@@ -37,7 +37,7 @@ export default defineComponent({
     fetchImage();
 
     const style = computed<Style>(() => ({
-      backgroundImage: imageFound.value === true ? `url(${props.imageUrl})` : 'url(https://www.sapphirewebsolutions.com/wp-content/uploads/2019/09/Web-Development-Trends.jpg)',
+      backgroundImage: imageFound.value === true ? `url(${props.imageUrl})` : 'url(/images/default-placeholder.png)',
     }));
 
     return {

@@ -19,7 +19,7 @@ export interface Workitem {
   description: string;
   technologies: Technologies;
   appUrl: string;
-  githubUrl: string;
+  githubUrl?: string;
   content: Content;
   functionalities: Funtionality[]
 }
