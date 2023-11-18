@@ -1,9 +1,9 @@
-import { Workitem } from '@/interfaces/workitem';
+import { ProjectItem } from '@/interfaces/projectItem';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Works: Workitem[] = [
+export const Works: ProjectItem[] = [
   {
     id: 1,
     title: 'Calcul cote',

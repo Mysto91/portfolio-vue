@@ -13,7 +13,7 @@ interface Style {
 }
 
 export default defineComponent({
-  name: 'WorkImage',
+  name: 'ProjectImage',
 
   props: {
     imageUrl: {

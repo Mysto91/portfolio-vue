@@ -14,7 +14,7 @@
                     </NavigationLink>
                 </li>
                 <li>
-                    <ViewWorkLink />
+                    <ViewProjectLink />
                 </li>
             </ul>
         </div>
@@ -25,7 +25,7 @@
 import { defineComponent } from 'vue';
 import NavigationLink from '../NavigationLink.vue';
 import AppBrand from '../AppBrand.vue';
-import ViewWorkLink from '../ViewWorkLink.vue';
+import ViewProjectLink from '../ViewProjectLink.vue';
 
 export default defineComponent({
   name: 'NavbarDesktop',
@@ -33,7 +33,7 @@ export default defineComponent({
   components: {
     NavigationLink,
     AppBrand,
-    ViewWorkLink,
+    ViewProjectLink,
   },
 });
 </script>

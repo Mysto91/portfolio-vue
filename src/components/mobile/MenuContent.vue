@@ -13,14 +13,14 @@
             Contact
         </NavigationLinkMobile>
         <div class="flex items-center justify-center" >
-            <ViewWorkLink @click="$emit('closeMenu')" />
+            <ViewProjectLink @click="$emit('closeMenu')" />
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ViewWorkLink from '../ViewWorkLink.vue';
+import ViewProjectLink from '../ViewProjectLink.vue';
 import NavigationLinkMobile from './NavigationLinkMobile.vue';
 
 export default defineComponent({
@@ -30,7 +30,7 @@ export default defineComponent({
 
   components: {
     NavigationLinkMobile,
-    ViewWorkLink,
+    ViewProjectLink,
   },
 });
 </script>

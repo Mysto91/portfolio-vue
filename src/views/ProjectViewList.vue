@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import WorkList from '@/components/homepage/WorkList.vue';
+import WorkList from '@/components/homepage/ProjectList.vue';
 
 export default defineComponent({
   name: 'WorkView',

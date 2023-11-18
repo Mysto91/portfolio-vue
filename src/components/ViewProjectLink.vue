@@ -1,6 +1,6 @@
 <template>
     <NavigationLink
-        url="/works"
+        url="/projects"
         class="px-6 py-4 bg-black text-white rounded-lg"
     >
         View Work
@@ -12,7 +12,7 @@ import { defineComponent } from 'vue';
 import NavigationLink from './NavigationLink.vue';
 
 export default defineComponent({
-  name: 'ViewWorkLink',
+  name: 'ViewProjectLink',
 
   components: {
     NavigationLink,

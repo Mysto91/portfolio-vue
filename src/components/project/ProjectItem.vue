@@ -63,7 +63,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'WorkItem',
+  name: 'ProjectItem',
 
   props: {
     url: {

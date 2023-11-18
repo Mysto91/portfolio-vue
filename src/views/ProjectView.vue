@@ -12,10 +12,10 @@
     </router-link>
 
     <div
-      v-if="workItem"
+      v-if="projectItem"
       class="space-y-10"
     >
-      <h1>{{ workItem.title }}</h1>
+      <h1>{{ projectItem.title }}</h1>
 
       <div class="
         lg:h-[820px]
@@ -34,7 +34,7 @@
           <h2>Présentation</h2>
 
           <p>
-            {{ workItem.content.overview }}
+            {{ projectItem.content.overview }}
           </p>
         </div>
 
@@ -46,7 +46,7 @@
 
             <ul class="space-y-2.5">
               <li
-                v-for="framework in workItem.technologies.frameworks"
+                v-for="framework in projectItem.technologies.frameworks"
                 :key="framework"
                 class="flex space-x-2"
               >
@@ -62,7 +62,7 @@
 
             <ul class="space-y-2.5">
               <li
-                v-for="(language, index) in workItem.technologies.languages"
+                v-for="(language, index) in projectItem.technologies.languages"
                 :key="index"
                 class="flex"
               >
@@ -82,7 +82,7 @@
 
         <ul class="space-y-2.5">
           <li
-            v-for="(functionality, index) in workItem.functionalities"
+            v-for="(functionality, index) in projectItem.functionalities"
             :key="index"
             class="flex"
           >
@@ -95,11 +95,11 @@
         </ul>
       </div>
 
-      <div v-if="workItem.content.credits">
+      <div v-if="projectItem.content.credits">
         <h2>Remerciements</h2>
 
         <p>
-          {{ workItem.content.credits }}
+          {{ projectItem.content.credits }}
         </p>
       </div>
 
@@ -108,7 +108,7 @@
 
         <div class="lg:flex lg:space-x-10 space-y-10 lg:space-y-0">
           <a
-            :href="workItem.appUrl"
+            :href="projectItem.appUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="btn flex justify-center"
@@ -122,8 +122,8 @@
             </span>
           </a>
           <a
-            v-if="workItem.githubUrl"
-            :href="workItem.githubUrl"
+            v-if="projectItem.githubUrl"
+            :href="projectItem.githubUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="btn flex justify-center"
@@ -148,11 +148,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import WorkImage from '@/components/work/WorkImage.vue';
+import WorkImage from '@/components/project/ProjectImage.vue';
 import { useRoute } from 'vue-router';
 import { getWorkById } from '@/services/workService';
 import { Routes } from '@/constants/routes';
-import { Workitem } from '@/interfaces/workitem';
+import { ProjectItem } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import IconRocket from '@/components/icons/IconRocket.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
@@ -173,10 +173,10 @@ export default defineComponent({
 
   setup() {
     const route = useRoute();
-    const workItem: Workitem | undefined = getWorkById(Number(route.params.workId));
+    const projectItem: ProjectItem | undefined = getWorkById(Number(route.params.workId));
 
     return {
-      workItem,
+      projectItem,
       Routes,
     };
   },

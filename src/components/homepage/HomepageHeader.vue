@@ -9,19 +9,19 @@
       Senior Product Designer at Linktree. Previously Lead UX/UI Designer at VideoMyJob. Alumni, Y Combinator 2015.
     </h3>
     <br>
-    <ViewWorkLink />
+    <ViewProjectLink />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ViewWorkLink from '@/components/ViewWorkLink.vue';
+import ViewProjectLink from '@/components/ViewProjectLink.vue';
 
 export default defineComponent({
   name: 'HomepageHeader',
 
   components: {
-    ViewWorkLink,
+    ViewProjectLink,
   },
 });
 </script>

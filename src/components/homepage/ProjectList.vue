@@ -5,34 +5,34 @@
       space-y-7 lg:space-y-0 lg:gap-16"
     >
       <li
-        v-for="workItem in getAllWorks()"
-        v-bind:key="workItem.id"
+        v-for="projectItem in getAllWorks()"
+        v-bind:key="projectItem.id"
       >
-        <WorkItem :url="`/works/${workItem.id}`">
+        <ProjectItem :url="`/projects/${projectItem.id}`">
           <template #title>
-            {{ workItem.title }}
+            {{ projectItem.title }}
           </template>
           <template #description>
-            {{ workItem.description }}
+            {{ projectItem.description }}
           </template>
           <template #technologies>
             <ul class="flex justify-end space-x-2">
               <li
-                v-for="framework in workItem.technologies.frameworks"
+                v-for="framework in projectItem.technologies.frameworks"
                 :key="framework"
               >
                 <TechnologyIcon :technology="framework"/>
               </li>
 
               <li
-                v-for="language in workItem.technologies.languages"
+                v-for="language in projectItem.technologies.languages"
                 :key="language"
               >
                 <TechnologyIcon :technology="language"/>
               </li>
             </ul>
           </template>
-        </WorkItem>
+        </ProjectItem>
       </li>
     </ul>
   </section>
@@ -40,28 +40,28 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import WorkItem from '@/components/work/WorkItem.vue';
+import ProjectItem from '@/components/project/ProjectItem.vue';
 import { getAllWorks } from '@/services/workService';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
-import { Workitem } from '@/interfaces/workitem';
+import { ProjectItem as Project } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 
 export default defineComponent({
-  name: 'WorkList',
+  name: 'ProjectList',
 
   components: {
     TechnologyIcon,
-    WorkItem,
+    ProjectItem,
   },
 
   setup() {
-    function hasFramework(workItem: Workitem, searchedFramework: Framework): boolean {
-      return workItem.technologies.frameworks.some((framework) => framework === searchedFramework);
+    function hasFramework(projectItem: Project, searchedFramework: Framework): boolean {
+      return projectItem.technologies.frameworks.some((framework) => framework === searchedFramework);
     }
 
-    function hasLanguage(workItem: Workitem, searchedLanguage: Language): boolean {
-      return workItem.technologies.languages.some((language) => language === searchedLanguage);
+    function hasLanguage(projectItem: Project, searchedLanguage: Language): boolean {
+      return projectItem.technologies.languages.some((language) => language === searchedLanguage);
     }
 
     return {

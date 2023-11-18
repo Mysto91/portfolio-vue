@@ -19,7 +19,7 @@
 import { defineComponent } from 'vue';
 import EllipseAnimated from '@/components/EllipseAnimated.vue';
 import HomepageHeader from '@/components/homepage/HomepageHeader.vue';
-import WorkList from '@/components/homepage/WorkList.vue';
+import WorkList from '@/components/homepage/ProjectList.vue';
 import ContactForm from '@/components/ContactForm.vue';
 
 export default defineComponent({

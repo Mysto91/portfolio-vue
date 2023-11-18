@@ -13,7 +13,7 @@ interface Content {
 
 type Funtionality = string;
 
-export interface Workitem {
+export interface ProjectItem {
   id: number;
   title: string;
   description: string;
