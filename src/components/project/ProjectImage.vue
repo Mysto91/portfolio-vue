@@ -6,7 +6,7 @@
 import {
   computed, defineComponent, PropType, ref,
 } from 'vue';
-import { Url } from '@/components/types/url';
+import { Url } from '@/types/url';
 
 interface Style {
   backgroundImage: string;

@@ -100,15 +100,15 @@
           </li>
         </ul>
       </div>
-<!--
-      <div v-if="projectItem.content.credits">
+
+      <div v-if="projectItem.credits">
         <h2>Remerciements</h2>
 
         <p>
-          {{ projectItem.content.credits }}
+          {{ projectItem.credits }}
         </p>
       </div>
--->
+
       <div>
         <h2>En voir davantage</h2>
 
@@ -184,14 +184,15 @@ export default defineComponent({
     const projectItem = ref<ProjectItem | null>(null);
     const route = useRoute();
 
-    async function setProjectItem(): Promise<void> {
+    async function fetchProjectItem(): Promise<void> {
       projectItem.value = await getProjectById(Number(route.params.workId));
     }
 
+    // TODO : refacto en des fonctions communes
     const languages = computed<Technology[]>(() => projectItem.value?.technologies.filter((technology) => technology.type === TechnologyType.LANGUAGE) ?? []);
     const frameworks = computed<Technology[]>(() => projectItem.value?.technologies.filter((technology) => technology.type === TechnologyType.FRAMEWORK) ?? []);
 
-    setProjectItem();
+    fetchProjectItem();
 
     return {
       projectItem,

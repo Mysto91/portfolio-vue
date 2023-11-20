@@ -58,11 +58,12 @@ export default defineComponent({
   setup() {
     const projects = ref<Project[]>([]);
 
-    async function setProjects() {
+    async function fetchProjects(): Promise<void> {
       projects.value = await getProjects();
     }
 
-    setProjects();
+    // TODO : corriger les problèmes d'affichage des technos
+    fetchProjects();
 
     return {
       projects,
