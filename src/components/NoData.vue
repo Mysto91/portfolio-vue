@@ -1,13 +1,13 @@
 <template>
-    <div class="h-56 rounded-2xl border border-blue-700">
-      <slot></slot>
-    </div>
+  <p class="font-light italic">
+    Aucune donnée
+  </p>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'WorkPhoto',
+  name: 'NoData',
 });
 </script>

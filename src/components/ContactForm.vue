@@ -63,9 +63,7 @@
       <button class="
         mt-5
         w-36 lg:w-28
-        px-6 py-4
-        bg-black
-        text-white rounded-lg
+        btn
       ">
         Submit
       </button>

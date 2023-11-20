@@ -3,6 +3,6 @@ export enum Routes {
   HOME = 'home',
   ABOUT = 'about',
   CONTACT = 'contact',
-  WORKLIST = 'worklist',
-  WORK = 'work',
+  PROJECTLIST = 'projectlist',
+  PROJECT = 'project',
 }

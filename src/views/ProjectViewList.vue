@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>My works</h1>
+    <h1>Mes projets</h1>
     <div class="mt-10">
       <WorkList />
     </div>
@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import WorkList from '@/components/homepage/WorkList.vue';
+import WorkList from '@/components/homepage/ProjectList.vue';
 
 export default defineComponent({
   name: 'WorkView',

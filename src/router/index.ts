@@ -3,8 +3,8 @@ import { Routes } from '@/constants/routes';
 import AboutView from '@/views/AboutView.vue';
 import HomeView from '../views/HomeView.vue';
 import ContactView from '../views/ContactView.vue';
-import WorkViewList from '../views/WorkViewList.vue';
-import WorkView from '../views/WorkView.vue';
+import ProjectViewList from '../views/ProjectViewList.vue';
+import ProjectView from '../views/ProjectView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,14 +23,14 @@ const routes: Array<RouteRecordRaw> = [
     component: ContactView,
   },
   {
-    path: '/works',
-    name: Routes.WORKLIST,
-    component: WorkViewList,
+    path: '/projects',
+    name: Routes.PROJECTLIST,
+    component: ProjectViewList,
   },
   {
-    path: '/works/:workId',
-    name: Routes.WORK,
-    component: WorkView,
+    path: '/projects/:workId',
+    name: Routes.PROJECT,
+    component: ProjectView,
   },
 ];
 
