@@ -42,42 +42,48 @@
           <h2>Technologies</h2>
 
           <div class="space-y-4">
-            <h3>Frameworks</h3>
+            <div v-if="frameworks.length">
+              <h3>Frameworks</h3>
 
-            <ul class="space-y-2.5">
-              <li
-                v-for="framework in frameworks"
-                :key="framework"
-                class="flex space-x-2"
-              >
-                <TechnologyIcon :technology="framework.name"/>
+              <ul class="mt-2 space-y-2.5">
+                <li
+                  v-for="framework in frameworks"
+                  :key="`framework-${framework.id}`"
+                  class="flex space-x-2"
+                >
+                  <TechnologyIcon :technology="framework.name"/>
 
-                <span class="flex items-center">
-                  {{ framework.name }}
-                </span>
-              </li>
-            </ul>
+                  <span class="flex items-center">
+                    {{ framework.name }}
+                  </span>
+                </li>
+              </ul>
+            </div>
 
-            <h3>Langages</h3>
+            <div v-if="languages.length">
+              <h3>Langages</h3>
 
-            <ul class="space-y-2.5">
-              <li
-                v-for="language in languages"
-                :key="`language-${language.id}`"
-                class="flex"
-              >
-                <TechnologyIcon class="flex-none" :technology="language.name"/>
+              <ul class="mt-2 space-y-2.5">
+                <li
+                  v-for="language in languages"
+                  :key="`language-${language.id}`"
+                  class="flex"
+                >
+                  <TechnologyIcon class="flex-none" :technology="language.name"/>
 
-                <span class="ml-2 flex items-center">
+                  <span class="ml-2 flex items-center">
                   {{ language.name }}
                 </span>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
+
+            <NoData v-if="!languages.length && !frameworks.length" />
           </div>
         </div>
       </div>
 
-      <div>
+      <div v-if="projectItem.functionalities.length">
         <h2>Fonctionalités</h2>
 
         <ul class="space-y-2.5">
@@ -159,11 +165,13 @@ import IconPlay from '@/components/icons/IconPlay.vue';
 import IconLeftArrow from '@/components/icons/IconLeftArrow.vue';
 import { getProjectById } from '@/api/projectApi';
 import { TechnologyType } from '@/enums/technologyType';
+import NoData from '@/components/NoData.vue';
 
 export default defineComponent({
   name: 'WorkViewList',
 
   components: {
+    NoData,
     IconLeftArrow,
     IconPlay,
     IconGithub,
