@@ -1,9 +1,7 @@
 <template>
   <div>
     <h1>Mes projets</h1>
-    <div class="mt-10">
-      <WorkList />
-    </div>
+    <WorkList class="mt-10"/>
   </div>
 </template>
 

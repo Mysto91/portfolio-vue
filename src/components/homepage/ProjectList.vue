@@ -13,22 +13,22 @@
             {{ projectItem.title }}
           </template>
           <template #description>
-            {{ projectItem.description }}
+            {{ projectItem.overview }}
           </template>
           <template #technologies>
             <ul class="flex justify-end space-x-2">
               <li
-                v-for="framework in projectItem.technologies.frameworks"
-                :key="framework"
+                v-for="technology in findFrameworks(projectItem.technologies)"
+                :key="`framework-${technology.id}`"
               >
-                <TechnologyIcon :technology="framework"/>
+                <TechnologyIcon :technology="technology.name"/>
               </li>
 
               <li
-                v-for="language in projectItem.technologies.languages"
-                :key="language"
+                v-for="technology in findLanguages(projectItem.technologies)"
+                :key="`framework-${technology.id}`"
               >
-                <TechnologyIcon :technology="language"/>
+                <TechnologyIcon :technology="technology.name"/>
               </li>
             </ul>
           </template>
@@ -46,6 +46,7 @@ import { Language } from '@/enums/language';
 import { ProjectItem as Project } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { getProjects } from '@/api/projectApi';
+import { findLanguages, findFrameworks } from '@/utils/search';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -62,13 +63,16 @@ export default defineComponent({
       projects.value = await getProjects();
     }
 
-    // TODO : corriger les problèmes d'affichage des technos
     fetchProjects();
+
+    // TODO : Ajouter un filtrage avec une barre de recherche et une pagination
 
     return {
       projects,
       Framework,
       Language,
+      findLanguages,
+      findFrameworks,
     };
   },
 });

@@ -164,8 +164,8 @@ import IconGithub from '@/components/icons/IconGithub.vue';
 import IconPlay from '@/components/icons/IconPlay.vue';
 import IconLeftArrow from '@/components/icons/IconLeftArrow.vue';
 import { getProjectById } from '@/api/projectApi';
-import { TechnologyType } from '@/enums/technologyType';
 import NoData from '@/components/NoData.vue';
+import { findFrameworks, findLanguages } from '@/utils/search';
 
 export default defineComponent({
   name: 'WorkViewList',
@@ -188,9 +188,21 @@ export default defineComponent({
       projectItem.value = await getProjectById(Number(route.params.workId));
     }
 
-    // TODO : refacto en des fonctions communes
-    const languages = computed<Technology[]>(() => projectItem.value?.technologies.filter((technology) => technology.type === TechnologyType.LANGUAGE) ?? []);
-    const frameworks = computed<Technology[]>(() => projectItem.value?.technologies.filter((technology) => technology.type === TechnologyType.FRAMEWORK) ?? []);
+    const languages = computed<Technology[]>(() => {
+      if (!projectItem.value) {
+        return [];
+      }
+
+      return findLanguages(projectItem.value.technologies);
+    });
+
+    const frameworks = computed<Technology[]>(() => {
+      if (!projectItem.value) {
+        return [];
+      }
+
+      return findFrameworks(projectItem.value.technologies);
+    });
 
     fetchProjectItem();
 
