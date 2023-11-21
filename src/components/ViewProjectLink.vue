@@ -1,14 +1,15 @@
 <template>
     <NavigationLink
-        url="/projects"
+        :route="Routes.PROJECTLIST"
         class="px-6 py-4 bg-black text-white rounded-lg"
     >
-        View Work
+        Mes projets
     </NavigationLink>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Routes } from '@/enums/routes';
 import NavigationLink from './NavigationLink.vue';
 
 export default defineComponent({
@@ -16,6 +17,12 @@ export default defineComponent({
 
   components: {
     NavigationLink,
+  },
+
+  setup() {
+    return {
+      Routes,
+    };
   },
 });
 </script>

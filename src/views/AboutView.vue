@@ -22,11 +22,12 @@
             md:w-[580px] lg:w-[670px]
             flex flex-col justify-center"
         >
-          <h1>Hi there !</h1>
+          <h1>Hello !</h1>
+
           <p class="sm:text-2xl">
-            Fuelled by a passion for designing compelling products,
-            I have a deep desire to excel and continuously improve in my work.
-            Learn more about my journey below.
+            Rempli de passion pour le développement web,
+            J'éprouve une forte volonté d'exceller et de m'améliorer constamment dans mon travail.
+            Découvrez davantage sur mon parcours ci-dessous.
           </p>
         </div>
     </div>

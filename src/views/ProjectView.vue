@@ -160,7 +160,7 @@
 import { computed, defineComponent, ref } from 'vue';
 import ProjectImage from '@/components/project/ProjectImage.vue';
 import { useRoute } from 'vue-router';
-import { Routes } from '@/constants/routes';
+import { Routes } from '@/enums/routes';
 import { ProjectItem, Technology } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import IconRocket from '@/components/icons/IconRocket.vue';

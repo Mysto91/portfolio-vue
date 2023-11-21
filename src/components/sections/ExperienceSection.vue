@@ -1,12 +1,13 @@
 <template>
     <div>
-        <h2>My experiences</h2>
-        <ol class="relative ml-5 pl-6 space-y-10 border-l border-black">
+        <h2>Mes expériences</h2>
+        <ol class="relative ml-5 pl-6 space-y-10 border-l-2 border-gray-400">
           <li
             v-for="(experience, index) in experiences"
             :key="index"
           >
               <TimelineItem
+                  :url="experience.companyUrl"
                   :start-date="experience.startDate"
                   :end-date="experience.endDate"
               >
@@ -14,7 +15,9 @@
                       {{ experience.title }}
                   </template>
                   <template #icon>
-                      <img :src="experience.icon" alt="">
+                    <div :class="`relative w-14 h-14 rounded-full overflow-hidden ${experience.class ?? ''}`">
+                      <img :src="experience.icon" alt="" class="object-cover w-full h-full">
+                    </div>
                   </template>
                   <template #content>
                       {{ experience.content }}

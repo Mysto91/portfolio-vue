@@ -1,12 +1,14 @@
 <template>
   <section>
-    <h1>A designer passionate about creating beautiful user friendly products" </h1>
+    <h1>
+      Un développeur passionné par la réalisation d'applications web
+    </h1>
     <h3 class="my-2.5
           text:xl sm:text-2xl
           leading-[30px] sm:leading-[46px]
           font-extralight text-gray-500"
     >
-      Senior Product Designer at Linktree. Previously Lead UX/UI Designer at VideoMyJob. Alumni, Y Combinator 2015.
+      Développeur sénior chez Swile. Précédemment Lead développeur chez Orange Business Services.
     </h3>
     <br>
     <ViewProjectLink />

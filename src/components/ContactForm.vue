@@ -11,7 +11,7 @@
       leading-[46px] sm:leading-[54px] lg:leading-[88px]
       font-medium"
     >
-      Want to get in touch?
+      Vous voulez en savoir plus ?
     </h3>
     <form>
       <div class="md:flex md:space-x-8">
@@ -20,13 +20,13 @@
             for="name"
             class="text-sm font-medium text-gray-500"
           >
-            Name
+            Nom
             <input
               type="text"
               id="name"
               name="name"
               class="mt-1 w-full h-14 px-4 rounded-lg"
-              placeholder="Enter your name"
+              placeholder="Votre nom"
             />
           </label>
         </div>
@@ -35,13 +35,13 @@
             for="email"
             class="text-sm font-medium text-gray-500"
           >
-            Email Address
+            Email
             <input
               type="text"
               id="email"
               name="email"
               class="mt-1 w-full h-14 px-4 rounded-lg"
-              placeholder="Enter your email"
+              placeholder="Votre email"
             />
           </label>
         </div>
@@ -51,12 +51,12 @@
           for="message"
           class="text-sm font-medium text-gray-500"
         >
-          Email Address
+          Votre message
           <textarea
             id="message"
             name="message"
             class="mt-1 w-full h-36 px-4 py-3 rounded-lg"
-            placeholder="Enter your message"
+            placeholder="Votre message"
           />
         </label>
       </div>
@@ -65,7 +65,7 @@
         w-36 lg:w-28
         btn
       ">
-        Submit
+        Envoyer
       </button>
     </form>
   </section>

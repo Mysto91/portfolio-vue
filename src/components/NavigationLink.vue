@@ -1,6 +1,6 @@
 <template>
     <router-link
-        :to="url"
+        :to="{ name: route }"
         class="p-2.5 text-gray-700 text-base font-semibold transition-opacity duration-300 hover:opacity-50"
     >
         <slot></slot>
@@ -8,14 +8,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { Routes } from '@/enums/routes';
 
 export default defineComponent({
   name: 'NavigationLink',
 
   props: {
-    url: {
-      type: String,
+    route: {
+      type: String as PropType<Routes>,
       required: true,
     },
   },

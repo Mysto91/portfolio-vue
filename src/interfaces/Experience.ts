@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+import { Url } from '@/types/request';
 
 export interface Experience {
   title: string,
@@ -6,4 +7,6 @@ export interface Experience {
   endDate: DateTime | null,
   icon: string,
   content: string,
+  class?: string,
+  companyUrl: Url
 }

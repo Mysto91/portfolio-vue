@@ -3,34 +3,36 @@
         <div class="
           absolute -left-5 md:-left-6
           w-10 h-10 md:w-12 md:h-12
-          rounded-full  bg-blue-100
+          rounded-full
+          drop-shadow-md
           transition ease-in-out duration-200
-          group hover:scale-150 hover:bg-transparent"
+          group hover:scale-[130%] hover:bg-transparent"
         >
-          <div class="
-            relative
-            w-full h-full
-            flex items-center justify-center"
+          <a
+            :href="url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="
+              relative
+              w-full h-full
+              flex items-center justify-center"
           >
             <span class="absolute z-10">
               <slot name="icon"></slot>
             </span>
-            <span class="
-              w-0 h-0 group-hover:w-full group-hover:h-full
-              rounded-full border-blue-100 border-0 group-hover:border-2
-              bg-gray-100
-              transition ease-in-out duration-200">
-            </span>
-          </div>
+          </a>
         </div>
         <h3 class="flex items-center mb-1 text-lg font-semibold">
             <slot name="title"></slot>
+
             <span
                 v-if="isCurrent"
                 class="ml-2 bg-black text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded"
             >
-                Current
+                Actuellement
             </span>
+
+            <!-- TODO Ajouter une lien vers l'expérience en détail  -->
         </h3>
         <time class="block mb-2 text-sm font-normal leading-none text-gray-400">
           {{ interval }} ({{ periodOfTime }})
@@ -56,6 +58,10 @@ export default defineComponent({
     endDate: {
       type: Object as PropType<DateTime | null>,
       default: null,
+    },
+    url: {
+      type: String,
+      required: true,
     },
   },
   setup(props) {

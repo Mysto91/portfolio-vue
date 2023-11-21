@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import { Routes } from '@/constants/routes';
+import { Routes } from '@/enums/routes';
 import AboutView from '@/views/AboutView.vue';
 import HomeView from '../views/HomeView.vue';
 import ContactView from '../views/ContactView.vue';

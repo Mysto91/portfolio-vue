@@ -4,12 +4,12 @@
             <AppBrand />
             <ul class="flex items-center justify-center space-x-6">
                 <li>
-                    <NavigationLink url="/about">
-                        About
+                    <NavigationLink :route="Routes.ABOUT">
+                        À propos
                     </NavigationLink>
                 </li>
                 <li>
-                    <NavigationLink url="/contact">
+                    <NavigationLink :route="Routes.CONTACT">
                         Contact
                     </NavigationLink>
                 </li>
@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Routes } from '@/enums/routes';
 import NavigationLink from '../NavigationLink.vue';
 import AppBrand from '../AppBrand.vue';
 import ViewProjectLink from '../ViewProjectLink.vue';
@@ -34,6 +35,12 @@ export default defineComponent({
     NavigationLink,
     AppBrand,
     ViewProjectLink,
+  },
+
+  setup() {
+    return {
+      Routes,
+    };
   },
 });
 </script>

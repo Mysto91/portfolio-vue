@@ -1,6 +1,6 @@
 <template>
     <NavigationLink
-        :url="url"
+        :route="route"
         class="flex items-center justify-center"
     >
         <slot></slot>
@@ -8,7 +8,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { Routes } from '@/enums/routes';
 import NavigationLink from '../NavigationLink.vue';
 
 export default defineComponent({
@@ -19,8 +20,8 @@ export default defineComponent({
   },
 
   props: {
-    url: {
-      type: String,
+    route: {
+      type: String as PropType<Routes>,
       required: true,
     },
   },

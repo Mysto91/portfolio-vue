@@ -1,14 +1,14 @@
 <template>
     <div>
-        <h2>My Career So Far</h2>
+        <h2>Ma carrière en bref</h2>
         <p>
-            Always up for a challenge, I have worked for lean start-ups
-            and was a member of the first New Zealand start-up to attend Y Combinator,
-            the largest start-up accelerator in the world. From there,
-            I worked my way up to Art Director and Team Lead at Appster
-            where I oversaw the design of 30+ mobile and desktop apps.
-            Currently I am a Senior Product Designer at Linktree leading
-            design for the Linktree mobile app
+            Toujours motivé à relever des défis,
+            j'ai travaillé dans des secteurs d'activité variés tel que les télécommunications,
+            l'aéronautique ou encore les avantages salariés. Durant mes 5 années expériences,
+            j'ai eu l'opportunité d'évoluer
+            du métier de développeur vers celui de lead développeur avec des responsabilités
+            à la hauteur de mes ambitions.
+            Actuellement, je suis développeur sénior chez Swile sur la plateforme CSE.
         </p>
     </div>
 </template>

@@ -9,7 +9,7 @@
     </div>
     <div class="absolute top-0 pr-7">
       <HomepageHeader class="animate-slide-up" />
-      <!--  Afficher un top 4 des projects + voir plus    -->
+      <!--  TODO Afficher un top 4 des projects + voir plus    -->
       <WorkList class="mt-20 sm:mt-40 animate-slide-up" />
       <ContactForm class="mt-20 mb-32" />
     </div>
