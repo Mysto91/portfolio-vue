@@ -8,7 +8,7 @@
     drop-shadow-2xl
     bg-auto bg-cover bg-image
     ease-in-out duration-300
-    group hover:scale-105"
+    group hover:scale-[102%]"
   >
     <slot name="image"></slot>
     <div class="

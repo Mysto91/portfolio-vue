@@ -11,8 +11,12 @@
       </span>
     </router-link>
 
+    <div v-if="isLoading">
+      Chargement
+    </div>
+
     <div
-      v-if="projectItem"
+      v-else-if="projectItem"
       class="space-y-10"
     >
       <h1>{{ projectItem.title }}</h1>
@@ -183,10 +187,13 @@ export default defineComponent({
 
   setup() {
     const projectItem = ref<ProjectItem | null>(null);
+    const isLoading = ref<boolean>(false);
     const route = useRoute();
 
     async function fetchProjectItem(): Promise<void> {
+      isLoading.value = true;
       projectItem.value = await getProjectById(route.params.workId as UUID);
+      isLoading.value = false;
     }
 
     const languages = computed<Technology[]>(() => {
@@ -212,6 +219,7 @@ export default defineComponent({
       languages,
       frameworks,
       Routes,
+      isLoading,
     };
   },
 });

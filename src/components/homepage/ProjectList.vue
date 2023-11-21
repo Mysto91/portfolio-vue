@@ -1,6 +1,12 @@
 <template>
   <section>
-    <ul class="
+    <div v-if="isLoading">
+      Chargement
+    </div>
+
+    <ul
+      v-else-if="projects.length"
+      class="
       lg:grid lg:grid-cols-2
       space-y-7 lg:space-y-0 lg:gap-16"
     >
@@ -35,6 +41,8 @@
         </ProjectItem>
       </li>
     </ul>
+
+    <NoData v-else />
   </section>
 </template>
 
@@ -47,20 +55,25 @@ import { ProjectItem as Project } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { getProjects } from '@/api/projectApi';
 import { findLanguages, findFrameworks } from '@/utils/search';
+import NoData from '@/components/NoData.vue';
 
 export default defineComponent({
   name: 'ProjectList',
 
   components: {
+    NoData,
     TechnologyIcon,
     ProjectItem,
   },
 
   setup() {
     const projects = ref<Project[]>([]);
+    const isLoading = ref<boolean>(false);
 
     async function fetchProjects(): Promise<void> {
+      isLoading.value = true;
       projects.value = await getProjects();
+      isLoading.value = false;
     }
 
     fetchProjects();
@@ -73,6 +86,7 @@ export default defineComponent({
       Language,
       findLanguages,
       findFrameworks,
+      isLoading,
     };
   },
 });
