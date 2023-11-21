@@ -1,7 +1,7 @@
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
 import { TechnologyType } from '@/enums/technologyType';
-import { Url } from '@/types/url';
+import { Url, UUID } from '@/types/request';
 
 export interface Technology {
   id: number;
@@ -16,7 +16,7 @@ interface Funtionality {
 }
 
 export interface ProjectItem {
-  id: number;
+  uuid: UUID;
   title: string;
   description: string;
   technologies: Technology[];

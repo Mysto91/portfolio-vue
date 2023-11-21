@@ -6,9 +6,9 @@
     >
       <li
         v-for="projectItem in projects"
-        v-bind:key="projectItem.id"
+        v-bind:key="projectItem.uuid"
       >
-        <ProjectItem :url="`/projects/${projectItem.id}`">
+        <ProjectItem :url="`/projects/${projectItem.uuid}`">
           <template #title>
             {{ projectItem.title }}
           </template>

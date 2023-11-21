@@ -1,4 +1,5 @@
 import { ProjectItem } from '@/interfaces/projectItem';
+import { UUID } from '@/types/request';
 
 export async function getProjects(): Promise<ProjectItem[]> {
   try {
@@ -15,7 +16,7 @@ export async function getProjects(): Promise<ProjectItem[]> {
   }
 }
 
-export async function getProjectById(projectId: number): Promise<ProjectItem | null> {
+export async function getProjectById(projectId: UUID): Promise<ProjectItem | null> {
   try {
     const response = await fetch(`${process.env.VUE_APP_API_URL}/api/projects/${projectId}`);
 

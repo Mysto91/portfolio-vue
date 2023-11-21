@@ -166,6 +166,7 @@ import IconLeftArrow from '@/components/icons/IconLeftArrow.vue';
 import { getProjectById } from '@/api/projectApi';
 import NoData from '@/components/NoData.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
+import { UUID } from '@/types/request';
 
 export default defineComponent({
   name: 'WorkViewList',
@@ -185,7 +186,7 @@ export default defineComponent({
     const route = useRoute();
 
     async function fetchProjectItem(): Promise<void> {
-      projectItem.value = await getProjectById(Number(route.params.workId));
+      projectItem.value = await getProjectById(route.params.workId as UUID);
     }
 
     const languages = computed<Technology[]>(() => {
