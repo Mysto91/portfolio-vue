@@ -1,12 +1,13 @@
-import { DateTime } from 'luxon';
-import { Url } from '@/types/request';
+import { Company } from '@/interfaces/company';
+import { UUID } from '@/types/request';
 
 export interface Experience {
+  uuid: UUID;
   title: string,
-  startDate: DateTime,
-  endDate: DateTime | null,
+  overview: string,
+  startDate: string,
+  endDate: string | null,
   icon: string,
-  content: string,
-  class?: string,
-  companyUrl: Url
+  description: string,
+  company: Company
 }

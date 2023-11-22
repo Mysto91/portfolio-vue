@@ -52,12 +52,12 @@ export default defineComponent({
 
   props: {
     startDate: {
-      type: Object as PropType<DateTime>,
+      type: String,
       required: true,
     },
     endDate: {
-      type: Object as PropType<DateTime | null>,
-      default: null,
+      type: String as PropType<string |null>,
+      required: true,
     },
     url: {
       type: String,
@@ -67,21 +67,24 @@ export default defineComponent({
   setup(props) {
     const isCurrent = computed<boolean>(() => props.endDate === null);
 
+    const startDate = DateTime.fromISO(props.startDate);
+    const endDate = props.endDate ? DateTime.fromISO(props.endDate) : null;
+
     const formatDate = (date: DateTime): string => date?.toFormat('MMM yyyy', { locale: 'fr' });
 
     const interval = computed<string>(() => {
-      if (!props.endDate) {
-        return `${formatDate(props.startDate)} - aujourd'hui`;
+      if (!endDate) {
+        return `${formatDate(startDate)} - aujourd'hui`;
       }
 
-      return `${formatDate(props.startDate)} - ${formatDate(props.endDate)}`;
+      return `${formatDate(startDate)} - ${formatDate(endDate)}`;
     });
 
     const periodOfTime = computed<string | null>(() => {
-      const endDate: DateTime = props.endDate ? props.endDate : DateTime.now();
+      const endDateTime = endDate !== null ? endDate : DateTime.now();
 
-      const duration: DurationObjectUnits = endDate
-        .diff(props.startDate, ['years', 'months'])
+      const duration: DurationObjectUnits = endDateTime
+        .diff(startDate, ['years', 'months'])
         .toObject();
 
       let yearStr: string | null = null;
