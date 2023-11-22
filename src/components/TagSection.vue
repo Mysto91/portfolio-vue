@@ -1,43 +1,81 @@
 <template>
+  <div>
     <div>
-        <div class="flex flex-wrap">
-            <AppTag
-                v-for="(tag, index) in tags"
-                v-bind:key="index"
-                :name="tag"
-            />
-        </div>
+      <h3>Frameworks</h3>
+
+      <ul class="flex flex-wrap">
+        <li
+          v-for="framework in frameworks"
+          :key="`framework-${framework.id}`"
+        >
+          <AppTag>
+            <template #default>
+              <div class="flex items-center space-x-2">
+                <TechnologyIcon class="h-5 w-5" :technology="framework.name" />
+                <p>{{ framework.name }}</p>
+              </div>
+            </template>
+          </AppTag>
+        </li>
+      </ul>
     </div>
+
+    <div>
+      <h3>Languages</h3>
+
+      <ul class="flex flex-wrap">
+        <li
+          v-for="language in languages"
+          :key="`language-${language.id}`"
+        >
+          <AppTag>
+            <template #default>
+              <div class="flex items-center space-x-2">
+                <TechnologyIcon class="h-5 w-5" :technology="language.name" />
+                <p>{{ language.name }}</p>
+              </div>
+            </template>
+          </AppTag>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
+import { Technology } from '@/interfaces/projectItem';
+import { getTechnologies } from '@/api/technologyApi';
+import TechnologyIcon from '@/components/TechnologyIcon.vue';
+import { findFrameworks, findLanguages } from '@/utils/search';
 import AppTag from './AppTag.vue';
 
 export default defineComponent({
   name: 'TagSection',
 
   components: {
+    TechnologyIcon,
     AppTag,
   },
 
   setup() {
-    const tags: string[] = [
-      'ui design',
-      'ux-design',
-      'prototyping',
-      'branding',
-      'html/css',
-      'wireframing',
-      'information architecture',
-      'user search',
-      'user interviews',
-      'leadership',
-      'figma',
-      'adobe suite',
-    ];
+    const technologies = ref<Technology[]>([]);
+    const isLoading = ref<boolean>(false);
+
+    async function setTechnologies(): Promise<void> {
+      isLoading.value = true;
+      technologies.value = await getTechnologies();
+      isLoading.value = false;
+    }
+
+    setTechnologies();
+
+    const frameworks = computed<Technology[]>(() => findFrameworks(technologies.value));
+    const languages = computed<Technology[]>(() => findLanguages(technologies.value));
+
     return {
-      tags,
+      frameworks,
+      languages,
     };
   },
 });

@@ -46,8 +46,7 @@
       <TagSection
         class="
           flex-initial
-          lg:w-[440px]
-          flex items-center"
+          lg:w-[440px]"
       />
     </div>
     <ExperienceSection class="w-full" />
