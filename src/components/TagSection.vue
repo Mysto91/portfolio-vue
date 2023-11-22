@@ -3,7 +3,14 @@
     <div>
       <h3>Frameworks</h3>
 
-      <ul class="flex flex-wrap">
+      <p v-if="isLoading">
+        Chargement
+      </p>
+
+      <ul
+        v-else-if="frameworks.length"
+        class="flex flex-wrap"
+      >
         <li
           v-for="framework in frameworks"
           :key="`framework-${framework.id}`"
@@ -18,12 +25,21 @@
           </AppTag>
         </li>
       </ul>
+
+      <NoData v-else />
     </div>
 
     <div>
       <h3>Languages</h3>
 
-      <ul class="flex flex-wrap">
+      <p v-if="isLoading">
+        Chargement
+      </p>
+
+      <ul
+        v-else-if="languages.length"
+        class="flex flex-wrap"
+      >
         <li
           v-for="language in languages"
           :key="`language-${language.id}`"
@@ -38,6 +54,8 @@
           </AppTag>
         </li>
       </ul>
+
+      <NoData v-else />
     </div>
   </div>
 </template>
@@ -48,12 +66,14 @@ import { Technology } from '@/interfaces/projectItem';
 import { getTechnologies } from '@/api/technologyApi';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
+import NoData from '@/components/NoData.vue';
 import AppTag from './AppTag.vue';
 
 export default defineComponent({
   name: 'TagSection',
 
   components: {
+    NoData,
     TechnologyIcon,
     AppTag,
   },
@@ -76,6 +96,7 @@ export default defineComponent({
     return {
       frameworks,
       languages,
+      isLoading,
     };
   },
 });
