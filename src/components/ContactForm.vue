@@ -60,13 +60,11 @@
           />
         </label>
       </div>
-      <button class="
-        mt-5
-        w-36 lg:w-28
-        btn
-      ">
-        Envoyer
-      </button>
+      <div class="w-full flex justify-center lg:justify-start">
+        <button class="btn mt-5 w-36 lg:w-28">
+          Envoyer
+        </button>
+      </div>
     </form>
   </section>
 </template>
