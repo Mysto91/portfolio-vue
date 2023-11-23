@@ -1,8 +1,19 @@
 <template>
   <section>
-    <div v-if="isLoading">
-      Chargement
-    </div>
+    <ul
+      v-if="isLoading"
+      class="
+        lg:grid lg:grid-cols-2
+        space-y-7 lg:space-y-0 lg:gap-16"
+    >
+      <li
+        v-for="index in 4"
+        :key="`skeleton-${index}`"
+        class="flex justify-center"
+      >
+        <ImageSkeleton class="h-[500px] rounded-2xl drop-shadow-2xl" />
+      </li>
+    </ul>
 
     <ul
       v-else-if="projects.length"
@@ -61,11 +72,13 @@ import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { getProjects } from '@/api/projectApi';
 import { findLanguages, findFrameworks } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
+import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
 
 export default defineComponent({
   name: 'ProjectList',
 
   components: {
+    ImageSkeleton,
     NoData,
     TechnologyIcon,
     CardItem,

@@ -1,7 +1,7 @@
 <template>
-  <ul role="status" class="max-w-sm animate-pulse space-y-3">
+  <ul class="max-w-sm animate-pulse space-y-3">
     <li
-      v-for="(line, index) in Array(numberOfLines).fill(null)"
+      v-for="index in numberOfLines"
       :key="`skeleton-${index}`"
     >
       <div class="h-2 bg-gray-300 rounded-full max-w-[360px]"></div>
