@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <div class="space-y-3">
     <div>
       <h3>Frameworks</h3>
 
       <div class="mt-2">
-        <p v-if="isLoading">
-          Chargement
-        </p>
+        <TextSkeleton v-if="isLoading" />
 
         <ul
           v-else-if="frameworks.length"
@@ -36,9 +34,7 @@
       <h3>Languages</h3>
 
       <div class="mt-2">
-        <p v-if="isLoading">
-          Chargement
-        </p>
+        <TextSkeleton v-if="isLoading" />
 
         <ul
           v-else-if="languages.length"
@@ -72,12 +68,14 @@ import { getTechnologies } from '@/api/technologyApi';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
+import TextSkeleton from '@/components/skeletons/TextSkeleton.vue';
 import AppTag from './AppTag.vue';
 
 export default defineComponent({
   name: 'TagSection',
 
   components: {
+    TextSkeleton,
     NoData,
     TechnologyIcon,
     AppTag,
