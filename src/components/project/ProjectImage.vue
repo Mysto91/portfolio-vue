@@ -1,47 +1,27 @@
 <template>
-    <div :style="style" class="h-56 rounded-2xl border border-black bg-auto bg-cover" />
+    <div :style="imageStyle" class="h-56 rounded-2xl border drop-shadow-xl bg-auto bg-cover" />
 </template>
 
 <script lang="ts">
-import {
-  computed, defineComponent, PropType, ref,
-} from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { Url } from '@/types/request';
-
-interface Style {
-  backgroundImage: string;
-}
+import { useImageStyle } from '@/composables/useStyle';
 
 export default defineComponent({
   name: 'ProjectImage',
 
   props: {
     imageUrl: {
-      type: String as PropType<Url>,
+      type: String as PropType<Url | null>,
       required: true,
     },
   },
 
   setup(props) {
-    const imageFound = ref<boolean>(false);
-
-    async function fetchImage(): Promise<void> {
-      try {
-        const { ok } = await fetch(props.imageUrl);
-        imageFound.value = ok;
-      } catch (e) {
-        imageFound.value = false;
-      }
-    }
-
-    fetchImage();
-
-    const style = computed<Style>(() => ({
-      backgroundImage: imageFound.value === true ? `url(${props.imageUrl})` : 'url(/images/default-placeholder.png)',
-    }));
+    const { imageStyle } = useImageStyle({ imageUrl: props.imageUrl });
 
     return {
-      style,
+      imageStyle,
     };
   },
 });

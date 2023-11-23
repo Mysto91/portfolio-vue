@@ -25,11 +25,11 @@
         lg:h-[820px]
         lg:flex space-y-5 lg:space-x-5 lg:space-y-0"
       >
-        <ProjectImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-full lg:w-1/2" />
+        <ProjectImage :image-url="projectItem.images.mainImageUrl" class="lg:h-full lg:w-1/2" />
 
         <div class="block lg:w-1/2 space-y-5">
-          <ProjectImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px] " />
-          <ProjectImage image-url="https://upload.wikimedia.org/wikipedia/en/c/cb/Earthlights02_dmsp_big.jpg" class="lg:h-[400px]" />
+          <ProjectImage :image-url="projectItem.images.firstImageUrl" class="lg:h-[400px] " />
+          <ProjectImage :image-url="projectItem.images.secondImageUrl" class="lg:h-[400px]" />
         </div>
       </div>
 

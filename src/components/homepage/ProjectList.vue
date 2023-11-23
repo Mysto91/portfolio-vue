@@ -12,15 +12,20 @@
     >
       <li
         v-for="projectItem in projects"
-        v-bind:key="projectItem.uuid"
+        :key="projectItem.uuid"
       >
-        <ProjectItem :url="`/projects/${projectItem.uuid}`">
+        <CardItem
+          :url="`/projects/${projectItem.uuid}`"
+          :background-image-url="projectItem.images.mainImageUrl"
+        >
           <template #title>
             {{ projectItem.title }}
           </template>
+
           <template #description>
             {{ projectItem.overview }}
           </template>
+
           <template #technologies>
             <ul class="flex justify-end space-x-2">
               <li
@@ -38,7 +43,7 @@
               </li>
             </ul>
           </template>
-        </ProjectItem>
+        </CardItem>
       </li>
     </ul>
 
@@ -48,7 +53,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import ProjectItem from '@/components/project/ProjectItem.vue';
+import CardItem from '@/components/CardItem.vue';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
 import { ProjectItem as Project } from '@/interfaces/projectItem';
@@ -63,7 +68,7 @@ export default defineComponent({
   components: {
     NoData,
     TechnologyIcon,
-    ProjectItem,
+    CardItem,
   },
 
   setup() {

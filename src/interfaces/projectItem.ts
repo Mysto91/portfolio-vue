@@ -15,6 +15,12 @@ interface Funtionality {
   description: string;
 }
 
+interface ProjectImages {
+  mainImageUrl: Url | null;
+  firstImageUrl: Url | null;
+  secondImageUrl: Url | null;
+}
+
 export interface ProjectItem {
   uuid: UUID;
   title: string;
@@ -25,4 +31,5 @@ export interface ProjectItem {
   credits: string | null;
   functionalities: Funtionality[];
   overview: string;
+  images: ProjectImages;
 }

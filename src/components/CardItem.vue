@@ -1,12 +1,13 @@
 <template>
   <router-link
     :to="url"
+    :style="imageStyle"
     class="
     flex flex-col justify-end
     w-full h-[400px] lg:h-[600px]
     rounded-2xl
     drop-shadow-2xl
-    bg-auto bg-cover bg-image
+    bg-auto bg-cover
     ease-in-out duration-300
     group hover:scale-[102%]"
   >
@@ -23,7 +24,7 @@
       <div class="
         absolute
         inset-0
-        bg-blue-300 overlay
+        bg-black overlay
         rounded-b-2xl
         ease-in-out duration-300
         group-hover:bg-black"
@@ -60,16 +61,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { Url } from '@/types/request';
+import { useImageStyle } from '@/composables/useStyle';
 
 export default defineComponent({
-  name: 'ProjectItem',
+  name: 'CardItem',
 
   props: {
     url: {
       type: String,
       required: true,
     },
+    backgroundImageUrl: {
+      type: String as PropType<Url | null>,
+      default: null,
+    },
+  },
+
+  setup(props) {
+    const { imageStyle } = useImageStyle({
+      imageUrl: props.backgroundImageUrl,
+      defaultImageUrl: 'https://www.sapphirewebsolutions.com/wp-content/uploads/2019/09/Web-Development-Trends.jpg',
+    });
+
+    return {
+      imageStyle,
+    };
   },
 });
 </script>
@@ -83,7 +101,6 @@ export default defineComponent({
      background-image: linear-gradient(
         180deg,
         rgba(16,32,44,0) 62%,#3db4cf),
-        url("https://www.sapphirewebsolutions.com/wp-content/uploads/2019/09/Web-Development-Trends.jpg"
-     )
+        url("https://www.sapphirewebsolutions.com/wp-content/uploads/2019/09/Web-Development-Trends.jpg")
   }
 </style>
