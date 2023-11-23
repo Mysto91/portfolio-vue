@@ -3,59 +3,64 @@
     <div>
       <h3>Frameworks</h3>
 
-      <p v-if="isLoading">
-        Chargement
-      </p>
+      <div class="mt-2">
+        <p v-if="isLoading">
+          Chargement
+        </p>
 
-      <ul
-        v-else-if="frameworks.length"
-        class="flex flex-wrap"
-      >
-        <li
-          v-for="framework in frameworks"
-          :key="`framework-${framework.id}`"
+        <ul
+          v-else-if="frameworks.length"
+          class="flex flex-wrap"
         >
-          <AppTag>
-            <template #default>
-              <div class="flex items-center space-x-2">
-                <TechnologyIcon class="h-5 w-5" :technology="framework.name" />
-                <p>{{ framework.name }}</p>
-              </div>
-            </template>
-          </AppTag>
-        </li>
-      </ul>
+          <li
+            v-for="framework in frameworks"
+            :key="`framework-${framework.id}`"
+          >
+            <AppTag>
+              <template #default>
+                <div class="flex items-center space-x-2">
+                  <TechnologyIcon class="h-5 w-5" :technology="framework.name" />
+                  <p class="text-lg">{{ framework.name }}</p>
+                </div>
+              </template>
+            </AppTag>
+          </li>
+        </ul>
 
-      <NoData v-else />
+        <NoData v-else />
+      </div>
+
     </div>
 
     <div>
       <h3>Languages</h3>
 
-      <p v-if="isLoading">
-        Chargement
-      </p>
+      <div class="mt-2">
+        <p v-if="isLoading">
+          Chargement
+        </p>
 
-      <ul
-        v-else-if="languages.length"
-        class="flex flex-wrap"
-      >
-        <li
-          v-for="language in languages"
-          :key="`language-${language.id}`"
+        <ul
+          v-else-if="languages.length"
+          class="flex flex-wrap"
         >
-          <AppTag>
-            <template #default>
-              <div class="flex items-center space-x-2">
-                <TechnologyIcon class="h-5 w-5" :technology="language.name" />
-                <p>{{ language.name }}</p>
-              </div>
-            </template>
-          </AppTag>
-        </li>
-      </ul>
+          <li
+            v-for="language in languages"
+            :key="`language-${language.id}`"
+          >
+            <AppTag>
+              <template #default>
+                <div class="flex items-center space-x-2">
+                  <TechnologyIcon class="h-5 w-5" :technology="language.name" />
+                  <p class="text-lg">{{ language.name }}</p>
+                </div>
+              </template>
+            </AppTag>
+          </li>
+        </ul>
 
-      <NoData v-else />
+        <NoData v-else />
+      </div>
     </div>
   </div>
 </template>
