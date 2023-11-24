@@ -2,9 +2,17 @@
     <div>
         <h2>Mes expériences</h2>
 
-        <p v-if="isLoading">
-          Chargement
-        </p>
+        <ul
+          v-if="isLoading"
+          class="space-y-12"
+        >
+            <li
+              v-for="index in 3"
+              :key="`skeleton-timeline-${index}`"
+            >
+              <TimeLineSkeleton />
+            </li>
+        </ul>
 
         <ol
           v-else-if="experiences.length"
@@ -52,12 +60,15 @@ import { Experience } from '@/interfaces/Experience';
 import { getExperiences } from '@/api/experienceApi';
 import NoData from '@/components/NoData.vue';
 import { ContractType } from '@/enums/contractType';
+import { Size } from '@/enums/size';
+import TimeLineSkeleton from '@/components/skeletons/TimeLineSkeleton.vue';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
   name: 'ExperienceSection',
 
   components: {
+    TimeLineSkeleton,
     NoData,
     TimelineItem,
   },
@@ -78,6 +89,7 @@ export default defineComponent({
       experiences,
       isLoading,
       ContractType,
+      Size,
     };
   },
 });
