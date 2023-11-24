@@ -1,13 +1,15 @@
 import { Company } from '@/interfaces/company';
 import { UUID } from '@/types/request';
+import { ContractType } from '@/enums/contractType';
 
 export interface Experience {
   uuid: UUID;
-  title: string,
-  overview: string,
-  startDate: string,
-  endDate: string | null,
-  icon: string,
-  description: string,
-  company: Company
+  title: string;
+  overview: string;
+  startDate: string;
+  endDate: string | null;
+  icon: string;
+  description: string;
+  company: Company;
+  contractType: ContractType;
 }

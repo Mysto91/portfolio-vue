@@ -20,8 +20,11 @@
                   :end-date="experience.endDate"
               >
                   <template #title>
-                      {{ experience.company.name }} - {{ experience.title }}
+                      {{ experience.company.name }} -
+                      {{ experience.contractType === ContractType.INTERNSHIP ? '(Stage)' : '' }}
+                      {{ experience.title }}
                   </template>
+
                   <template #icon>
                     <div :class="`relative w-14 h-14 rounded-full overflow-hidden ${experience.company.logoClass ?? ''}`">
                       <img
@@ -31,6 +34,7 @@
                       >
                     </div>
                   </template>
+
                   <template #content>
                       {{ experience.overview }}
                   </template>
@@ -47,6 +51,7 @@ import { defineComponent, ref } from 'vue';
 import { Experience } from '@/interfaces/Experience';
 import { getExperiences } from '@/api/experienceApi';
 import NoData from '@/components/NoData.vue';
+import { ContractType } from '@/enums/contractType';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
@@ -72,6 +77,7 @@ export default defineComponent({
     return {
       experiences,
       isLoading,
+      ContractType,
     };
   },
 });
