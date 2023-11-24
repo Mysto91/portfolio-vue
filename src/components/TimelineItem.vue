@@ -90,12 +90,12 @@ export default defineComponent({
       let yearStr: string | null = null;
       let monthStr: string | null = null;
 
-      if (duration.years !== 0) {
-        yearStr = `${duration.years} ans`;
+      if (duration.years) {
+        yearStr = `${duration.years} ${duration.years > 1 ? 'ans' : 'an'}`;
       }
 
-      if (duration.months !== 0) {
-        monthStr = `${Math.round(duration.months as number)} mois`;
+      if (duration.months !== undefined && duration.months >= 1) {
+        monthStr = `${Math.round(duration.months)} mois`;
       }
 
       if (!monthStr) {
