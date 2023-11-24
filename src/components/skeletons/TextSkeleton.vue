@@ -4,7 +4,7 @@
       v-for="index in numberOfLines"
       :key="`skeleton-${index}`"
     >
-      <div class="h-2 bg-gray-300 rounded-full max-w-[360px]"></div>
+      <LineSkeleton class="h-3" />
     </li>
 
     <li class="sr-only">Loading...</li>
@@ -13,9 +13,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import LineSkeleton from '@/components/skeletons/LineSkeleton.vue';
 
 export default defineComponent({
   name: 'TextSkeleton',
+
+  components: {
+    LineSkeleton,
+  },
 
   props: {
     numberOfLines: {
