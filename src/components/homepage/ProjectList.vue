@@ -64,7 +64,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import {
+  defineComponent, PropType, ref, watch,
+} from 'vue';
 import CardItem from '@/components/CardItem.vue';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
@@ -74,6 +76,8 @@ import { getProjects } from '@/api/projectApi';
 import { findLanguages, findFrameworks } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
+import { SearchParams } from '@/interfaces/searchParams';
+import { debounce } from 'vue-debounce';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -85,7 +89,14 @@ export default defineComponent({
     CardItem,
   },
 
-  setup() {
+  props: {
+    searchParams: {
+      type: Object as PropType<SearchParams>,
+      default: undefined,
+    },
+  },
+
+  setup(props) {
     const projects = ref<Project[]>([]);
     const isLoading = ref<boolean>(false);
 
@@ -97,7 +108,15 @@ export default defineComponent({
 
     fetchProjects();
 
-    // TODO : Ajouter un filtrage avec une barre de recherche et une pagination
+    watch(
+      () => props.searchParams,
+      debounce(async (searchParams) => {
+        isLoading.value = true;
+        projects.value = await getProjects(searchParams);
+        isLoading.value = false;
+      }, 400),
+      { deep: true },
+    );
 
     return {
       projects,

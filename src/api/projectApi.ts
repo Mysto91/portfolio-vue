@@ -1,16 +1,12 @@
 import { ProjectItem } from '@/interfaces/projectItem';
 import { UUID } from '@/types/request';
-import { apiUrl } from '@/api/api';
+import { apiClient } from '@/api/apiClient';
+import { SearchParams } from '@/interfaces/searchParams';
 
-export async function getProjects(): Promise<ProjectItem[]> {
+export async function getProjects(params: SearchParams = {}): Promise<ProjectItem[]> {
   try {
-    const response = await fetch(`${apiUrl}/projects`);
-
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
-    }
-
-    return await response.json();
+    const { data } = await apiClient.get('/projects', { params });
+    return data;
   } catch (e) {
     console.error(e);
     return [];
@@ -19,13 +15,8 @@ export async function getProjects(): Promise<ProjectItem[]> {
 
 export async function getProjectById(projectId: UUID): Promise<ProjectItem | null> {
   try {
-    const response = await fetch(`${apiUrl}/projects/${projectId}`);
-
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
-    }
-
-    return await response.json();
+    const { data } = await apiClient.get(`/projects/${projectId}`);
+    return data;
   } catch (e) {
     console.error(e);
     return null;
