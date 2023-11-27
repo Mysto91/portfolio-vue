@@ -22,6 +22,7 @@
       space-y-7 lg:space-y-0 lg:gap-16"
     >
       <li
+        class="animate-slide-up duration-500 ease-in-out"
         v-for="projectItem in projects"
         :key="projectItem.uuid"
       >
