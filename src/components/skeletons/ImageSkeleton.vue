@@ -4,7 +4,8 @@
       w-full h-48 lg:w-full
       flex items-center justify-center
       bg-gray-300
-      rounded
+      rounded-2xl
+      drop-shadow-xl
       animate-pulse"
   >
     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">

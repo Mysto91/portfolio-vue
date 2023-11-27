@@ -1,5 +1,5 @@
 <template>
-    <div :style="imageStyle" class="h-56 rounded-2xl border drop-shadow-xl bg-auto bg-cover" />
+    <div :style="imageStyle" class="h-56 rounded-2xl drop-shadow-xl bg-auto bg-cover" />
 </template>
 
 <script lang="ts">
