@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { vue3Debounce } from 'vue-debounce';
 import App from './App.vue';
 import router from './router';
 
@@ -10,4 +11,7 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-createApp(App).use(router).mount('#app');
+createApp(App)
+  .use(router)
+  .directive('debounce', vue3Debounce({ lock: true }))
+  .mount('#app');

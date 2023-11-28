@@ -1,16 +1,12 @@
 import { Technology } from '@/interfaces/projectItem';
-import { apiUrl } from '@/api/api';
+import { apiClient } from '@/api/apiClient';
+import { SearchParams } from '@/interfaces/searchParams';
 
 // eslint-disable-next-line import/prefer-default-export
-export async function getTechnologies(): Promise<Technology[]> {
+export async function getTechnologies(params?: SearchParams): Promise<Technology[]> {
   try {
-    const response = await fetch(`${apiUrl}/technologies`);
-
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
-    }
-
-    return await response.json();
+    const { data } = await apiClient.get('/technologies', { params });
+    return data;
   } catch (e) {
     console.error(e);
     return [];
