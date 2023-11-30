@@ -4,7 +4,7 @@
     :style="imageStyle"
     class="
     flex flex-col justify-end
-    w-full h-[400px] lg:h-[600px]
+    w-full h-[300px] lg:h-[400px]
     rounded-2xl
     drop-shadow-2xl
     bg-auto bg-cover
