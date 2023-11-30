@@ -1,28 +1,30 @@
 <template>
   <section>
     <ul
-      v-if="isLoading"
       class="
         lg:grid lg:grid-cols-2
-        space-y-7 lg:space-y-0 lg:gap-16"
+        space-y-7 lg:space-y-0 lg:gap-16
+        transition ease-in-out duration-300"
+      :class="isLoading ? 'opacity-100' : 'opacity-0 h-0'"
     >
       <li
         v-for="index in 4"
         :key="`skeleton-${index}`"
         class="flex justify-center"
       >
-        <ImageSkeleton class="h-[500px] rounded-2xl drop-shadow-2xl" />
+        <ImageSkeleton class="h-[400px] rounded-2xl drop-shadow-2xl" />
       </li>
     </ul>
 
     <ul
-      v-else-if="projects.length"
       class="
       lg:grid lg:grid-cols-2
-      space-y-7 lg:space-y-0 lg:gap-16"
+      space-y-7 lg:space-y-0 lg:gap-16
+      transition ease-in-out duration-300"
+      :class="!isLoading && projects.length ? 'opacity-100' : 'opacity-0 h-0'"
     >
       <li
-        class="animate-slide-up duration-500 ease-in-out"
+        class="transition duration-500 ease-in-out"
         v-for="projectItem in projects"
         :key="projectItem.uuid"
       >
@@ -59,7 +61,7 @@
       </li>
     </ul>
 
-    <NoData v-else />
+    <NoData :class="!isLoading && !projects.length ? 'opacity-100' : 'opacity-0 h-0'" />
   </section>
 </template>
 
