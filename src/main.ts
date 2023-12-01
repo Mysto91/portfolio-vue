@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import { vue3Debounce } from 'vue-debounce';
 import App from './App.vue';
 import router from './router';
@@ -11,7 +12,10 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+const pinia = createPinia();
+
 createApp(App)
   .use(router)
+  .use(pinia)
   .directive('debounce', vue3Debounce({ lock: true }))
   .mount('#app');

@@ -17,6 +17,7 @@
 
     h1 {
         @apply my-2.5;
+        @apply text-text;
         @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
         @apply leading-[48px] sm:leading-[64px] md:leading-[70px] lg:leading-[90px];
         @apply font-medium;
@@ -60,7 +61,6 @@
 
 .btn {
     @apply px-6 py-4;
-    @apply bg-black;
-    @apply text-white rounded-lg;
+    @apply rounded-lg;
     @apply transition-opacity duration-300 hover:opacity-50;
 }

@@ -61,7 +61,7 @@
         </label>
       </div>
       <div class="w-full flex justify-center lg:justify-start">
-        <button class="btn mt-5 w-36 lg:w-28">
+        <button class="btn bg-primary text-text mt-5 w-36 lg:w-28">
           Envoyer
         </button>
       </div>

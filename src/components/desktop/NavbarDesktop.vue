@@ -1,5 +1,8 @@
 <template>
-    <nav class="px-12 py-5 bg-transparent">
+    <nav
+      class="px-12 py-5"
+      :class="{'drop-shadow-md bg-background': scrollValue > 0 }"
+    >
         <div class="h-12 flex justify-between">
             <AppBrand />
             <ul class="flex items-center justify-center space-x-6">
@@ -24,6 +27,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Routes } from '@/enums/routes';
+import { useScrollStore } from '@/stores/useScrollStore';
+import { storeToRefs } from 'pinia';
 import NavigationLink from '../NavigationLink.vue';
 import AppBrand from '../AppBrand.vue';
 import ViewProjectLink from '../ViewProjectLink.vue';
@@ -38,8 +43,13 @@ export default defineComponent({
   },
 
   setup() {
+    const store = useScrollStore();
+
+    const { scrollValue } = storeToRefs(store);
+
     return {
       Routes,
+      scrollValue,
     };
   },
 });

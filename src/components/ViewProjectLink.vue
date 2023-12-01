@@ -1,7 +1,7 @@
 <template>
     <NavigationLink
         :route="Routes.PROJECTLIST"
-        class="px-6 py-4 bg-black text-white rounded-lg"
+        class="px-6 py-4 bg-primary text-text rounded-lg"
     >
         Mes projets
     </NavigationLink>
