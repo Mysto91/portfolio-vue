@@ -2,9 +2,9 @@
   <div>
     <router-link
       :to="{ name: Routes.PROJECTLIST }"
-      class="btn w-64 flex justify-center items-center"
+      class="btn bg-primary text-background w-64 flex justify-center items-center"
     >
-      <IconLeftArrow class="fill-white" />
+      <IconLeftArrow class="fill-background" />
 
       <span class="ml-2">
         Retour vers les projets
@@ -154,13 +154,13 @@
             :href="projectItem.appUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn flex justify-center"
+            class="btn bg-primary flex justify-center"
           >
             <span class="flex items-center">
-              <IconPlay class="fill-white"/>
+              <IconPlay class="fill-background"/>
             </span>
 
-            <span class="ml-2 flex items-center">
+            <span class="ml-2 flex items-center text-background">
               Voir l'application
             </span>
           </a>
