@@ -1,7 +1,7 @@
 <template>
     <nav
       class="px-12 py-5"
-      :class="{'drop-shadow-md bg-background': scrollValue > 0 }"
+      :class="{'shadow-md shadow-secondary bg-background': scrollValue > 0 }"
     >
         <div class="h-12 flex justify-between">
             <AppBrand />
