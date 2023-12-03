@@ -22,22 +22,22 @@
             </span>
           </a>
         </div>
-        <h3 class="flex items-center mb-1 text-lg font-semibold">
+        <h3 class="mb-1 flex items-center text-lg text-text font-semibold">
             <slot name="title"></slot>
 
             <span
                 v-if="isCurrent"
-                class="ml-2 bg-black text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded"
+                class="ml-2 bg-primary text-background text-sm font-medium mr-2 px-2.5 py-0.5 rounded"
             >
                 Actuellement
             </span>
 
             <!-- TODO Ajouter une lien vers l'expérience en détail  -->
         </h3>
-        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">
+        <time class="block mb-2 text-sm font-normal leading-none text-accent">
           {{ interval }} ({{ periodOfTime }})
         </time>
-        <p class="mb-4 text-base font-normal text-gray-500">
+        <p class="mb-4 text-base font-normal text-primary">
              <slot name="content"></slot>
         </p>
     </div>

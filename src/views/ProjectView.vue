@@ -169,13 +169,13 @@
             :href="projectItem.githubUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn flex justify-center"
+            class="btn bg-primary flex justify-center"
           >
             <span class="flex items-center">
-              <IconGithub class="fill-white" />
+              <IconGithub class="fill-background" />
             </span>
 
-            <span class="ml-2">
+            <span class="ml-2 text-background">
               Voir le github
             </span>
           </a>

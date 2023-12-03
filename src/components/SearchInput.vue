@@ -18,6 +18,7 @@
       @focus="isFocused = true"
       @focusout="isFocused = false"
       class="flex-grow px-5 h-full text-text focus:outline-none bg-transparent"
+      autocomplete="off"
     />
     <span class="mr-5 flex items-center">
       <IconSearch
