@@ -6,7 +6,7 @@
     <h3 class="my-2.5
           text:xl sm:text-2xl
           leading-[30px] sm:leading-[46px]
-          font-extralight text-gray-500"
+          font-extralight text-text"
     >
       Développeur sénior chez Swile. Précédemment Lead développeur chez Orange Business Services.
     </h3>

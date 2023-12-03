@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Ma carrière en bref</h2>
-        <p>
+        <p class="text-primary">
             Toujours motivé à relever des défis,
             j'ai travaillé dans des secteurs d'activité variés tel que les télécommunications,
             l'aéronautique ou encore les avantages salariés. Durant mes 5 années d'expériences,

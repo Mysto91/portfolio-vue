@@ -1,7 +1,7 @@
 <template>
     <router-link
         :to="{ name: route }"
-        class="p-2.5 text-gray-700 text-base font-semibold transition-opacity duration-300 hover:opacity-50"
+        class="p-2.5 text-text text-base font-semibold transition-opacity duration-300 hover:opacity-50"
     >
         <slot></slot>
     </router-link>
