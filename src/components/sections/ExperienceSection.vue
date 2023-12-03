@@ -16,7 +16,7 @@
 
         <ol
           v-else-if="experiences.length"
-          class="relative ml-5 pl-6 space-y-10 border-l-2 border-gray-400"
+          class="relative ml-5 pl-6 space-y-10 border-l-2 border-secondary"
         >
           <li
             v-for="experience in experiences"

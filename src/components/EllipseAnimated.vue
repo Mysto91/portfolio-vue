@@ -1,19 +1,19 @@
 <template>
   <div class="relative animate-spin-slow right-0">
     <EllipseBlurred
-      class="absolute -top-40 lg:-top-72 -left-16 lg:-left-32 bg-red-300"
+      class="absolute -top-40 lg:-top-72 -left-16 lg:-left-32 bg-accent"
       :class="[sizeClasses]"
     />
     <EllipseBlurred
-      class="absolute -top-20 lg:-top-36 left-10 lg:left-0 bg-purple-300"
+      class="absolute -top-20 lg:-top-36 left-10 lg:left-0 bg-secondary"
       :class="[sizeClasses]"
     />
     <EllipseBlurred
-      class="absolute top-0 -left-16 lg:-left-32 bg-cyan-200"
+      class="absolute top-0 -left-16 lg:-left-32 bg-accent"
       :class="[sizeClasses]"
     />
     <EllipseBlurred
-      class="absolute -top-20 lg:-top-36 -left-40 lg:-left-64 bg-orange-300"
+      class="absolute -top-20 lg:-top-36 -left-40 lg:-left-64 bg-secondary"
       :class="[sizeClasses]"
     />
   </div>

@@ -6,7 +6,7 @@
       rounded-2xl shadow focus:shadow-md
       font-light
       transition ease-in-out duration-200"
-    :class="isFocused || modelValue ? 'shadow-blue-500' : 'shadow-blue-300'"
+    :class="isFocused || modelValue ? 'shadow-primary' : 'shadow-secondary'"
   >
     <!-- eslint-disable -->
     <label for="search" class="sr-only"></label>
@@ -17,12 +17,13 @@
       type="text"
       @focus="isFocused = true"
       @focusout="isFocused = false"
-      class="flex-grow px-5 h-full focus:outline-none bg-transparent"
+      class="flex-grow px-5 h-full text-text focus:outline-none bg-transparent"
+      autocomplete="off"
     />
     <span class="mr-5 flex items-center">
       <IconSearch
         class="h-8 w-8 text-blue-400 transition ease-in-out duration-200"
-        :class="isFocused || modelValue ? 'text-blue-500' : 'text-blue-300'"
+        :class="isFocused || modelValue ? 'text-primary' : 'text-secondary'"
       />
     </span>
     <!-- eslint-enable -->

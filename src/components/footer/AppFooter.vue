@@ -4,7 +4,7 @@
     bottom-0
     flex flex-col items-center justify-center
     w-full h-20 md:h-40
-    bg-blue-300"
+    bg-primary"
   >
     <ul class="flex space-x-5">
       <li>

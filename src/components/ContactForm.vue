@@ -15,36 +15,20 @@
     </h3>
     <form>
       <div class="md:flex md:space-x-8">
-        <div class="flex-1">
-          <label
-            for="name"
-            class="text-sm font-medium text-gray-500"
-          >
-            Nom
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="mt-1 w-full h-14 px-4 rounded-lg"
-              placeholder="Votre nom"
-            />
-          </label>
-        </div>
-        <div class="flex-1 mt-5 md:mt-0">
-          <label
-            for="email"
-            class="text-sm font-medium text-gray-500"
-          >
-            Email
-            <input
-              type="text"
-              id="email"
-              name="email"
-              class="mt-1 w-full h-14 px-4 rounded-lg"
-              placeholder="Votre email"
-            />
-          </label>
-        </div>
+          <AppInput
+            class="flex-1"
+            label="Nom"
+            name="name"
+            placeholder="Votre nom"
+          />
+
+          <AppInput
+            class="flex-1 mt-5 md:mt-0"
+            label="Email"
+            name="email"
+            placeholder="Votre email"
+          />
+
       </div>
       <div class="mt-5">
         <label
@@ -55,13 +39,13 @@
           <textarea
             id="message"
             name="message"
-            class="mt-1 w-full h-36 px-4 py-3 rounded-lg"
+            class="mt-1 w-full h-36 px-4 py-3 rounded-lg focus-visible:outline-secondary"
             placeholder="Votre message"
           />
         </label>
       </div>
       <div class="w-full flex justify-center lg:justify-start">
-        <button class="btn mt-5 w-36 lg:w-28">
+        <button class="btn bg-primary text-background mt-5 w-36 lg:w-28">
           Envoyer
         </button>
       </div>
@@ -71,8 +55,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import AppInput from '@/components/AppInput.vue';
 
 export default defineComponent({
   name: 'ContactForm',
+  components: { AppInput },
 });
 </script>
