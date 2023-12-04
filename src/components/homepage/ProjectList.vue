@@ -32,6 +32,28 @@
           :url="`/projects/${projectItem.uuid}`"
           :background-image-url="projectItem.images.mainImageUrl"
         >
+          <template #header>
+            <div class="flex">
+              <span class="flex-grow">
+                <IconRocketColored />
+              </span>
+
+              <a
+                href="javascript:void(0)"
+                class="
+                  relative
+                  w-10 h-10
+                  flex items-center justify-center
+                  fill-background hover:fill-gray-400
+                  transition ease-in-out duration-300"
+                @click.stop="openInNewTab(projectItem.appUrl)"
+              >
+                <IconNewTab class="lg:h-10 lg:w-10" />
+                <span class="sr-only">Open in new tab</span>
+              </a>
+            </div>
+          </template>
+
           <template #title>
             {{ projectItem.title }}
           </template>
@@ -41,19 +63,18 @@
           </template>
 
           <template #technologies>
-            <ul class="flex justify-end space-x-2">
+            <ul class="flex flex-wrap gap-0.5 md:gap-1">
               <li
                 v-for="technology in findFrameworks(projectItem.technologies)"
                 :key="`framework-${technology.id}`"
               >
-                <TechnologyIcon :technology="technology.name"/>
-              </li>
+                <AppTag class="p-1 flex items-center space-x-2 !rounded-full">
+                  <TechnologyIcon class="h-5 w-5" :technology="technology.name"/>
 
-              <li
-                v-for="technology in findLanguages(projectItem.technologies)"
-                :key="`framework-${technology.id}`"
-              >
-                <TechnologyIcon :technology="technology.name"/>
+                  <p class="text-sm">
+                    {{ technology.name }}
+                  </p>
+                </AppTag>
               </li>
             </ul>
           </template>
@@ -75,16 +96,23 @@ import { Language } from '@/enums/language';
 import { ProjectItem as Project } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { getProjects } from '@/api/projectApi';
-import { findLanguages, findFrameworks } from '@/utils/search';
+import { findFrameworks } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
 import { SearchParams } from '@/interfaces/searchParams';
 import { debounce } from 'vue-debounce';
+import AppTag from '@/components/AppTag.vue';
+import IconRocketColored from '@/components/icons/IconRocketColored.vue';
+import { Url } from '@/types/request';
+import IconNewTab from '@/components/icons/IconNewTab.vue';
 
 export default defineComponent({
   name: 'ProjectList',
 
   components: {
+    IconNewTab,
+    IconRocketColored,
+    AppTag,
     ImageSkeleton,
     NoData,
     TechnologyIcon,
@@ -120,13 +148,17 @@ export default defineComponent({
       { deep: true },
     );
 
+    function openInNewTab(url: Url) {
+      window.open(url, '_blank');
+    }
+
     return {
       projects,
       Framework,
       Language,
-      findLanguages,
       findFrameworks,
       isLoading,
+      openInNewTab,
     };
   },
 });

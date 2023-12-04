@@ -7,7 +7,7 @@
       @update:modelValue="handleSearchChange"
     />
 
-    <WorkList
+    <ProjectList
       class="mt-10"
       :search-params="searchParams"
     />
@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import WorkList from '@/components/homepage/ProjectList.vue';
+import ProjectList from '@/components/homepage/ProjectList.vue';
 import { SearchParams } from '@/interfaces/searchParams';
 import SearchInput from '@/components/SearchInput.vue';
 
@@ -25,7 +25,7 @@ export default defineComponent({
 
   components: {
     SearchInput,
-    WorkList,
+    ProjectList,
   },
 
   setup() {
