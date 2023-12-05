@@ -107,8 +107,8 @@ import { SearchParams } from '@/interfaces/searchParams';
 import { debounce } from 'vue-debounce';
 import AppTag from '@/components/AppTag.vue';
 import IconRocketColored from '@/components/icons/IconRocketColored.vue';
-import { Url } from '@/types/request';
 import IconNewTab from '@/components/icons/IconNewTab.vue';
+import { openInNewTab } from '@/utils/window';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -151,10 +151,6 @@ export default defineComponent({
       }, 400),
       { deep: true },
     );
-
-    function openInNewTab(url: Url) {
-      window.open(url, '_blank');
-    }
 
     return {
       projects,
