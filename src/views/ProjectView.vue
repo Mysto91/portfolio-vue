@@ -11,6 +11,7 @@
       </span>
     </router-link>
 
+    <!--  TODO : déplacer dans skeletons  -->
     <div
       v-if="isLoading"
       class="mt-5 space-y-10"
@@ -54,17 +55,54 @@
     >
       <h1>{{ projectItem.title }}</h1>
 
-      <div class="
-        lg:h-[820px]
-        lg:flex space-y-5 lg:space-x-5 lg:space-y-0"
+      <Swiper
+        :effect="'coverflow'"
+        :grab-cursor="true"
+        :style="{
+          '--swiper-navigation-color': '#7b7998',
+          '--swiper-pagination-color': '#7b7998',
+        }"
+        :slidesPerView="'auto'"
+        :coverflowEffect="{
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        }"
+        :centered-slides="true"
+        :pagination="true"
+        :navigation="true"
+        :autoplay="{
+          delay: 4000,
+          disableOnInteraction: false,
+        }"
+        :speed="800"
+        :keyboard="{
+          enabled: true,
+        }"
+        :modules="modules"
+        class="py-16"
       >
-        <ProjectImage :image-url="projectItem.images.mainImageUrl" class="lg:h-full lg:w-1/2" />
-
-        <div class="block lg:w-1/2 space-y-5">
-          <ProjectImage :image-url="projectItem.images.firstImageUrl" class="lg:h-[400px] " />
-          <ProjectImage :image-url="projectItem.images.secondImageUrl" class="lg:h-[400px]" />
-        </div>
-      </div>
+        <SwiperSlide
+          v-for="image in projectItem.images"
+          :key="`project-image-${image.type}`"
+          class="
+            h-72 w-72 md:h-96 md:w-96 lg:w-[500px] lg:h-[500px]
+            flex items-center justify-center"
+        >
+          <img
+            :src="image.url"
+            :alt="image.type"
+            class="
+              h-full w-full
+              object-cover
+              flex items-center justify-center
+              text-center
+              rounded-2xl
+              shadow-xl"
+          />
+        </SwiperSlide>
+      </Swiper>
 
       <div class="lg:flex space-x-0 lg:space-x-5 space-y-5 lg:space-y-0">
         <div class="lg:flex-1">
@@ -191,7 +229,6 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import ProjectImage from '@/components/project/ProjectImage.vue';
 import { useRoute } from 'vue-router';
 import { Routes } from '@/enums/routes';
 import { ProjectItem, Technology } from '@/interfaces/projectItem';
@@ -207,9 +244,11 @@ import { UUID } from '@/types/request';
 import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
 import LineSkeleton from '@/components/skeletons/LineSkeleton.vue';
 import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 export default defineComponent({
-  name: 'WorkViewList',
+  name: 'ProjectViewList',
 
   components: {
     TagsSkeleton,
@@ -221,7 +260,8 @@ export default defineComponent({
     IconGithub,
     IconRocket,
     TechnologyIcon,
-    ProjectImage,
+    Swiper,
+    SwiperSlide,
   },
 
   setup() {
@@ -259,6 +299,7 @@ export default defineComponent({
       frameworks,
       Routes,
       isLoading,
+      modules: [EffectCoverflow, Pagination],
     };
   },
 });

@@ -15,10 +15,15 @@ interface Funtionality {
   description: string;
 }
 
+export enum ProjectImageType {
+  MAIN_IMAGE_URL = 'main_image_url',
+  FIRST_IMAGE_URL = 'first_image_url',
+  SECOND_IMAGE_URL = 'second_image_url',
+}
+
 interface ProjectImages {
-  mainImageUrl: Url | null;
-  firstImageUrl: Url | null;
-  secondImageUrl: Url | null;
+  type: ProjectImageType;
+  url: Url;
 }
 
 export interface ProjectItem {
@@ -31,5 +36,5 @@ export interface ProjectItem {
   credits: string | null;
   functionalities: Funtionality[];
   overview: string;
-  images: ProjectImages;
+  images: ProjectImages[];
 }

@@ -21,7 +21,7 @@ import { SearchParams } from '@/interfaces/searchParams';
 import SearchInput from '@/components/SearchInput.vue';
 
 export default defineComponent({
-  name: 'WorkView',
+  name: 'ProjectView',
 
   components: {
     SearchInput,

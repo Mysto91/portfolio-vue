@@ -2,7 +2,7 @@
   <section class="
     px-10 pt-20 pb-14
     lg:flex
-    sm:border border-black rounded-2xl"
+    sm:border border-primary rounded-2xl"
   >
     <h3
       class="
