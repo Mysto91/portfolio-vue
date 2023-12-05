@@ -6,9 +6,9 @@
     flex flex-col justify-end
     w-full h-[300px] lg:h-[400px]
     p-8
-    border border-gray-400 rounded-2xl
-    bg-primary hover:shadow-2xl
-    text-background
+    border border-primary rounded-2xl
+    hover:shadow-xl
+    text-text
     transition ease-in-out duration-300"
   >
     <div>
@@ -28,13 +28,12 @@
     <p class="
       mt-2
       flex-grow
-      text-sm sm:text-base md:text-lg
-      text-gray-300"
+      text-sm sm:text-base md:text-lg text-gray-700"
     >
       <slot name="description"></slot>
     </p>
 
-    <div class="mt-2">
+    <div class="mt-2 text-gray-700">
       <slot name="technologies"></slot>
     </div>
   </router-link>

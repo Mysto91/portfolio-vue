@@ -1,9 +1,11 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { vue3Debounce } from 'vue-debounce';
+import { register } from 'swiper/element/bundle';
 import App from './App.vue';
 import router from './router';
 
+import 'swiper/swiper-bundle.css';
 import './index.css';
 
 router.beforeEach((to, from, next) => {
@@ -13,6 +15,8 @@ router.beforeEach((to, from, next) => {
 });
 
 const pinia = createPinia();
+
+register();
 
 createApp(App)
   .use(router)

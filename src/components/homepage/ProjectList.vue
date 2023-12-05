@@ -44,11 +44,15 @@
                   relative
                   w-10 h-10
                   flex items-center justify-center
-                  fill-background hover:fill-gray-400
-                  transition ease-in-out duration-300"
+                  group"
                 @click.stop="openInNewTab(projectItem.appUrl)"
               >
-                <IconNewTab class="lg:h-10 lg:w-10" />
+                <IconNewTab
+                  class="
+                    lg:h-10 lg:w-10
+                    stroke-primary group-hover:stroke-text
+                    transition ease-in-out duration-300"
+                />
                 <span class="sr-only">Open in new tab</span>
               </a>
             </div>
