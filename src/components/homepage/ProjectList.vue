@@ -109,6 +109,7 @@ import AppTag from '@/components/AppTag.vue';
 import IconRocketColored from '@/components/icons/IconRocketColored.vue';
 import IconNewTab from '@/components/icons/IconNewTab.vue';
 import { openInNewTab } from '@/utils/window';
+import { useLoading } from '@/composables/useLoading';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -132,12 +133,17 @@ export default defineComponent({
 
   setup(props) {
     const projects = ref<Project[]>([]);
-    const isLoading = ref<boolean>(false);
+
+    const {
+      isLoading,
+      startLoading,
+      stopLoading,
+    } = useLoading();
 
     async function fetchProjects(): Promise<void> {
-      isLoading.value = true;
+      startLoading();
       projects.value = await getProjects();
-      isLoading.value = false;
+      stopLoading();
     }
 
     fetchProjects();
@@ -145,9 +151,9 @@ export default defineComponent({
     watch(
       () => props.searchParams,
       debounce(async (searchParams) => {
-        isLoading.value = true;
+        startLoading();
         projects.value = await getProjects(searchParams);
-        isLoading.value = false;
+        stopLoading();
       }, 400),
       { deep: true },
     );

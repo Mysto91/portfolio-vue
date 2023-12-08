@@ -62,6 +62,7 @@ import NoData from '@/components/NoData.vue';
 import { ContractType } from '@/enums/contractType';
 import { Size } from '@/enums/size';
 import TimeLineSkeleton from '@/components/skeletons/TimeLineSkeleton.vue';
+import { useLoading } from '@/composables/useLoading';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
@@ -75,12 +76,17 @@ export default defineComponent({
 
   setup() {
     const experiences = ref<Experience[]>([]);
-    const isLoading = ref<boolean>(false);
+
+    const {
+      isLoading,
+      startLoading,
+      stopLoading,
+    } = useLoading();
 
     async function setExperiences(): Promise<void> {
-      isLoading.value = true;
+      startLoading();
       experiences.value = await getExperiences();
-      isLoading.value = false;
+      stopLoading();
     }
 
     setExperiences();

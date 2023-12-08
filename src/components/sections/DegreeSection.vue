@@ -85,6 +85,7 @@ import { DateTime } from 'luxon';
 import { openInNewTab } from '@/utils/window';
 import NoData from '@/components/NoData.vue';
 import DegreeCardItemSkeleton from '@/components/skeletons/DegreeCardItemSkeleton.vue';
+import { useLoading } from '@/composables/useLoading';
 
 export default defineComponent({
   name: 'DegreeSection',
@@ -98,12 +99,17 @@ export default defineComponent({
 
   setup() {
     const degrees = ref<Degree[]>([]);
-    const isLoading = ref<boolean>(false);
+
+    const {
+      isLoading,
+      startLoading,
+      stopLoading,
+    } = useLoading();
 
     async function setDegrees(): Promise<void> {
-      isLoading.value = true;
+      startLoading();
       degrees.value = await getDegrees();
-      isLoading.value = false;
+      stopLoading();
     }
 
     function getDateYear(dateStr: string): string {

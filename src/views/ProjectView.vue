@@ -246,6 +246,7 @@ import LineSkeleton from '@/components/skeletons/LineSkeleton.vue';
 import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { useLoading } from '@/composables/useLoading';
 
 export default defineComponent({
   name: 'ProjectViewList',
@@ -266,13 +267,18 @@ export default defineComponent({
 
   setup() {
     const projectItem = ref<ProjectItem | null>(null);
-    const isLoading = ref<boolean>(false);
     const route = useRoute();
 
+    const {
+      isLoading,
+      startLoading,
+      stopLoading,
+    } = useLoading();
+
     async function fetchProjectItem(): Promise<void> {
-      isLoading.value = true;
+      startLoading();
       projectItem.value = await getProjectById(route.params.workId as UUID);
-      isLoading.value = false;
+      stopLoading();
     }
 
     const languages = computed<Technology[]>(() => {
