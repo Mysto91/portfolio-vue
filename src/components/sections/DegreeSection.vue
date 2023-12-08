@@ -2,7 +2,22 @@
     <div>
         <h2 class="text-center">Mes diplômes</h2>
 
-        <ul class="lg:grid lg:grid-cols-2 gap-2 space-y-2 lg:space-y-0">
+        <ul
+          v-if="isLoading"
+          class="lg:grid lg:grid-cols-2 gap-2 space-y-2 lg:space-y-0"
+        >
+          <li
+            v-for="i in 2"
+            :key="`skeleton-degree-${i}`"
+          >
+            <DegreeCardItemSkeleton />
+          </li>
+        </ul>
+
+        <ul
+          v-else-if="!isLoading && degrees.length"
+          class="lg:grid lg:grid-cols-2 gap-2 space-y-2 lg:space-y-0"
+        >
           <li
             v-for="degree in degrees"
             :key="degree.uuid"
@@ -55,6 +70,8 @@
             </DegreeCardItem>
           </li>
         </ul>
+
+        <NoData v-else />
     </div>
 </template>
 
@@ -66,11 +83,15 @@ import { getDegrees } from '@/api/degreeApi';
 import AppTag from '@/components/AppTag.vue';
 import { DateTime } from 'luxon';
 import { openInNewTab } from '@/utils/window';
+import NoData from '@/components/NoData.vue';
+import DegreeCardItemSkeleton from '@/components/skeletons/DegreeCardItemSkeleton.vue';
 
 export default defineComponent({
   name: 'DegreeSection',
 
   components: {
+    DegreeCardItemSkeleton,
+    NoData,
     AppTag,
     DegreeCardItem,
   },
@@ -95,6 +116,7 @@ export default defineComponent({
       degrees,
       getDateYear,
       openInNewTab,
+      isLoading,
     };
   },
 });
