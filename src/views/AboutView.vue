@@ -14,7 +14,8 @@
         <AuthorPicture
           class="
             flex-initial
-            w-[430px] sm:w-[425px] md:w-[300px] lg:w-[330px]"
+            w-[300px] sm:w-[350px] md:w-[300px] lg:w-[330px]
+            shadow-md"
         />
         <div
           class="
@@ -43,13 +44,17 @@
           flex-initial
           lg:w-[600px]"
       />
+
       <TagSection
         class="
           flex-initial
           lg:w-[440px]"
       />
     </div>
+
     <ExperienceSection class="w-full" />
+
+    <DegreeSection class="w-full" />
   </div>
 </template>
 
@@ -59,11 +64,13 @@ import AuthorPicture from '@/components/AuthorPicture.vue';
 import CareerSection from '@/components/sections/CareerSection.vue';
 import ExperienceSection from '@/components/sections/ExperienceSection.vue';
 import TagSection from '@/components/TagSection.vue';
+import DegreeSection from '@/components/sections/DegreeSection.vue';
 
 export default defineComponent({
   name: 'AboutView',
 
   components: {
+    DegreeSection,
     AuthorPicture,
     TagSection,
     CareerSection,

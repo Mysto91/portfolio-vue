@@ -69,6 +69,7 @@ import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
+import { useLoading } from '@/composables/useLoading';
 import AppTag from './AppTag.vue';
 
 export default defineComponent({
@@ -83,12 +84,17 @@ export default defineComponent({
 
   setup() {
     const technologies = ref<Technology[]>([]);
-    const isLoading = ref<boolean>(false);
+
+    const {
+      isLoading,
+      startLoading,
+      stopLoading,
+    } = useLoading();
 
     async function setTechnologies(): Promise<void> {
-      isLoading.value = true;
+      startLoading();
       technologies.value = await getTechnologies();
-      isLoading.value = false;
+      stopLoading();
     }
 
     setTechnologies();
