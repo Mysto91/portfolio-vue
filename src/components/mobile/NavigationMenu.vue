@@ -11,7 +11,7 @@
         >
           <PopoverPanel
               v-slot="{ close }"
-              class="absolute z-10 top-0 -right-7 mt-14 py-5 w-80 rounded-lg bg-white opacity-90 shadow-md"
+              class="absolute z-10 top-0 -right-7 mt-14 py-5 w-80 rounded-lg bg-white shadow-md"
           >
             <MenuContent @close-menu="close" />
           </PopoverPanel>

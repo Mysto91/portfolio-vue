@@ -14,16 +14,18 @@
             Contact
         </NavigationLinkMobile>
 
-        <div class="flex items-center justify-center" >
-            <ViewProjectLink @click="$emit('closeMenu')" />
-        </div>
+        <NavigationLinkMobile
+          :route="Routes.PROJECTLIST"
+          @click="$emit('closeMenu')"
+        >
+          Mes projets
+        </NavigationLinkMobile>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Routes } from '@/enums/routes';
-import ViewProjectLink from '../ViewProjectLink.vue';
 import NavigationLinkMobile from './NavigationLinkMobile.vue';
 
 export default defineComponent({
@@ -33,7 +35,6 @@ export default defineComponent({
 
   components: {
     NavigationLinkMobile,
-    ViewProjectLink,
   },
 
   setup() {

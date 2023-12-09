@@ -1,15 +1,23 @@
 <template>
     <router-link
         :to="{ name: route }"
-        class="p-2.5 text-text text-base font-semibold transition-opacity duration-300 hover:opacity-50"
+        class="
+          p-2.5 lg:p-0
+          lg:flex lg:items-center lg:justify-center
+          lg:w-32 lg:h-12
+          text-base font-semibold
+          rounded-lg
+          transition-opacity duration-300 hover:opacity-50"
+        :class="isActive ? 'mx-10 lg:mx-0 bg-primary text-background' : 'text-text'"
     >
-        <slot></slot>
+      <slot></slot>
     </router-link>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { Routes } from '@/enums/routes';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'NavigationLink',
@@ -19,6 +27,15 @@ export default defineComponent({
       type: String as PropType<Routes>,
       required: true,
     },
+  },
+
+  setup(props) {
+    const route = useRoute();
+    const isActive = computed<boolean>(() => route.name === props.route);
+
+    return {
+      isActive,
+    };
   },
 });
 </script>
