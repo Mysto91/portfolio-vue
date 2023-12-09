@@ -4,7 +4,7 @@
         class="
           p-2.5 lg:p-0
           lg:flex lg:items-center lg:justify-center
-          lg:w-36 lg:h-12
+          lg:w-32 lg:h-12
           text-base font-semibold
           rounded-lg
           transition-opacity duration-300 hover:opacity-50"
