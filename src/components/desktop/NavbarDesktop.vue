@@ -5,7 +5,7 @@
     >
         <div class="h-12 flex justify-between">
             <AppBrand />
-            <ul class="flex items-center justify-center space-x-6">
+            <ul class="flex items-center justify-center space-x-3">
                 <li>
                     <NavigationLink :route="Routes.ABOUT">
                         À propos
@@ -17,7 +17,9 @@
                     </NavigationLink>
                 </li>
                 <li>
-                    <ViewProjectLink />
+                    <NavigationLink :route="Routes.PROJECTLIST">
+                        Mes projets
+                    </NavigationLink>
                 </li>
             </ul>
         </div>
@@ -31,7 +33,6 @@ import { useScrollStore } from '@/stores/useScrollStore';
 import { storeToRefs } from 'pinia';
 import NavigationLink from '../NavigationLink.vue';
 import AppBrand from '../AppBrand.vue';
-import ViewProjectLink from '../ViewProjectLink.vue';
 
 export default defineComponent({
   name: 'NavbarDesktop',
@@ -39,7 +40,6 @@ export default defineComponent({
   components: {
     NavigationLink,
     AppBrand,
-    ViewProjectLink,
   },
 
   setup() {

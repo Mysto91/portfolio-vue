@@ -56,8 +56,8 @@ export default defineComponent({
       required: true,
     },
     endDate: {
-      type: String as PropType<string |null>,
-      required: true,
+      type: String as PropType<string | null>,
+      default: null,
     },
     url: {
       type: String,
