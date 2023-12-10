@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <nav
+  <nav>
+    <div
       class="px-7 py-6 h-20 w-full flex justify-between bg-background"
       :class="{'shadow-md shadow-secondary bg-background': scrollValue > 0 }"
     >
       <AppBrand />
-    </nav>
+    </div>
 
     <ul class="
+      px-2 sm:px-16 md:px-32
       fixed bottom-0
       w-full h-20
-      flex items-center justify-center
+      flex items-center justify-between
       bg-background
-      border-t-2 border-text"
+      border-t"
     >
       <li>
         <NavigationLink
@@ -71,12 +72,12 @@
           </template>
 
           <template #title>
-            Mes projets
+            Projets
           </template>
         </NavigationLink>
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <script lang="ts">

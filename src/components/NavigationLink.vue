@@ -4,7 +4,7 @@
         class="
           p-1.5
           flex flex-col lg:flex-row items-center justify-end lg:justify-center
-          w-24 h-16 lg:w-32 lg:h-12
+          w-20 sm:w-24 lg:w-32 sm:h-16 lg:h-12
           rounded-lg
           transition-opacity duration-300"
         :class="isActive ? 'bg-primary' : ''"
