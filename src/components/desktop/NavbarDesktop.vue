@@ -8,17 +8,23 @@
             <ul class="flex items-center justify-center space-x-3">
                 <li>
                     <NavigationLink :route="Routes.ABOUT">
+                      <template #title>
                         À propos
+                      </template>
                     </NavigationLink>
                 </li>
                 <li>
                     <NavigationLink :route="Routes.CONTACT">
+                      <template #title>
                         Contact
+                      </template>
                     </NavigationLink>
                 </li>
                 <li>
                     <NavigationLink :route="Routes.PROJECTLIST">
+                      <template #title>
                         Mes projets
+                      </template>
                     </NavigationLink>
                 </li>
             </ul>

@@ -2,15 +2,23 @@
     <router-link
         :to="{ name: route }"
         class="
-          p-2.5 lg:p-0
-          lg:flex lg:items-center lg:justify-center
-          lg:w-32 lg:h-12
-          text-base font-semibold
+          p-1.5
+          flex flex-col lg:flex-row items-center justify-end lg:justify-center
+          w-24 h-16 lg:w-32 lg:h-12
           rounded-lg
-          transition-opacity duration-300 hover:opacity-50"
-        :class="isActive ? 'mx-10 lg:mx-0 bg-primary text-background' : 'text-text'"
+          transition-opacity duration-300"
+        :class="isActive ? 'bg-primary' : ''"
     >
-      <slot></slot>
+      <span v-if="$slots.icon">
+        <slot name="icon" :isActive="isActive"></slot>
+      </span>
+
+      <span
+        class="text-xs lg:text-base font-semibold whitespace-nowrap"
+        :class="isActive ? 'text-background' : 'text-text'"
+      >
+        <slot name="title"></slot>
+      </span>
     </router-link>
 </template>
 

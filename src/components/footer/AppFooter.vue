@@ -1,7 +1,5 @@
 <template>
   <div class="
-    fixed md:relative
-    bottom-0
     flex flex-col items-center justify-center
     w-full h-20 md:h-40
     bg-primary"

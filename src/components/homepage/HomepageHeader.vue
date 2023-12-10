@@ -10,20 +10,13 @@
     >
       Développeur sénior chez Swile. Précédemment Lead développeur chez Orange Business Services.
     </h3>
-    <br>
-    <ViewProjectLink />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ViewProjectLink from '@/components/ViewProjectLink.vue';
 
 export default defineComponent({
   name: 'HomepageHeader',
-
-  components: {
-    ViewProjectLink,
-  },
 });
 </script>
