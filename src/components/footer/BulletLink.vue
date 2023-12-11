@@ -6,15 +6,15 @@
       w-10 h-10
       flex items-center justify-center
       border border-gray-300 rounded-full
-      fill-white
+      text-background
       ease-in-out duration-300
-      group hover:fill-black"
+      group hover:text-text"
     target="_blank"
   >
     <span class="
       absolute
       w-0 h-0
-      rounded-full bg-white
+      rounded-full bg-background
       ease-in-out duration-300
       group-hover:w-full group-hover:h-full"
     >

@@ -1,17 +1,18 @@
 <template>
-    <button class="w-12 h-12 flex items-center justify-center transition-opacity duration-300 hover:opacity-50">
-        <img
-            src="https://uploads-ssl.webflow.com/5fa25266badbdb239c79ef86/5fa252663b6e7c73319c0c7b_menu-icon.png"
-            width="22"
-            alt="menu icon"
-        >
+    <button class="w-full h-full flex items-center justify-center">
+      <IconHamburger class="h-8 w-8 sm:h-12 md:w-12" />
     </button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import IconHamburger from '@/components/icons/IconHamburger.vue';
 
 export default defineComponent({
   name: 'MenuButton',
+
+  components: {
+    IconHamburger,
+  },
 });
 </script>

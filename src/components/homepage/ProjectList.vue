@@ -18,8 +18,8 @@
 
     <ul
       class="
-      lg:grid lg:grid-cols-2
-      space-y-7 lg:space-y-0 lg:gap-16
+      md:grid md:grid-cols-2
+      space-y-7 md:space-y-0 md gap-8 lg:gap-16
       transition ease-in-out duration-300"
       :class="!isLoading && projects.length ? 'opacity-100' : 'opacity-0 h-0'"
     >

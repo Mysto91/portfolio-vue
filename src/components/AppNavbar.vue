@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 z-[1000] w-full animate-slide-down">
+  <div class="fixed top-0 z-[100] w-full animate-slide-down">
     <NavbarDesktop class="hidden lg:block" />
     <NavbarMobile class="flex lg:hidden" />
   </div>

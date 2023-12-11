@@ -6,26 +6,30 @@
   >
     <ul class="flex space-x-5">
       <li>
-        <BulletLink link="https://www.facebook.com/etienne.tran.77">
+        <BulletLink :link="FACEBOOK_URL">
           <IconFacebook />
         </BulletLink>
       </li>
+
       <li>
-        <BulletLink link="https://www.linkedin.com/in/etienne-tran/">
+        <BulletLink :link="LINKEDIN_URL">
           <IconLinkedin />
         </BulletLink>
       </li>
+
       <li>
-        <BulletLink link="https://www.instagram.com/etienne_sushi91/">
+        <BulletLink :link="INSTAGRAM_URL">
           <IconInstagram />
         </BulletLink>
       </li>
+
       <li>
-        <BulletLink link="https://github.com/Mysto91">
+        <BulletLink :link="GITHUB_URL">
           <IconGithub />
         </BulletLink>
       </li>
     </ul>
+
     <p class="hidden md:block mt-5 text-sm text-white font-normal">
       Copyright © 2023 Etienne TRAN. All rights reserved.
     </p>
@@ -39,6 +43,9 @@ import IconFacebook from '@/components/icons/IconFacebook.vue';
 import IconLinkedin from '@/components/icons/IconLinkedin.vue';
 import IconInstagram from '@/components/icons/IconInstagram.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
+import {
+  FACEBOOK_URL, LINKEDIN_URL, INSTAGRAM_URL, GITHUB_URL,
+} from '@/constants/socialNetwork';
 
 export default defineComponent({
   name: 'AppFooter',
@@ -49,6 +56,15 @@ export default defineComponent({
     IconLinkedin,
     IconFacebook,
     BulletLink,
+  },
+
+  setup() {
+    return {
+      FACEBOOK_URL,
+      LINKEDIN_URL,
+      INSTAGRAM_URL,
+      GITHUB_URL,
+    };
   },
 });
 </script>

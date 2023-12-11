@@ -1,8 +1,8 @@
 <template>
   <nav>
     <div
-      class="px-7 py-6 h-20 w-full flex justify-between bg-background"
-      :class="{'shadow-md shadow-secondary bg-background': scrollValue > 0 }"
+      class="px-7 py-6 h-20 w-full flex justify-between"
+      :class="scrollValue > 0 ?'border-b bg-background': 'bg-transparent'"
     >
       <AppBrand />
     </div>
@@ -48,21 +48,6 @@
       </li>
 
       <li>
-        <NavigationLink :route="Routes.CONTACT">
-          <template #icon="{ isActive }">
-            <IconDialog
-              class="h-6 w-6 sm:h-8 md:w-8"
-              :class="isActive ? 'text-background' : 'text-text'"
-            />
-          </template>
-
-          <template #title>
-            Contact
-          </template>
-        </NavigationLink>
-      </li>
-
-      <li>
         <NavigationLink :route="Routes.PROJECTLIST">
           <template #icon="{ isActive }">
             <IconCube
@@ -76,6 +61,13 @@
           </template>
         </NavigationLink>
       </li>
+
+      <li class="
+        flex items-center justify-center
+        w-20 sm:w-24 lg:w-32 h-14 sm:h-16 lg:h-12"
+      >
+        <ContactMenu />
+      </li>
     </ul>
   </nav>
 </template>
@@ -88,16 +80,16 @@ import { Routes } from '@/enums/routes';
 import NavigationLink from '@/components/NavigationLink.vue';
 import IconHome from '@/components/icons/IconHome.vue';
 import IconPerson from '@/components/icons/IconPerson.vue';
-import IconDialog from '@/components/icons/IconDialog.vue';
 import IconCube from '@/components/icons/IconCube.vue';
+import ContactMenu from '@/components/mobile/ContactMenu.vue';
 import AppBrand from '../AppBrand.vue';
 
 export default defineComponent({
   name: 'NavbarMobile',
 
   components: {
+    ContactMenu,
     IconCube,
-    IconDialog,
     IconPerson,
     IconHome,
     NavigationLink,
