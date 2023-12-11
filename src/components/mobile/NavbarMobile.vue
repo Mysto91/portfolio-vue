@@ -19,11 +19,8 @@
         <NavigationLink
           :route="Routes.HOME"
         >
-          <template #icon="{ isActive }">
-            <IconHome
-              class="h-6 w-6 sm:h-8 md:w-8 fill-transparent"
-              :class="isActive ? 'text-background' : 'text-text'"
-            />
+          <template #icon>
+            <IconHome class="h-6 w-6 sm:h-8 md:w-8 text-current"/>
           </template>
 
           <template #title>
@@ -34,11 +31,8 @@
 
       <li>
         <NavigationLink :route="Routes.ABOUT">
-          <template #icon="{ isActive }">
-            <IconPerson
-              class="h-6 w-6 sm:h-8 md:w-8"
-              :class="isActive ? 'text-background' : 'text-text'"
-            />
+          <template #icon>
+            <IconPerson class="h-6 w-6 sm:h-8 md:w-8 text-current"/>
           </template>
 
           <template #title>
@@ -49,11 +43,8 @@
 
       <li>
         <NavigationLink :route="Routes.PROJECTLIST">
-          <template #icon="{ isActive }">
-            <IconCube
-              class="h-6 w-6 sm:h-8 md:w-8"
-              :class="isActive ? 'text-background' : 'text-text'"
-            />
+          <template #icon>
+            <IconCube class="h-6 w-6 sm:h-8 md:w-8 text-current"/>
           </template>
 
           <template #title>

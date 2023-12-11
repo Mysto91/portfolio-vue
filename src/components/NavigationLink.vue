@@ -7,14 +7,17 @@
           w-20 sm:w-24 lg:w-32 sm:h-16 lg:h-12
           rounded-lg
           transition-opacity duration-300"
-        :class="isActive ? 'bg-primary' : ''"
+        :class="{ 'bg-primary' : isActive }"
     >
-      <span v-if="$slots.icon">
-        <slot name="icon" :isActive="isActive"></slot>
+      <span
+        v-if="$slots.icon"
+        :class="isActive ? 'text-background' : 'text-text'"
+      >
+        <slot name="icon"></slot>
       </span>
 
       <span
-        class="text-[10px] sm:text-xs lg:text-base font-semibold whitespace-nowrap"
+        class="text-xxs sm:text-xs lg:text-base font-semibold whitespace-nowrap"
         :class="isActive ? 'text-background' : 'text-text'"
       >
         <slot name="title"></slot>
