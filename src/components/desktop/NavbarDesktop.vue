@@ -1,24 +1,30 @@
 <template>
     <nav
       class="px-12 py-5"
-      :class="{'shadow-md shadow-secondary bg-background': scrollValue > 0 }"
+      :class="scrollValue > 0 ? 'border-b bg-background' : 'bg-transparent'"
     >
         <div class="h-12 flex justify-between">
             <AppBrand />
             <ul class="flex items-center justify-center space-x-3">
                 <li>
                     <NavigationLink :route="Routes.ABOUT">
+                      <template #title>
                         À propos
+                      </template>
                     </NavigationLink>
                 </li>
                 <li>
                     <NavigationLink :route="Routes.CONTACT">
+                      <template #title>
                         Contact
+                      </template>
                     </NavigationLink>
                 </li>
                 <li>
                     <NavigationLink :route="Routes.PROJECTLIST">
+                      <template #title>
                         Mes projets
+                      </template>
                     </NavigationLink>
                 </li>
             </ul>

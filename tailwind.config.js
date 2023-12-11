@@ -17,6 +17,9 @@ module.exports = {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
+      fontSize: {
+        xxs: ['10px', '14px'],
+      },
       transitionDuration: {
         600: '600ms',
       },
