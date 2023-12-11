@@ -2,7 +2,7 @@
     <router-link
         :to="{ name: route }"
         class="
-          p-1.5
+          p-2
           flex flex-col lg:flex-row items-center justify-end lg:justify-center
           w-20 sm:w-24 lg:w-32 sm:h-16 lg:h-12
           rounded-lg
@@ -14,7 +14,7 @@
       </span>
 
       <span
-        class="text-xs lg:text-base font-semibold whitespace-nowrap"
+        class="text-[10px] sm:text-xs lg:text-base font-semibold whitespace-nowrap"
         :class="isActive ? 'text-background' : 'text-text'"
       >
         <slot name="title"></slot>

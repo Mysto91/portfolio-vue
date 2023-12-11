@@ -8,7 +8,7 @@
     </div>
 
     <ul class="
-      px-2 sm:px-16 md:px-32
+      px-4 sm:px-16 md:px-32
       fixed bottom-0
       w-full h-20
       flex items-center justify-between
@@ -21,7 +21,7 @@
         >
           <template #icon="{ isActive }">
             <IconHome
-              class="h-8 w-8 fill-transparent"
+              class="h-6 w-6 sm:h-8 md:w-8 fill-transparent"
               :class="isActive ? 'text-background' : 'text-text'"
             />
           </template>
@@ -36,7 +36,7 @@
         <NavigationLink :route="Routes.ABOUT">
           <template #icon="{ isActive }">
             <IconPerson
-              class="h-8 w-8"
+              class="h-6 w-6 sm:h-8 md:w-8"
               :class="isActive ? 'text-background' : 'text-text'"
             />
           </template>
@@ -51,7 +51,7 @@
         <NavigationLink :route="Routes.CONTACT">
           <template #icon="{ isActive }">
             <IconDialog
-              class="h-8 w-8"
+              class="h-6 w-6 sm:h-8 md:w-8"
               :class="isActive ? 'text-background' : 'text-text'"
             />
           </template>
@@ -66,7 +66,7 @@
         <NavigationLink :route="Routes.PROJECTLIST">
           <template #icon="{ isActive }">
             <IconCube
-              class="h-8 w-8"
+              class="h-6 w-6 sm:h-8 md:w-8"
               :class="isActive ? 'text-background' : 'text-text'"
             />
           </template>
