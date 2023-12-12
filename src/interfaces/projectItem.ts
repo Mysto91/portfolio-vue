@@ -1,14 +1,5 @@
-import { Framework } from '@/enums/framework';
-import { Language } from '@/enums/language';
-import { TechnologyType } from '@/enums/technologyType';
 import { Url, UUID } from '@/types/request';
-
-export interface Technology {
-  id: number;
-  name: Framework | Language;
-  type: TechnologyType;
-  url: Url;
-}
+import { Technology } from '@/interfaces/technology';
 
 interface Funtionality {
   id: number;

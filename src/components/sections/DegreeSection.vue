@@ -52,12 +52,12 @@
               </template>
 
               <template #content>
-                <ul class="flex flex-wrap justify-center">
+                <ul class="p-2 flex flex-wrap justify-center gap-2">
                   <li
                     v-for="subject in degree.subjects"
                     :key="`subject-${subject.id}`"
                   >
-                    <AppTag class="border-secondary !rounded-full text-text text-sm">
+                    <AppTag class="border-secondary text-text text-sm">
                       {{ subject.name }}
                     </AppTag>
                   </li>

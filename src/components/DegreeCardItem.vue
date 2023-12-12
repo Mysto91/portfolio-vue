@@ -4,7 +4,7 @@
       <slot name="header"></slot>
     </h3>
 
-    <div class="mt-4 text-primary">
+    <div class="text-primary">
       <slot name="content"></slot>
     </div>
   </div>

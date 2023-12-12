@@ -1,4 +1,4 @@
-import { Technology } from '@/interfaces/projectItem';
+import { Technology } from '@/interfaces/technology';
 import { apiClient } from '@/api/apiClient';
 import { SearchParams } from '@/interfaces/searchParams';
 

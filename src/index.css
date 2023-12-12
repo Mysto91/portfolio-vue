@@ -36,7 +36,7 @@
     }
 
     p {
-        @apply text-lg lg:text-xl;
+        @apply text-base lg:text-lg;
         @apply leading-8;
         @apply font-light;
     }

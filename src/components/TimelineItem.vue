@@ -22,6 +22,7 @@
             </span>
           </a>
         </div>
+
         <h3 class="mb-1 flex items-center text-lg text-text font-semibold">
             <slot name="title"></slot>
 
@@ -34,9 +35,11 @@
 
             <!-- TODO Ajouter une lien vers l'expérience en détail  -->
         </h3>
+
         <time class="block mb-2 text-sm font-normal leading-none text-accent">
           {{ interval }} ({{ periodOfTime }})
         </time>
+
         <p class="mb-4 text-base font-normal text-primary">
              <slot name="content"></slot>
         </p>

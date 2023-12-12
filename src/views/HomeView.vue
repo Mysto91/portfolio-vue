@@ -11,7 +11,6 @@
       <HomepageHeader class="animate-slide-up" />
       <!--  TODO Afficher un top 4 des projects + voir plus    -->
       <WorkList class="mt-20 sm:mt-40 animate-slide-up" />
-      <ContactForm class="mt-20 mb-32" />
     </div>
   </div>
 </template>
@@ -21,13 +20,11 @@ import { defineComponent } from 'vue';
 import EllipseAnimated from '@/components/EllipseAnimated.vue';
 import HomepageHeader from '@/components/homepage/HomepageHeader.vue';
 import WorkList from '@/components/homepage/ProjectList.vue';
-import ContactForm from '@/components/ContactForm.vue';
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
-    ContactForm,
     WorkList,
     HomepageHeader,
     EllipseAnimated,
