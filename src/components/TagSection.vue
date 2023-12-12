@@ -8,7 +8,7 @@
 
         <ul
           v-else-if="frameworks.length"
-          class="flex flex-wrap"
+          class="flex flex-wrap gap-2.5"
         >
           <li
             v-for="framework in frameworks"
@@ -18,7 +18,8 @@
               <template #default>
                 <div class="flex items-center space-x-2">
                   <TechnologyIcon class="h-5 w-5" :technology="framework.name" />
-                  <p class="text-lg">{{ framework.name }}</p>
+
+                  <p class="text-base">{{ framework.name }}</p>
                 </div>
               </template>
             </AppTag>
@@ -38,7 +39,7 @@
 
         <ul
           v-else-if="languages.length"
-          class="flex flex-wrap"
+          class="flex flex-wrap gap-2.5"
         >
           <li
             v-for="language in languages"
@@ -48,7 +49,7 @@
               <template #default>
                 <div class="flex items-center space-x-2">
                   <TechnologyIcon class="h-5 w-5" :technology="language.name" />
-                  <p class="text-lg">{{ language.name }}</p>
+                  <p class="text-base">{{ language.name }}</p>
                 </div>
               </template>
             </AppTag>
@@ -63,7 +64,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import { Technology } from '@/interfaces/projectItem';
+import { Technology } from '@/interfaces/technology';
 import { getTechnologies } from '@/api/technologyApi';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';

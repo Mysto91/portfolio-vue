@@ -210,7 +210,7 @@
             class="btn bg-primary flex justify-center"
           >
             <span class="flex items-center">
-              <IconGithub class="fill-background" />
+              <IconGithub class="text-background" />
             </span>
 
             <span class="ml-2 text-background">
@@ -231,7 +231,7 @@
 import { computed, defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { Routes } from '@/enums/routes';
-import { ProjectItem, Technology } from '@/interfaces/projectItem';
+import { ProjectItem } from '@/interfaces/projectItem';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import IconRocket from '@/components/icons/IconRocket.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
@@ -247,6 +247,7 @@ import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { useLoading } from '@/composables/useLoading';
+import { Technology } from '@/interfaces/technology';
 
 export default defineComponent({
   name: 'ProjectViewList',

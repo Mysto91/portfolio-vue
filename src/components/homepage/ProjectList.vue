@@ -67,12 +67,12 @@
           </template>
 
           <template #technologies>
-            <ul class="flex flex-wrap gap-0.5 md:gap-1">
+            <ul class="flex flex-wrap gap-1 md:gap-2">
               <li
                 v-for="technology in findFrameworks(projectItem.technologies)"
                 :key="`framework-${technology.id}`"
               >
-                <AppTag class="p-1 flex items-center space-x-2 !rounded-full">
+                <AppTag class="p-1 flex items-center space-x-2">
                   <TechnologyIcon class="h-5 w-5" :technology="technology.name"/>
 
                   <p class="text-sm">
