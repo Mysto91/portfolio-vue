@@ -63,14 +63,15 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { Technology } from '@/interfaces/technology';
 import { getTechnologies } from '@/api/technologyApi';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
-import { useLoading } from '@/composables/useLoading';
+import { useApiRequest } from '@/composables/useApiRequest';
+import { CacheKey } from '@/cache/cacheService';
 import AppTag from './AppTag.vue';
 
 export default defineComponent({
@@ -84,24 +85,15 @@ export default defineComponent({
   },
 
   setup() {
-    const technologies = ref<Technology[]>([]);
+    const { result: technologies, isLoading } = useApiRequest(
+      {
+        cacheKey: CacheKey.ALL_TECHNOLOGIES,
+        apiCallback: getTechnologies,
+      },
+    );
 
-    const {
-      isLoading,
-      startLoading,
-      stopLoading,
-    } = useLoading();
-
-    async function setTechnologies(): Promise<void> {
-      startLoading();
-      technologies.value = await getTechnologies();
-      stopLoading();
-    }
-
-    setTechnologies();
-
-    const frameworks = computed<Technology[]>(() => findFrameworks(technologies.value));
-    const languages = computed<Technology[]>(() => findLanguages(technologies.value));
+    const frameworks = computed<Technology[]>(() => findFrameworks(technologies.value as Technology[]));
+    const languages = computed<Technology[]>(() => findLanguages(technologies.value as Technology[]));
 
     return {
       frameworks,

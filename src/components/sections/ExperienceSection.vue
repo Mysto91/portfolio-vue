@@ -72,16 +72,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, Ref } from 'vue';
 import { Experience } from '@/interfaces/Experience';
 import { getExperiences } from '@/api/experienceApi';
 import NoData from '@/components/NoData.vue';
 import { ContractType } from '@/enums/contractType';
 import { Size } from '@/enums/size';
 import TimeLineSkeleton from '@/components/skeletons/TimeLineSkeleton.vue';
-import { useLoading } from '@/composables/useLoading';
 import AppTag from '@/components/AppTag.vue';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
+import { CacheKey } from '@/cache/cacheService';
+import { useApiRequest } from '@/composables/useApiRequest';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
@@ -96,24 +97,15 @@ export default defineComponent({
   },
 
   setup() {
-    const experiences = ref<Experience[]>([]);
-
-    const {
-      isLoading,
-      startLoading,
-      stopLoading,
-    } = useLoading();
-
-    async function setExperiences(): Promise<void> {
-      startLoading();
-      experiences.value = await getExperiences();
-      stopLoading();
-    }
-
-    setExperiences();
+    const { result: experiences, isLoading } = useApiRequest(
+      {
+        cacheKey: CacheKey.ALL_EXPERIENCES,
+        apiCallback: getExperiences,
+      },
+    );
 
     return {
-      experiences,
+      experiences: experiences as Ref<Experience[]>,
       isLoading,
       ContractType,
       Size,

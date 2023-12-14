@@ -7,7 +7,6 @@ export async function getDegrees(): Promise<Degree[]> {
     const { data } = await apiClient.get('/degrees');
     return data;
   } catch (e) {
-    console.error(e);
     return [];
   }
 }
