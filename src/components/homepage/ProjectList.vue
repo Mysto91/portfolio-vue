@@ -8,7 +8,7 @@
       :class="isLoading ? 'opacity-100' : 'opacity-0 h-0'"
     >
       <li
-        v-for="index in 4"
+        v-for="index in 2"
         :key="`skeleton-${index}`"
         class="flex justify-center"
       >
@@ -24,7 +24,9 @@
       :class="!isLoading && projects.length ? 'opacity-100' : 'opacity-0 h-0'"
     >
       <li
-        class="transition duration-500 ease-in-out"
+        class="
+          flex justify-center
+          transition duration-500 ease-in-out"
         v-for="projectItem in projects"
         :key="projectItem.uuid"
       >

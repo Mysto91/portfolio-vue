@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-background pt-20 md:pt-32 lg:pt-44">
+  <div class="bg-background pt-20 md:pt-32 lg:pt-44 h-full">
     <AppNavbar />
-    <router-view class="mx-auto px-7 max-w-[1140px] h-[3000px]" />
+    <router-view class="mx-auto px-7 pb-36 md:pb-32 max-w-[1140px] min-h-screen" />
     <AppFooter class="hidden lg:flex" />
   </div>
 </template>

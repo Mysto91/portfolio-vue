@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative h-[2000px] md:h-[1500px]">
     <div class="
       absolute top-52
       w-1/2
@@ -9,7 +9,6 @@
     </div>
     <div class="absolute top-0 pr-7">
       <HomepageHeader class="animate-slide-up" />
-      <!--  TODO Afficher un top 4 des projects + voir plus    -->
       <WorkList class="mt-20 sm:mt-40 animate-slide-up" />
     </div>
   </div>

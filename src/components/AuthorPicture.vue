@@ -1,7 +1,7 @@
 <template>
     <img
         src="images/me.jpg"
-        class="rounded-2xl"
+        class="rounded-full"
         alt="me"
     >
 </template>

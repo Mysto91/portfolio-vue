@@ -4,7 +4,7 @@
     class="
     relative
     flex flex-col justify-end
-    w-full h-[300px] lg:h-[400px]
+    w-full sm:w-3/4 md:w-full h-[300px] lg:h-[400px]
     p-8
     border border-primary rounded-2xl
     hover:shadow-xl
