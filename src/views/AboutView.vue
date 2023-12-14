@@ -1,6 +1,7 @@
 <template>
   <div
     class="
+      container
       flex flex-col items-center
       space-y-10 lg:space-y-36"
   >

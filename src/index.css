@@ -64,3 +64,7 @@
     @apply rounded-lg;
     @apply transition-opacity duration-300 hover:opacity-50;
 }
+
+.container {
+    @apply pt-20 md:pt-32 lg:pt-44;
+}
