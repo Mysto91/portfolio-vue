@@ -2,6 +2,7 @@ import { CacheKey, getCache, setCache } from '@/cache/cacheService';
 import { useLoading } from '@/composables/useLoading';
 import { Ref, ref } from 'vue';
 import { T } from '@/types/template';
+import { DateTime } from 'luxon';
 
 interface useApiRequestParams {
   cacheKey: CacheKey,
@@ -26,10 +27,10 @@ export function useApiRequest({ cacheKey, apiCallback }: useApiRequestParams): u
   async function getData(): Promise<void> {
     startLoading();
 
-    const cacheResult = getCache(cacheKey);
+    const cache = getCache(cacheKey);
 
-    if (cacheResult !== null) {
-      result.value = cacheResult as T[];
+    if (cache !== null && cache.expiryTime >= DateTime.now()) {
+      result.value = cache.value as T[];
       stopLoading();
 
       return;
