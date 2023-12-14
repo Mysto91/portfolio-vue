@@ -5,4 +5,5 @@ export enum Routes {
   CONTACT = 'contact',
   PROJECTLIST = 'projectlist',
   PROJECT = 'project',
+  NOT_FOUND = 'notfound'
 }

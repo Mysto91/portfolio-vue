@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="flex">
       <BackButton :to="Routes.PROJECTLIST">
         Retour vers les projets

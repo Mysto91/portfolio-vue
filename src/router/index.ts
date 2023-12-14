@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { Routes } from '@/enums/routes';
 import AboutView from '@/views/AboutView.vue';
+import NotFoundView from '@/views/NotFoundView.vue';
 import HomeView from '../views/HomeView.vue';
 import ContactView from '../views/ContactView.vue';
 import ProjectViewList from '../views/ProjectViewList.vue';
@@ -31,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/projects/:workId',
     name: Routes.PROJECT,
     component: ProjectView,
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: Routes.NOT_FOUND,
+    component: NotFoundView,
   },
 ];
 
