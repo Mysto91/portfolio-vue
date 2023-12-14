@@ -1,15 +1,10 @@
 <template>
   <div>
-    <router-link
-      :to="{ name: Routes.PROJECTLIST }"
-      class="btn bg-primary text-background w-64 flex justify-center items-center"
-    >
-      <IconLeftArrow class="fill-background" />
-
-      <span class="ml-2">
+    <div class="flex">
+      <BackButton :to="Routes.PROJECTLIST">
         Retour vers les projets
-      </span>
-    </router-link>
+      </BackButton>
+    </div>
 
     <!--  TODO : déplacer dans skeletons  -->
     <div
@@ -236,7 +231,6 @@ import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import IconRocket from '@/components/icons/IconRocket.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
 import IconPlay from '@/components/icons/IconPlay.vue';
-import IconLeftArrow from '@/components/icons/IconLeftArrow.vue';
 import { getProjectById } from '@/api/projectApi';
 import NoData from '@/components/NoData.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
@@ -248,16 +242,17 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { useLoading } from '@/composables/useLoading';
 import { Technology } from '@/interfaces/technology';
+import BackButton from '@/components/BackButton.vue';
 
 export default defineComponent({
   name: 'ProjectViewList',
 
   components: {
+    BackButton,
     TagsSkeleton,
     LineSkeleton,
     ImageSkeleton,
     NoData,
-    IconLeftArrow,
     IconPlay,
     IconGithub,
     IconRocket,
