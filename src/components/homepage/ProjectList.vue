@@ -8,7 +8,7 @@
       :class="isLoading ? 'opacity-100' : 'opacity-0 h-0'"
     >
       <li
-        v-for="index in 4"
+        v-for="index in 2"
         :key="`skeleton-${index}`"
         class="flex justify-center"
       >

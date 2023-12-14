@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      w-full h-48 lg:w-full
+      w-full h-48
       flex items-center justify-center
       bg-gray-300
       rounded-2xl

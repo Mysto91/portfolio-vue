@@ -1,7 +1,7 @@
 <template>
   <div class="relative animate-spin-slow right-0">
     <EllipseBlurred
-      class="absolute -top-40 lg:-top-72 -left-16 lg:-left-32 bg-accent"
+      class="absolute -top-40 lg:-top-72 -left-16 lg:-left-32 bg-secondary"
       :class="[sizeClasses]"
     />
     <EllipseBlurred
@@ -9,7 +9,7 @@
       :class="[sizeClasses]"
     />
     <EllipseBlurred
-      class="absolute top-0 -left-16 lg:-left-32 bg-accent"
+      class="absolute top-0 -left-16 lg:-left-32 bg-secondary"
       :class="[sizeClasses]"
     />
     <EllipseBlurred
