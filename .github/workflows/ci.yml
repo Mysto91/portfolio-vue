@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Deploy to Firebase
+        env:
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
+          yarn global add firebase-tools
+          yarn build
+          echo "$FIREBASE_SERVICE_ACCOUNT_KEY" > service-account-key.json
+          export GOOGLE_APPLICATION_CREDENTIALS="$GITHUB_WORKSPACE/service-account-key.json"
+          firebase deploy --only hosting
