@@ -3,6 +3,10 @@ import { UUID } from '@/types/request';
 import { ContractType } from '@/enums/contractType';
 import { Technology } from '@/interfaces/technology';
 
+export interface ExperienceTechnology extends Technology{
+  showInOverview: boolean;
+}
+
 export interface Experience {
   uuid: UUID;
   title: string;
@@ -13,5 +17,5 @@ export interface Experience {
   description: string;
   company: Company;
   contractType: ContractType;
-  technologies: Technology[];
+  technologies: ExperienceTechnology[];
 }

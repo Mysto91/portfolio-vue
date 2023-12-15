@@ -46,7 +46,7 @@
                   <template #content>
                     <ul class="py-2 flex flex-wrap gap-2">
                       <li
-                        v-for="technology in experience.technologies"
+                        v-for="technology in getShowableTechnologies(experience.technologies)"
                         :key="`experience-technology-${technology.id}`"
                       >
                         <AppTag class="p-1 flex items-center space-x-2">
@@ -73,7 +73,7 @@
 
 <script lang="ts">
 import { defineComponent, Ref } from 'vue';
-import { Experience } from '@/interfaces/Experience';
+import { Experience, ExperienceTechnology } from '@/interfaces/Experience';
 import { getExperiences } from '@/api/experienceApi';
 import NoData from '@/components/NoData.vue';
 import { ContractType } from '@/enums/contractType';
@@ -104,11 +104,16 @@ export default defineComponent({
       },
     );
 
+    function getShowableTechnologies(technologies : ExperienceTechnology[]): ExperienceTechnology[] {
+      return technologies.filter((technology) => technology.showInOverview);
+    }
+
     return {
       experiences: experiences as Ref<Experience[]>,
       isLoading,
       ContractType,
       Size,
+      getShowableTechnologies,
     };
   },
 });
