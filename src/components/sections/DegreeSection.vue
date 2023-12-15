@@ -76,16 +76,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, Ref } from 'vue';
 import DegreeCardItem from '@/components/DegreeCardItem.vue';
-import { Degree } from '@/interfaces/degree';
 import { getDegrees } from '@/api/degreeApi';
 import AppTag from '@/components/AppTag.vue';
 import { DateTime } from 'luxon';
 import { openInNewTab } from '@/utils/window';
 import NoData from '@/components/NoData.vue';
 import DegreeCardItemSkeleton from '@/components/skeletons/DegreeCardItemSkeleton.vue';
-import { useLoading } from '@/composables/useLoading';
+import { CacheKey } from '@/cache/cacheService';
+import { useApiRequest } from '@/composables/useApiRequest';
+import { Degree } from '@/interfaces/degree';
 
 export default defineComponent({
   name: 'DegreeSection',
@@ -98,28 +99,19 @@ export default defineComponent({
   },
 
   setup() {
-    const degrees = ref<Degree[]>([]);
-
-    const {
-      isLoading,
-      startLoading,
-      stopLoading,
-    } = useLoading();
-
-    async function setDegrees(): Promise<void> {
-      startLoading();
-      degrees.value = await getDegrees();
-      stopLoading();
-    }
+    const { result: degrees, isLoading } = useApiRequest(
+      {
+        cacheKey: CacheKey.ALL_DEGREES,
+        apiCallback: getDegrees,
+      },
+    );
 
     function getDateYear(dateStr: string): string {
       return DateTime.fromISO(dateStr).toFormat('yyyy');
     }
 
-    setDegrees();
-
     return {
-      degrees,
+      degrees: degrees as Ref<Degree[]>,
       getDateYear,
       openInNewTab,
       isLoading,

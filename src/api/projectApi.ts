@@ -8,7 +8,6 @@ export async function getProjects(params: SearchParams = {}): Promise<ProjectIte
     const { data } = await apiClient.get('/projects', { params });
     return data;
   } catch (e) {
-    console.error(e);
     return [];
   }
 }
@@ -18,7 +17,6 @@ export async function getProjectById(projectId: UUID): Promise<ProjectItem | nul
     const { data } = await apiClient.get(`/projects/${projectId}`);
     return data;
   } catch (e) {
-    console.error(e);
     return null;
   }
 }

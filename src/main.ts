@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { vue3Debounce } from 'vue-debounce';
 import { register } from 'swiper/element/bundle';
+import { clearCache } from '@/cache/cacheService';
 import App from './App.vue';
 import router from './router';
 
@@ -17,6 +18,8 @@ router.beforeEach((to, from, next) => {
 const pinia = createPinia();
 
 register();
+
+clearCache();
 
 createApp(App)
   .use(router)

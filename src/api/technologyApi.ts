@@ -8,7 +8,6 @@ export async function getTechnologies(params?: SearchParams): Promise<Technology
     const { data } = await apiClient.get('/technologies', { params });
     return data;
   } catch (e) {
-    console.error(e);
     return [];
   }
 }

@@ -8,7 +8,6 @@ export async function getExperiences(params: SearchParams = {}): Promise<Experie
     const { data } = await apiClient.get('/experiences', { params });
     return data;
   } catch (e) {
-    console.error(e);
     return [];
   }
 }
