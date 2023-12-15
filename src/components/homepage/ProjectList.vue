@@ -69,20 +69,11 @@
           </template>
 
           <template #technologies>
-            <ul class="flex flex-wrap gap-1 md:gap-2">
-              <li
-                v-for="technology in findFrameworks(projectItem.technologies)"
-                :key="`framework-${technology.id}`"
-              >
-                <AppTag class="p-1 flex items-center space-x-2">
-                  <TechnologyIcon class="h-5 w-5" :technology="technology.name"/>
-
-                  <p class="text-sm">
-                    {{ technology.name }}
-                  </p>
-                </AppTag>
-              </li>
-            </ul>
+            <TechnologyTagList
+              class="gap-1 md:gap-2"
+              :technologies="findFrameworks(projectItem.technologies)"
+              text-class="text-sm"
+            />
           </template>
         </CardItem>
       </li>
@@ -100,29 +91,27 @@ import CardItem from '@/components/CardItem.vue';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
 import { ProjectItem as Project } from '@/interfaces/projectItem';
-import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { getProjects } from '@/api/projectApi';
 import { findFrameworks } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
 import { SearchParams } from '@/interfaces/searchParams';
 import { debounce } from 'vue-debounce';
-import AppTag from '@/components/AppTag.vue';
 import IconRocketColored from '@/components/icons/IconRocketColored.vue';
 import IconNewTab from '@/components/icons/IconNewTab.vue';
 import { openInNewTab } from '@/utils/window';
 import { useLoading } from '@/composables/useLoading';
+import TechnologyTagList from '@/components/TechnologyTagList.vue';
 
 export default defineComponent({
   name: 'ProjectList',
 
   components: {
+    TechnologyTagList,
     IconNewTab,
     IconRocketColored,
-    AppTag,
     ImageSkeleton,
     NoData,
-    TechnologyIcon,
     CardItem,
   },
 

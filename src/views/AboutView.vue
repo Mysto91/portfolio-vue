@@ -46,7 +46,7 @@
           lg:w-[600px]"
       />
 
-      <TagSection
+      <TechnologiesSection
         class="
           flex-initial
           lg:w-[440px]"
@@ -64,7 +64,7 @@ import { defineComponent } from 'vue';
 import AuthorPicture from '@/components/AuthorPicture.vue';
 import CareerSection from '@/components/sections/CareerSection.vue';
 import ExperienceSection from '@/components/sections/ExperienceSection.vue';
-import TagSection from '@/components/TagSection.vue';
+import TechnologiesSection from '@/components/TechnologiesSection.vue';
 import DegreeSection from '@/components/sections/DegreeSection.vue';
 
 export default defineComponent({
@@ -73,7 +73,7 @@ export default defineComponent({
   components: {
     DegreeSection,
     AuthorPicture,
-    TagSection,
+    TechnologiesSection,
     CareerSection,
     ExperienceSection,
   },

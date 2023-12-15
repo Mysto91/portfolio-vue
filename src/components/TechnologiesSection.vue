@@ -6,29 +6,13 @@
       <div class="mt-2">
         <TagsSkeleton v-if="isLoading" />
 
-        <ul
+        <TechnologyTagList
           v-else-if="frameworks.length"
-          class="flex flex-wrap gap-2.5"
-        >
-          <li
-            v-for="framework in frameworks"
-            :key="`framework-${framework.id}`"
-          >
-            <AppTag>
-              <template #default>
-                <div class="flex items-center space-x-2">
-                  <TechnologyIcon class="h-5 w-5" :technology="framework.name" />
-
-                  <p class="text-base">{{ framework.name }}</p>
-                </div>
-              </template>
-            </AppTag>
-          </li>
-        </ul>
+          :technologies="frameworks"
+        />
 
         <NoData v-else />
       </div>
-
     </div>
 
     <div>
@@ -37,24 +21,10 @@
       <div class="mt-2">
         <TagsSkeleton v-if="isLoading" />
 
-        <ul
+        <TechnologyTagList
           v-else-if="languages.length"
-          class="flex flex-wrap gap-2.5"
-        >
-          <li
-            v-for="language in languages"
-            :key="`language-${language.id}`"
-          >
-            <AppTag>
-              <template #default>
-                <div class="flex items-center space-x-2">
-                  <TechnologyIcon class="h-5 w-5" :technology="language.name" />
-                  <p class="text-base">{{ language.name }}</p>
-                </div>
-              </template>
-            </AppTag>
-          </li>
-        </ul>
+          :technologies="languages"
+        />
 
         <NoData v-else />
       </div>
@@ -66,22 +36,20 @@
 import { computed, defineComponent } from 'vue';
 import { Technology } from '@/interfaces/technology';
 import { getTechnologies } from '@/api/technologyApi';
-import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
 import { useApiRequest } from '@/composables/useApiRequest';
 import { CacheKey } from '@/cache/cacheService';
-import AppTag from './AppTag.vue';
+import TechnologyTagList from '@/components/TechnologyTagList.vue';
 
 export default defineComponent({
-  name: 'TagSection',
+  name: 'TechnologiesSection',
 
   components: {
+    TechnologyTagList,
     TagsSkeleton,
     NoData,
-    TechnologyIcon,
-    AppTag,
   },
 
   setup() {

@@ -44,20 +44,11 @@
                   </template>
 
                   <template #content>
-                    <ul class="py-2 flex flex-wrap gap-2">
-                      <li
-                        v-for="technology in getShowableTechnologies(experience.technologies)"
-                        :key="`experience-technology-${technology.id}`"
-                      >
-                        <AppTag class="p-1 flex items-center space-x-2">
-                          <TechnologyIcon class="h-5 w-5" :technology="technology.name"/>
-
-                          <p class="text-sm">
-                            {{ technology.name }}
-                          </p>
-                        </AppTag>
-                      </li>
-                    </ul>
+                    <TechnologyTagList
+                      class="py-2 gap-2"
+                      :technologies="getShowableTechnologies(experience.technologies)"
+                      text-class="text-sm"
+                    />
 
                     <p class="text-base">
                       {{ experience.overview }}
@@ -79,18 +70,16 @@ import NoData from '@/components/NoData.vue';
 import { ContractType } from '@/enums/contractType';
 import { Size } from '@/enums/size';
 import TimeLineSkeleton from '@/components/skeletons/TimeLineSkeleton.vue';
-import AppTag from '@/components/AppTag.vue';
-import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import { CacheKey } from '@/cache/cacheService';
 import { useApiRequest } from '@/composables/useApiRequest';
+import TechnologyTagList from '@/components/TechnologyTagList.vue';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
   name: 'ExperienceSection',
 
   components: {
-    TechnologyIcon,
-    AppTag,
+    TechnologyTagList,
     TimeLineSkeleton,
     NoData,
     TimelineItem,
