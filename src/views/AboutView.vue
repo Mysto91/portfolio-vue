@@ -29,7 +29,7 @@
           <p class="sm:text-2xl">
             Rempli de passion pour le développement web,
             J'éprouve une forte volonté d'exceller et de m'améliorer constamment dans mon travail.
-            Découvrez davantage sur mon parcours ci-dessous.
+            Découvrez-en davantage sur mon parcours ci-dessous.
           </p>
         </div>
     </div>
