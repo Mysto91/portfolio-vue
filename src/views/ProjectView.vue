@@ -115,37 +115,19 @@
             <div v-if="frameworks.length">
               <h3>Frameworks</h3>
 
-              <ul class="mt-2 space-y-2.5">
-                <li
-                  v-for="framework in frameworks"
-                  :key="`framework-${framework.id}`"
-                  class="flex space-x-2"
-                >
-                  <TechnologyIcon :technology="framework.name"/>
-
-                  <span class="flex items-center">
-                    {{ framework.name }}
-                  </span>
-                </li>
-              </ul>
+              <TechnologyTagList
+                class="mt-2"
+                :technologies="frameworks"
+              />
             </div>
 
             <div v-if="languages.length">
               <h3>Langages</h3>
 
-              <ul class="mt-2 space-y-2.5">
-                <li
-                  v-for="language in languages"
-                  :key="`language-${language.id}`"
-                  class="flex"
-                >
-                  <TechnologyIcon class="flex-none" :technology="language.name"/>
-
-                  <span class="ml-2 flex items-center">
-                  {{ language.name }}
-                </span>
-                </li>
-              </ul>
+              <TechnologyTagList
+                class="mt-2"
+                :technologies="languages"
+              />
             </div>
 
             <NoData v-if="!languages.length && !frameworks.length" />
@@ -227,7 +209,6 @@ import { computed, defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { Routes } from '@/enums/routes';
 import { ProjectItem } from '@/interfaces/projectItem';
-import TechnologyIcon from '@/components/TechnologyIcon.vue';
 import IconRocket from '@/components/icons/IconRocket.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
 import IconPlay from '@/components/icons/IconPlay.vue';
@@ -243,11 +224,13 @@ import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { useLoading } from '@/composables/useLoading';
 import { Technology } from '@/interfaces/technology';
 import BackButton from '@/components/BackButton.vue';
+import TechnologyTagList from '@/components/TechnologyTagList.vue';
 
 export default defineComponent({
   name: 'ProjectViewList',
 
   components: {
+    TechnologyTagList,
     BackButton,
     TagsSkeleton,
     LineSkeleton,
@@ -256,7 +239,6 @@ export default defineComponent({
     IconPlay,
     IconGithub,
     IconRocket,
-    TechnologyIcon,
     Swiper,
     SwiperSlide,
   },
