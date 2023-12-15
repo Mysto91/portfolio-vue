@@ -36,7 +36,7 @@
             <!-- TODO Ajouter une lien vers l'expérience en détail  -->
         </h3>
 
-        <time class="block mb-2 text-sm font-normal leading-none text-accent">
+        <time class="block mb-2 text-sm font-bold leading-none text-text">
           {{ interval }} ({{ periodOfTime }})
         </time>
 
@@ -77,7 +77,7 @@ export default defineComponent({
 
     const interval = computed<string>(() => {
       if (!endDate) {
-        return `${formatDate(startDate)} - aujourd'hui`;
+        return `Depuis ${formatDate(startDate)}`;
       }
 
       return `${formatDate(startDate)} - ${formatDate(endDate)}`;
