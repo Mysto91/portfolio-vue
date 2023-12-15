@@ -30,10 +30,7 @@
         v-for="projectItem in projects"
         :key="projectItem.uuid"
       >
-        <CardItem
-          :url="`/projects/${projectItem.uuid}`"
-          :background-image-url="projectItem.images.mainImageUrl"
-        >
+        <CardItem :url="`/projects/${projectItem.uuid}`">
           <template #header>
             <div class="flex">
               <span class="flex-grow">
@@ -85,7 +82,7 @@
 
 <script lang="ts">
 import {
-  defineComponent, PropType, ref, watch,
+  defineComponent, PropType, Ref, watch,
 } from 'vue';
 import CardItem from '@/components/CardItem.vue';
 import { Framework } from '@/enums/framework';
@@ -100,8 +97,8 @@ import { debounce } from 'vue-debounce';
 import IconRocketColored from '@/components/icons/IconRocketColored.vue';
 import IconNewTab from '@/components/icons/IconNewTab.vue';
 import { openInNewTab } from '@/utils/window';
-import { useLoading } from '@/composables/useLoading';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
+import { useApiRequest } from '@/composables/useApiRequest';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -123,34 +120,20 @@ export default defineComponent({
   },
 
   setup(props) {
-    const projects = ref<Project[]>([]);
-
     const {
+      result: projects,
       isLoading,
-      startLoading,
-      stopLoading,
-    } = useLoading();
-
-    async function fetchProjects(): Promise<void> {
-      startLoading();
-      projects.value = await getProjects();
-      stopLoading();
-    }
-
-    fetchProjects();
+      getData,
+    } = useApiRequest({ apiCallback: getProjects });
 
     watch(
       () => props.searchParams,
-      debounce(async (searchParams) => {
-        startLoading();
-        projects.value = await getProjects(searchParams);
-        stopLoading();
-      }, 400),
+      debounce(async (searchParams) => getData(searchParams), 400),
       { deep: true },
     );
 
     return {
-      projects,
+      projects: projects as Ref<Project[]>,
       Framework,
       Language,
       findFrameworks,

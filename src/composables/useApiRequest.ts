@@ -5,13 +5,14 @@ import { T } from '@/types/template';
 import { DateTime } from 'luxon';
 
 interface useApiRequestParams {
-  cacheKey: CacheKey,
-  apiCallback: () => Promise<T[]>;
+  cacheKey?: CacheKey,
+  apiCallback: (params?: object) => Promise<T[]>;
 }
 
 interface useApiResponseParams {
   isLoading: Ref<boolean>;
   result: Ref<T[] | null>;
+  getData: (params?: object) => Promise<void>;
 }
 
 // eslint-disable-next-line import/prefer-default-export
@@ -24,8 +25,15 @@ export function useApiRequest({ cacheKey, apiCallback }: useApiRequestParams): u
     stopLoading,
   } = useLoading();
 
-  async function getData(): Promise<void> {
+  async function getData(params: object = {}): Promise<void> {
     startLoading();
+
+    if (!cacheKey) {
+      result.value = await apiCallback(params);
+      stopLoading();
+
+      return;
+    }
 
     const cache = getCache(cacheKey);
 
@@ -36,7 +44,7 @@ export function useApiRequest({ cacheKey, apiCallback }: useApiRequestParams): u
       return;
     }
 
-    result.value = await apiCallback();
+    result.value = await apiCallback(params);
 
     setCache(cacheKey, result.value);
 
@@ -48,5 +56,6 @@ export function useApiRequest({ cacheKey, apiCallback }: useApiRequestParams): u
   return {
     isLoading,
     result,
+    getData,
   };
 }
