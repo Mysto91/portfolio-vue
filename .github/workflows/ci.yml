@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - 'master'
 
 jobs:
   build:
@@ -23,6 +20,8 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
         run: |
+          echo "$(git rev-parse HEAD)"
+          echo "VUE_APP_VERSION=$(git rev-parse HEAD)" >> .env
           echo "VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }}" >> .env
           yarn global add firebase-tools
           yarn build
