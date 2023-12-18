@@ -6,25 +6,25 @@
   >
     <ul class="flex space-x-5">
       <li>
-        <BulletLink :link="FACEBOOK_URL">
+        <BulletLink :link="SocialNetworkUrl.FACEBOOK">
           <IconFacebook />
         </BulletLink>
       </li>
 
       <li>
-        <BulletLink :link="LINKEDIN_URL">
+        <BulletLink :link="SocialNetworkUrl.LINKEDIN">
           <IconLinkedin />
         </BulletLink>
       </li>
 
       <li>
-        <BulletLink :link="INSTAGRAM_URL">
+        <BulletLink :link="SocialNetworkUrl.INSTAGRAM">
           <IconInstagram />
         </BulletLink>
       </li>
 
       <li>
-        <BulletLink :link="GITHUB_URL">
+        <BulletLink :link="SocialNetworkUrl.GITHUB">
           <IconGithub />
         </BulletLink>
       </li>
@@ -43,9 +43,7 @@ import IconFacebook from '@/components/icons/IconFacebook.vue';
 import IconLinkedin from '@/components/icons/IconLinkedin.vue';
 import IconInstagram from '@/components/icons/IconInstagram.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
-import {
-  FACEBOOK_URL, LINKEDIN_URL, INSTAGRAM_URL, GITHUB_URL,
-} from '@/constants/socialNetwork';
+import { SocialNetworkUrl } from '@/constants/socialNetwork';
 
 export default defineComponent({
   name: 'AppFooter',
@@ -60,10 +58,7 @@ export default defineComponent({
 
   setup() {
     return {
-      FACEBOOK_URL,
-      LINKEDIN_URL,
-      INSTAGRAM_URL,
-      GITHUB_URL,
+      SocialNetworkUrl,
     };
   },
 });

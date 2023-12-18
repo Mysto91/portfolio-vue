@@ -50,7 +50,7 @@
           <div class="flex-grow flex items-center justify-center">
             <ul class="grid grid-cols-2 sm:grid-cols-3 gap-6">
               <li>
-                <MenuItem @click="openInNewTab(INSTAGRAM_URL)">
+                <MenuItem @click="openInNewTab(SocialNetworkUrl.INSTAGRAM)">
                   <template #icon>
                     <IconInstagram class="h-8 w-8" />
                   </template>
@@ -62,7 +62,7 @@
               </li>
 
               <li>
-                <MenuItem @click="openInNewTab(LINKEDIN_URL)">
+                <MenuItem @click="openInNewTab(SocialNetworkUrl.LINKEDIN)">
                   <template #icon>
                     <IconLinkedin class="h-8 w-8" />
                   </template>
@@ -74,7 +74,7 @@
               </li>
 
               <li>
-                <MenuItem @click="openInNewTab(GITHUB_URL)">
+                <MenuItem @click="openInNewTab(SocialNetworkUrl.GITHUB)">
                   <template #icon>
                     <IconGithub class="h-8 w-8" />
                   </template>
@@ -86,7 +86,7 @@
               </li>
 
               <li>
-                <MenuItem @click="openInNewTab(FACEBOOK_URL)">
+                <MenuItem @click="openInNewTab(SocialNetworkUrl.FACEBOOK)">
                   <template #icon>
                     <IconFacebook class="h-8 w-8" />
                   </template>
@@ -131,9 +131,7 @@ import IconGithub from '@/components/icons/IconGithub.vue';
 import IconFacebook from '@/components/icons/IconFacebook.vue';
 import IconDialog from '@/components/icons/IconDialog.vue';
 import { openInNewTab } from '@/utils/window';
-import {
-  FACEBOOK_URL, INSTAGRAM_URL, LINKEDIN_URL, GITHUB_URL,
-} from '@/constants/socialNetwork';
+import { SocialNetworkUrl } from '@/constants/socialNetwork';
 import { Routes } from '@/enums/routes';
 
 export default defineComponent({
@@ -169,10 +167,7 @@ export default defineComponent({
       openMenu,
       closeMenu,
       openInNewTab,
-      FACEBOOK_URL,
-      INSTAGRAM_URL,
-      LINKEDIN_URL,
-      GITHUB_URL,
+      SocialNetworkUrl,
       Routes,
     };
   },
