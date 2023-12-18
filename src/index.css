@@ -68,3 +68,23 @@
 .container {
     @apply pt-20 md:pt-32 lg:pt-44;
 }
+
+.swiper-button-prev {
+    @apply h-12 w-12 rounded-full bg-primary text-background shadow-2xl
+}
+
+.swiper-button-next {
+    @apply h-12 w-12 rounded-full bg-primary text-background shadow-2xl
+}
+
+.swiper-button-prev:after {
+    @apply text-lg
+}
+
+.swiper-button-next:after {
+    @apply text-lg
+}
+
+.swiper-pagination-bullet {
+    @apply bg-primary
+}
