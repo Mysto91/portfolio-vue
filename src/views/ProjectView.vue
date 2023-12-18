@@ -53,10 +53,6 @@
       <Swiper
         :effect="'coverflow'"
         :grab-cursor="true"
-        :style="{
-          '--swiper-navigation-color': '#7b7998',
-          '--swiper-pagination-color': '#7b7998',
-        }"
         :slidesPerView="'auto'"
         :coverflowEffect="{
           stretch: 0,
@@ -69,7 +65,7 @@
         :navigation="true"
         :autoplay="{
           delay: 4000,
-          disableOnInteraction: false,
+          disableOnInteraction: false ,
         }"
         :speed="800"
         :keyboard="{
