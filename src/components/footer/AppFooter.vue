@@ -4,16 +4,21 @@
     w-full h-20 md:h-40
     bg-primary"
   >
-    <ul class="flex space-x-5">
-      <li
-        v-for="socialNetwork in socialNetworks"
-        :key="`footer-social-network-${socialNetwork.uuid}`"
+    <FadeTransition>
+      <ul
+        v-if="!isLoading"
+        class="flex space-x-5"
       >
-        <BulletLink :link="socialNetwork.url">
-          <SocialNetworkIcon :social-network="socialNetwork.name" />
-        </BulletLink>
-      </li>
-    </ul>
+        <li
+          v-for="socialNetwork in socialNetworks"
+          :key="`footer-social-network-${socialNetwork.uuid}`"
+        >
+          <BulletLink :link="socialNetwork.url">
+            <SocialNetworkIcon :social-network="socialNetwork.name" />
+          </BulletLink>
+        </li>
+      </ul>
+    </FadeTransition>
 
     <p class="hidden md:block mt-5 text-sm text-white font-normal">
       Copyright © 2023 Etienne TRAN. All rights reserved.
@@ -27,11 +32,13 @@ import BulletLink from '@/components/footer/BulletLink.vue';
 import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue';
 import { useSocialNetworkStore } from '@/stores/useSocialNetworkStore';
 import { storeToRefs } from 'pinia';
+import FadeTransition from '@/components/FadeTransition.vue';
 
 export default defineComponent({
   name: 'AppFooter',
 
   components: {
+    FadeTransition,
     SocialNetworkIcon,
     BulletLink,
   },

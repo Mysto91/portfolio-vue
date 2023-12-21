@@ -12,30 +12,39 @@
       Développeur sénior chez Swile. Précédemment Lead développeur chez Orange Business Services.
     </h3>
 
-    <ul class="mt-4 flex flex-wrap gap-2">
-      <li
-        v-for="socialNetwork in socialNetworks"
-        :key="`homepage-${socialNetwork.uuid}`"
-      >
-        <AppButtonTag @click="openInNewTab(socialNetwork.url)">
-          <SocialNetworkIcon :social-network="socialNetwork.name" />
+    <FadeTransition class="mt-4">
+      <TagsSkeleton v-if="isLoading" />
 
-          <span>
+      <ul
+        v-else-if="socialNetworks.length"
+        class="flex flex-wrap gap-2"
+      >
+        <li
+          v-for="socialNetwork in socialNetworks"
+          :key="`homepage-${socialNetwork.uuid}`"
+        >
+          <AppButtonTag @click="openInNewTab(socialNetwork.url)">
+            <SocialNetworkIcon :social-network="socialNetwork.name" />
+
+            <span>
             {{ socialNetwork.name }}
           </span>
-        </AppButtonTag>
-      </li>
+          </AppButtonTag>
+        </li>
 
-      <li>
-        <AppButtonTag>
-          <IconMail class="h-5 w-5"/>
+        <li>
+          <AppButtonTag>
+            <IconMail class="h-5 w-5"/>
 
-          <span>
+            <span>
             etiennetran@hotmail.fr
           </span>
-        </AppButtonTag>
-      </li>
-    </ul>
+          </AppButtonTag>
+        </li>
+      </ul>
+
+      <NoData v-else/>
+    </FadeTransition>
   </section>
 </template>
 
@@ -47,11 +56,17 @@ import IconMail from '@/components/icons/IconMail.vue';
 import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue';
 import { useSocialNetworkStore } from '@/stores/useSocialNetworkStore';
 import { storeToRefs } from 'pinia';
+import NoData from '@/components/NoData.vue';
+import FadeTransition from '@/components/FadeTransition.vue';
+import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
 
 export default defineComponent({
   name: 'HomepageHeader',
 
   components: {
+    TagsSkeleton,
+    FadeTransition,
+    NoData,
     SocialNetworkIcon,
     IconMail,
     AppButtonTag,
