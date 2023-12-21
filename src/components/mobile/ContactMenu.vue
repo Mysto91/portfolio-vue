@@ -49,50 +49,17 @@
 
           <div class="flex-grow flex items-center justify-center">
             <ul class="grid grid-cols-2 sm:grid-cols-3 gap-6">
-              <li>
-                <MenuItem @click="openInNewTab(SocialNetworkUrl.INSTAGRAM)">
+              <li
+                v-for="socialNetwork in socialNetworks"
+                :key="`contact-menu-social-network-${socialNetwork.uuid}`"
+              >
+                <MenuItem @click="openInNewTab(socialNetwork.url)">
                   <template #icon>
-                    <IconInstagram class="h-8 w-8" />
+                    <SocialNetworkIcon :social-network="socialNetwork.name" class="h-8 w-8" />
                   </template>
 
                   <template #title>
-                    Instagram
-                  </template>
-                </MenuItem>
-              </li>
-
-              <li>
-                <MenuItem @click="openInNewTab(SocialNetworkUrl.LINKEDIN)">
-                  <template #icon>
-                    <IconLinkedin class="h-8 w-8" />
-                  </template>
-
-                  <template #title>
-                    Linkedin
-                  </template>
-                </MenuItem>
-              </li>
-
-              <li>
-                <MenuItem @click="openInNewTab(SocialNetworkUrl.GITHUB)">
-                  <template #icon>
-                    <IconGithub class="h-8 w-8" />
-                  </template>
-
-                  <template #title>
-                    Github
-                  </template>
-                </MenuItem>
-              </li>
-
-              <li>
-                <MenuItem @click="openInNewTab(SocialNetworkUrl.FACEBOOK)">
-                  <template #icon>
-                    <IconFacebook class="h-8 w-8" />
-                  </template>
-
-                  <template #title>
-                    Facebook
+                    {{ socialNetwork.name }}
                   </template>
                 </MenuItem>
               </li>
@@ -124,26 +91,21 @@ import { defineComponent, ref } from 'vue';
 import MenuButton from '@/components/mobile/MenuButton.vue';
 import { Dialog, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import IconClose from '@/components/icons/IconClose.vue';
-import IconInstagram from '@/components/icons/IconInstagram.vue';
 import MenuItem from '@/components/mobile/MenuItem.vue';
-import IconLinkedin from '@/components/icons/IconLinkedin.vue';
-import IconGithub from '@/components/icons/IconGithub.vue';
-import IconFacebook from '@/components/icons/IconFacebook.vue';
 import IconDialog from '@/components/icons/IconDialog.vue';
 import { openInNewTab } from '@/utils/window';
-import { SocialNetworkUrl } from '@/constants/socialNetwork';
 import { Routes } from '@/enums/routes';
+import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue';
+import { useSocialNetworkStore } from '@/stores/useSocialNetworkStore';
+import { storeToRefs } from 'pinia';
 
 export default defineComponent({
   name: 'ContactMenu',
 
   components: {
+    SocialNetworkIcon,
     IconDialog,
-    IconFacebook,
-    IconGithub,
-    IconLinkedin,
     MenuItem,
-    IconInstagram,
     IconClose,
     MenuButton,
     Dialog,
@@ -162,13 +124,17 @@ export default defineComponent({
       isOpen.value = false;
     }
 
+    const socialNetworkStore = useSocialNetworkStore();
+    const { isLoading, socialNetworks } = storeToRefs(socialNetworkStore);
+
     return {
       isOpen,
       openMenu,
       closeMenu,
       openInNewTab,
-      SocialNetworkUrl,
       Routes,
+      socialNetworks,
+      isLoading,
     };
   },
 });

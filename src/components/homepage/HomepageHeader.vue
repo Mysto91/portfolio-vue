@@ -12,87 +12,74 @@
       Développeur sénior chez Swile. Précédemment Lead développeur chez Orange Business Services.
     </h3>
 
-    <ul class="mt-4 flex flex-wrap gap-2">
-      <li>
-        <AppButtonTag @click="openInNewTab(SocialNetworkUrl.FACEBOOK)">
-          <IconFacebook class="h-5 w-5"/>
+    <FadeTransition class="mt-4">
+      <TagsSkeleton v-if="isLoading" />
 
-          <span>
-            Facebook
+      <ul
+        v-else-if="socialNetworks.length"
+        class="flex flex-wrap gap-2"
+      >
+        <li
+          v-for="socialNetwork in socialNetworks"
+          :key="`homepage-${socialNetwork.uuid}`"
+        >
+          <AppButtonTag @click="openInNewTab(socialNetwork.url)">
+            <SocialNetworkIcon :social-network="socialNetwork.name" />
+
+            <span>
+            {{ socialNetwork.name }}
           </span>
-        </AppButtonTag>
-      </li>
+          </AppButtonTag>
+        </li>
 
-      <li>
-        <AppButtonTag @click="openInNewTab(SocialNetworkUrl.LINKEDIN)">
-          <IconLinkedin class="h-5 w-5"/>
+        <li>
+          <AppButtonTag>
+            <IconMail class="h-5 w-5"/>
 
-          <span>
-            Linkedin
-          </span>
-        </AppButtonTag>
-      </li>
-
-      <li>
-        <AppButtonTag @click="openInNewTab(SocialNetworkUrl.INSTAGRAM)">
-          <IconInstagram class="h-5 w-5"/>
-
-          <span>
-            Instagram
-          </span>
-        </AppButtonTag>
-      </li>
-
-      <li>
-        <AppButtonTag @click="openInNewTab(SocialNetworkUrl.GITHUB)">
-          <IconGithub class="h-5 w-5"/>
-
-          <span>
-            Github
-          </span>
-        </AppButtonTag>
-      </li>
-
-      <li>
-        <AppButtonTag>
-          <IconMail class="h-5 w-5"/>
-
-          <span>
+            <span>
             etiennetran@hotmail.fr
           </span>
-        </AppButtonTag>
-      </li>
-    </ul>
+          </AppButtonTag>
+        </li>
+      </ul>
+
+      <NoData v-else/>
+    </FadeTransition>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import IconFacebook from '@/components/icons/IconFacebook.vue';
-import IconLinkedin from '@/components/icons/IconLinkedin.vue';
-import IconInstagram from '@/components/icons/IconInstagram.vue';
-import IconGithub from '@/components/icons/IconGithub.vue';
 import AppButtonTag from '@/components/AppButtonTag.vue';
-import { SocialNetworkUrl } from '@/constants/socialNetwork';
 import { openInNewTab } from '@/utils/window';
 import IconMail from '@/components/icons/IconMail.vue';
+import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue';
+import { useSocialNetworkStore } from '@/stores/useSocialNetworkStore';
+import { storeToRefs } from 'pinia';
+import NoData from '@/components/NoData.vue';
+import FadeTransition from '@/components/FadeTransition.vue';
+import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
 
 export default defineComponent({
   name: 'HomepageHeader',
 
   components: {
+    TagsSkeleton,
+    FadeTransition,
+    NoData,
+    SocialNetworkIcon,
     IconMail,
     AppButtonTag,
-    IconGithub,
-    IconInstagram,
-    IconLinkedin,
-    IconFacebook,
   },
 
   setup() {
+    const socialNetworkStore = useSocialNetworkStore();
+    const { isLoading, socialNetworks } = storeToRefs(socialNetworkStore);
+
     return {
-      SocialNetworkUrl,
       openInNewTab,
+      socialNetworks,
+      isLoading,
     };
   },
 });

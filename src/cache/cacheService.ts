@@ -5,6 +5,7 @@ export enum CacheKey {
   ALL_TECHNOLOGIES = 'all-technologies',
   ALL_EXPERIENCES = 'all-experiences',
   ALL_DEGREES = 'all-degrees',
+  ALL_SOCIAL_NETWORKS = 'all-social-networks'
 }
 
 interface Cache {

@@ -4,31 +4,21 @@
     w-full h-20 md:h-40
     bg-primary"
   >
-    <ul class="flex space-x-5">
-      <li>
-        <BulletLink :link="SocialNetworkUrl.FACEBOOK">
-          <IconFacebook />
-        </BulletLink>
-      </li>
-
-      <li>
-        <BulletLink :link="SocialNetworkUrl.LINKEDIN">
-          <IconLinkedin />
-        </BulletLink>
-      </li>
-
-      <li>
-        <BulletLink :link="SocialNetworkUrl.INSTAGRAM">
-          <IconInstagram />
-        </BulletLink>
-      </li>
-
-      <li>
-        <BulletLink :link="SocialNetworkUrl.GITHUB">
-          <IconGithub />
-        </BulletLink>
-      </li>
-    </ul>
+    <FadeTransition>
+      <ul
+        v-if="!isLoading"
+        class="flex space-x-5"
+      >
+        <li
+          v-for="socialNetwork in socialNetworks"
+          :key="`footer-social-network-${socialNetwork.uuid}`"
+        >
+          <BulletLink :link="socialNetwork.url">
+            <SocialNetworkIcon :social-network="socialNetwork.name" />
+          </BulletLink>
+        </li>
+      </ul>
+    </FadeTransition>
 
     <p class="hidden md:block mt-5 text-sm text-white font-normal">
       Copyright © 2023 Etienne TRAN. All rights reserved.
@@ -39,26 +29,27 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BulletLink from '@/components/footer/BulletLink.vue';
-import IconFacebook from '@/components/icons/IconFacebook.vue';
-import IconLinkedin from '@/components/icons/IconLinkedin.vue';
-import IconInstagram from '@/components/icons/IconInstagram.vue';
-import IconGithub from '@/components/icons/IconGithub.vue';
-import { SocialNetworkUrl } from '@/constants/socialNetwork';
+import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue';
+import { useSocialNetworkStore } from '@/stores/useSocialNetworkStore';
+import { storeToRefs } from 'pinia';
+import FadeTransition from '@/components/FadeTransition.vue';
 
 export default defineComponent({
   name: 'AppFooter',
 
   components: {
-    IconGithub,
-    IconInstagram,
-    IconLinkedin,
-    IconFacebook,
+    FadeTransition,
+    SocialNetworkIcon,
     BulletLink,
   },
 
   setup() {
+    const socialNetworkStore = useSocialNetworkStore();
+    const { isLoading, socialNetworks } = storeToRefs(socialNetworkStore);
+
     return {
-      SocialNetworkUrl,
+      socialNetworks,
+      isLoading,
     };
   },
 });
