@@ -72,7 +72,7 @@
           enabled: true,
         }"
         :modules="modules"
-        class="py-16"
+        class="py-16 select-none"
       >
         <SwiperSlide
           v-for="image in projectItem.images"
