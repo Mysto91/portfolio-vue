@@ -1,17 +1,18 @@
 <template>
     <div>
-        <h2>Mes expériences</h2>
+      <h2>Mes expériences</h2>
 
+      <FadeTransition>
         <ul
           v-if="isLoading"
           class="space-y-12"
         >
-            <li
-              v-for="index in 3"
-              :key="`skeleton-timeline-${index}`"
-            >
-              <TimeLineSkeleton />
-            </li>
+          <li
+            v-for="index in 3"
+            :key="`skeleton-timeline-${index}`"
+          >
+            <TimeLineSkeleton />
+          </li>
         </ul>
 
         <ol
@@ -22,43 +23,44 @@
             v-for="experience in experiences"
             :key="experience.uuid"
           >
-              <TimelineItem
-                  :url="experience.company.url"
-                  :start-date="experience.startDate"
-                  :end-date="experience.endDate"
-              >
-                  <template #title>
-                      {{ experience.company.name }} -
-                      {{ experience.contractType === ContractType.INTERNSHIP ? '(Stage)' : '' }}
-                      {{ experience.title }}
-                  </template>
+            <TimelineItem
+              :url="experience.company.url"
+              :start-date="experience.startDate"
+              :end-date="experience.endDate"
+            >
+              <template #title>
+                {{ experience.company.name }} -
+                {{ experience.contractType === ContractType.INTERNSHIP ? '(Stage)' : '' }}
+                {{ experience.title }}
+              </template>
 
-                  <template #icon>
-                    <div :class="`relative w-14 h-14 rounded-full overflow-hidden ${experience.company.logoClass ?? ''}`">
-                      <img
-                        :src="`/images/${experience.company.logo}`"
-                        alt="company-logo"
-                        class="object-cover w-full h-full"
-                      >
-                    </div>
-                  </template>
+              <template #icon>
+                <div :class="`relative w-14 h-14 rounded-full overflow-hidden ${experience.company.logoClass ?? ''}`">
+                  <img
+                    :src="`/images/${experience.company.logo}`"
+                    alt="company-logo"
+                    class="object-cover w-full h-full"
+                  >
+                </div>
+              </template>
 
-                  <template #content>
-                    <TechnologyTagList
-                      class="py-2 gap-2"
-                      :technologies="getShowableTechnologies(experience.technologies)"
-                      text-class="text-sm"
-                    />
+              <template #content>
+                <TechnologyTagList
+                  class="py-2 gap-2"
+                  :technologies="getShowableTechnologies(experience.technologies)"
+                  text-class="text-sm"
+                />
 
-                    <p class="text-base">
-                      {{ experience.overview }}
-                    </p>
-                  </template>
-              </TimelineItem>
+                <p class="text-base">
+                  {{ experience.overview }}
+                </p>
+              </template>
+            </TimelineItem>
           </li>
         </ol>
 
         <NoData v-else />
+      </FadeTransition>
     </div>
 </template>
 
@@ -73,12 +75,14 @@ import TimeLineSkeleton from '@/components/skeletons/TimeLineSkeleton.vue';
 import { CacheKey } from '@/cache/cacheService';
 import { useApiRequest } from '@/composables/useApiRequest';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
+import FadeTransition from '@/components/FadeTransition.vue';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
   name: 'ExperienceSection',
 
   components: {
+    FadeTransition,
     TechnologyTagList,
     TimeLineSkeleton,
     NoData,

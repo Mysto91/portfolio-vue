@@ -3,7 +3,7 @@
     <div>
       <h3>Frameworks</h3>
 
-      <div class="mt-2">
+      <FadeTransition class="mt-2">
         <TagsSkeleton v-if="isLoading" />
 
         <TechnologyTagList
@@ -12,13 +12,13 @@
         />
 
         <NoData v-else />
-      </div>
+      </FadeTransition>
     </div>
 
     <div>
       <h3>Languages</h3>
 
-      <div class="mt-2">
+      <FadeTransition class="mt-2">
         <TagsSkeleton v-if="isLoading" />
 
         <TechnologyTagList
@@ -27,7 +27,7 @@
         />
 
         <NoData v-else />
-      </div>
+      </FadeTransition>
     </div>
   </div>
 </template>
@@ -42,11 +42,13 @@ import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
 import { useApiRequest } from '@/composables/useApiRequest';
 import { CacheKey } from '@/cache/cacheService';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
+import FadeTransition from '@/components/FadeTransition.vue';
 
 export default defineComponent({
   name: 'TechnologiesSection',
 
   components: {
+    FadeTransition,
     TechnologyTagList,
     TagsSkeleton,
     NoData,
