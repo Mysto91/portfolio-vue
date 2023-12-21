@@ -69,20 +69,24 @@
     @apply pt-20 md:pt-32 lg:pt-44;
 }
 
+.swiper-button {
+    @apply h-12 w-12 rounded-full bg-primary text-background shadow-2xl transition ease-in-out duration-200
+}
+
+.swiper-button:after {
+    @apply text-lg
+}
+
+.swiper-button:hover {
+    @apply bg-text
+}
+
 .swiper-button-prev {
-    @apply h-12 w-12 rounded-full bg-primary text-background shadow-2xl
+    @apply swiper-button
 }
 
 .swiper-button-next {
-    @apply h-12 w-12 rounded-full bg-primary text-background shadow-2xl
-}
-
-.swiper-button-prev:after {
-    @apply text-lg
-}
-
-.swiper-button-next:after {
-    @apply text-lg
+    @apply swiper-button
 }
 
 .swiper-pagination-bullet {
