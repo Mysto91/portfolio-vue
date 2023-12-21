@@ -1,82 +1,69 @@
 <template>
   <section>
-    <ul
-      class="
-        lg:grid lg:grid-cols-2
-        space-y-7 lg:space-y-0 lg:gap-16
-        transition ease-in-out duration-300"
-      :class="isLoading ? 'opacity-100' : 'opacity-0 h-0'"
-    >
-      <li
-        v-for="index in 2"
-        :key="`skeleton-${index}`"
-        class="flex justify-center"
-      >
-        <ImageSkeleton class="h-[400px] rounded-2xl drop-shadow-2xl" />
-      </li>
-    </ul>
+    <FadeTransition>
+      <ProjectListSkeleton v-if="isLoading"/>
 
-    <ul
-      class="
-      md:grid md:grid-cols-2
-      space-y-7 md:space-y-0 md:gap-8 lg:gap-16
-      transition ease-in-out duration-300"
-      :class="!isLoading && projects.length ? 'opacity-100' : 'opacity-0 h-0'"
-    >
-      <li
+      <ul
+        v-else-if="projects.length"
         class="
-          flex justify-center
-          transition duration-500 ease-in-out"
-        v-for="projectItem in projects"
-        :key="projectItem.uuid"
+          md:grid md:grid-cols-2
+          space-y-7 md:space-y-0 md:gap-8 lg:gap-16"
       >
-        <CardItem :url="`/projects/${projectItem.uuid}`">
-          <template #header>
-            <div class="flex">
-              <span class="flex-grow">
-                <IconRocketColored />
-              </span>
+        <li
+          class="
+            flex justify-center
+            transition duration-500 ease-in-out"
+          v-for="projectItem in projects"
+          :key="projectItem.uuid"
+        >
+          <CardItem :url="`/projects/${projectItem.uuid}`">
+            <template #header>
+              <div class="flex">
+                <span class="flex-grow">
+                  <IconRocketColored />
+                </span>
 
-              <a
-                href="javascript:void(0)"
-                class="
-                  relative
-                  w-10 h-10
-                  flex items-center justify-center
-                  group"
-                @click.stop="openInNewTab(projectItem.appUrl)"
-              >
-                <IconNewTab
+                <a
+                  href="javascript:void(0)"
                   class="
-                    lg:h-10 lg:w-10
-                    stroke-primary group-hover:stroke-text
-                    transition ease-in-out duration-300"
-                />
-                <span class="sr-only">Open in new tab</span>
-              </a>
-            </div>
-          </template>
+                    relative
+                    w-10 h-10
+                    flex items-center justify-center
+                    group"
+                  @click.stop="openInNewTab(projectItem.appUrl)"
+                >
+                  <IconNewTab
+                    class="
+                      lg:h-10 lg:w-10
+                      stroke-primary group-hover:stroke-text
+                      transition ease-in-out duration-300"
+                  />
+                  <span class="sr-only">Open in new tab</span>
+                </a>
+              </div>
+            </template>
 
-          <template #title>
-            {{ projectItem.title }}
-          </template>
+            <template #title>
+              {{ projectItem.title }}
+            </template>
 
-          <template #description>
-            {{ projectItem.overview }}
-          </template>
+            <template #description>
+              {{ projectItem.overview }}
+            </template>
 
-          <template #technologies>
-            <TechnologyTagList
-              class="gap-1 md:gap-2"
-              :technologies="findFrameworks(projectItem.technologies)"
-              text-class="text-sm"
-            />
-          </template>
-        </CardItem>
-      </li>
-    </ul>
+            <template #technologies>
+              <TechnologyTagList
+                class="gap-1 md:gap-2"
+                :technologies="findFrameworks(projectItem.technologies)"
+                text-class="text-sm"
+              />
+            </template>
+          </CardItem>
+        </li>
+      </ul>
 
-    <NoData :class="!isLoading && !projects.length ? 'opacity-100' : 'opacity-0 h-0'" />
+      <NoData v-else />
+    </FadeTransition>
   </section>
 </template>
 
@@ -91,7 +78,6 @@ import { ProjectItem as Project } from '@/interfaces/projectItem';
 import { getProjects } from '@/api/projectApi';
 import { findFrameworks } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
-import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
 import { SearchParams } from '@/interfaces/searchParams';
 import { debounce } from 'vue-debounce';
 import IconRocketColored from '@/components/icons/IconRocketColored.vue';
@@ -99,15 +85,18 @@ import IconNewTab from '@/components/icons/IconNewTab.vue';
 import { openInNewTab } from '@/utils/window';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
 import { useApiRequest } from '@/composables/useApiRequest';
+import FadeTransition from '@/components/FadeTransition.vue';
+import ProjectListSkeleton from '@/components/skeletons/ProjectListSkeleton.vue';
 
 export default defineComponent({
   name: 'ProjectList',
 
   components: {
+    ProjectListSkeleton,
+    FadeTransition,
     TechnologyTagList,
     IconNewTab,
     IconRocketColored,
-    ImageSkeleton,
     NoData,
     CardItem,
   },

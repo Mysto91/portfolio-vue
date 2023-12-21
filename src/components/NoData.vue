@@ -1,5 +1,5 @@
 <template>
-  <p class="text-secondary font-light italic">
+  <p class="text-primary font-light italic">
     Aucune donnée
   </p>
 </template>

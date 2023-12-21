@@ -6,43 +6,7 @@
       </BackButton>
     </div>
 
-    <!--  TODO : déplacer dans skeletons  -->
-    <div
-      v-if="isLoading"
-      class="mt-5 space-y-10"
-    >
-      <LineSkeleton class="h-10 max-w-md"/>
-
-      <div class="
-        lg:h-[820px]
-        lg:flex space-y-5 lg:space-x-5 lg:space-y-0"
-      >
-        <ImageSkeleton class="lg:h-full lg:w-1/2" />
-
-        <div class="block lg:w-1/2 space-y-5">
-          <ImageSkeleton class="lg:h-[400px]" />
-          <ImageSkeleton class="lg:h-[400px]" />
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 space-x-5">
-        <div>
-          <LineSkeleton class="h-8 max-w-md" />
-
-          <div class="mt-5 space-y-2">
-            <LineSkeleton class="h-3 max-w-md" />
-            <LineSkeleton class="h-3 max-w-sm" />
-            <LineSkeleton class="h-3 max-w-lg" />
-            <LineSkeleton class="h-3 max-w-md" />
-          </div>
-        </div>
-
-        <div>
-          <LineSkeleton class="h-8 max-w-md"/>
-          <TagsSkeleton class="mt-5" />
-        </div>
-      </div>
-    </div>
+    <ProjectSkeleton v-if="isLoading" />
 
     <div
       v-else-if="projectItem"
@@ -50,50 +14,7 @@
     >
       <h1>{{ projectItem.title }}</h1>
 
-      <Swiper
-        :effect="'coverflow'"
-        :grab-cursor="true"
-        :slidesPerView="'auto'"
-        :coverflowEffect="{
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }"
-        :centered-slides="true"
-        :pagination="true"
-        :navigation="true"
-        :autoplay="{
-          delay: 4000,
-          disableOnInteraction: false ,
-        }"
-        :speed="800"
-        :keyboard="{
-          enabled: true,
-        }"
-        :modules="modules"
-        class="py-16 select-none"
-      >
-        <SwiperSlide
-          v-for="image in projectItem.images"
-          :key="`project-image-${image.type}`"
-          class="
-            h-72 w-72 md:h-96 md:w-96 lg:w-[500px] lg:h-[500px]
-            flex items-center justify-center"
-        >
-          <img
-            :src="image.url"
-            :alt="image.type"
-            class="
-              h-full w-full
-              object-cover
-              flex items-center justify-center
-              text-center
-              rounded-2xl
-              shadow-xl"
-          />
-        </SwiperSlide>
-      </Swiper>
+      <ProjectCaroussel :project-item="projectItem" />
 
       <div class="lg:flex space-x-0 lg:space-x-5 space-y-5 lg:space-y-0">
         <div class="lg:flex-1">
@@ -194,9 +115,7 @@
       </div>
     </div>
 
-    <div v-else>
-      Work not found
-    </div>
+    <NotFoundView v-else />
   </div>
 </template>
 
@@ -212,31 +131,27 @@ import { getProjectById } from '@/api/projectApi';
 import NoData from '@/components/NoData.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
 import { UUID } from '@/types/request';
-import ImageSkeleton from '@/components/skeletons/ImageSkeleton.vue';
-import LineSkeleton from '@/components/skeletons/LineSkeleton.vue';
-import TagsSkeleton from '@/components/skeletons/TagsSkeleton.vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { useLoading } from '@/composables/useLoading';
 import { Technology } from '@/interfaces/technology';
 import BackButton from '@/components/BackButton.vue';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
+import ProjectSkeleton from '@/components/skeletons/ProjectSkeleton.vue';
+import NotFoundView from '@/views/NotFoundView.vue';
+import ProjectCaroussel from '@/components/project/ProjectCarrousel.vue';
 
 export default defineComponent({
   name: 'ProjectViewList',
 
   components: {
+    ProjectCaroussel,
+    NotFoundView,
+    ProjectSkeleton,
     TechnologyTagList,
     BackButton,
-    TagsSkeleton,
-    LineSkeleton,
-    ImageSkeleton,
     NoData,
     IconPlay,
     IconGithub,
     IconRocket,
-    Swiper,
-    SwiperSlide,
   },
 
   setup() {
@@ -279,7 +194,6 @@ export default defineComponent({
       frameworks,
       Routes,
       isLoading,
-      modules: [EffectCoverflow, Pagination],
     };
   },
 });
