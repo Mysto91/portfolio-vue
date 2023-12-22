@@ -1,5 +1,5 @@
 <template>
-  <div class="
+  <footer class="
     flex flex-col items-center justify-center
     w-full h-20 md:h-40
     bg-primary"
@@ -20,10 +20,14 @@
       </ul>
     </FadeTransition>
 
-    <p class="hidden md:block mt-5 text-sm text-white font-normal">
+    <p class="hidden md:block mt-5 text-sm text-background font-normal">
       Copyright © 2023 Etienne TRAN. All rights reserved.
     </p>
-  </div>
+
+    <p hidden>
+      Version : {{ APP_VERSION }}
+    </p>
+  </footer>
 </template>
 
 <script lang="ts">
@@ -47,9 +51,12 @@ export default defineComponent({
     const socialNetworkStore = useSocialNetworkStore();
     const { isLoading, socialNetworks } = storeToRefs(socialNetworkStore);
 
+    const APP_VERSION = process.env.VUE_APP_VERSION ?? '';
+
     return {
       socialNetworks,
       isLoading,
+      APP_VERSION,
     };
   },
 });
