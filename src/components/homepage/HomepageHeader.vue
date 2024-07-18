@@ -16,7 +16,7 @@
       <TagsSkeleton v-if="isLoading" />
 
       <ul
-        v-else-if="socialNetworks.length"
+        v-else-if="socialNetworks && socialNetworks.length"
         class="flex flex-wrap gap-2"
       >
         <li

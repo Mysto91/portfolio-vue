@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import AppTag from '@/components/AppTag.vue';
-import { Technology } from '@/interfaces/technology';
+import { Technology } from '@/models/technology';
 import TechnologyIcon from '@/components/TechnologyIcon.vue';
 
 export default defineComponent({

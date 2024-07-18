@@ -33,6 +33,7 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 import IconSearch from '@/components/icons/IconSearch.vue';
+import { debounce } from 'vue-debounce';
 
 export default defineComponent({
   name: 'SearchInput',
@@ -46,6 +47,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    debounce: {
+      type: Number,
+      default: 0,
+    },
   },
 
   emits: ['update:modelValue'],
@@ -53,7 +58,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const searchQuery = computed<string>({
       get: () => props.modelValue,
-      set: (modelValue) => emit('update:modelValue', modelValue),
+      set: debounce((modelValue) => emit('update:modelValue', modelValue), props.debounce),
     });
 
     const isFocused = ref<boolean>(false);

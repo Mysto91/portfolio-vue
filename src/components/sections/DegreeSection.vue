@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import DegreeCardItem from '@/components/DegreeCardItem.vue';
 import { getDegrees } from '@/api/degreeApi';
 import AppTag from '@/components/AppTag.vue';
@@ -87,9 +87,9 @@ import { openInNewTab } from '@/utils/window';
 import NoData from '@/components/NoData.vue';
 import DegreeCardItemSkeleton from '@/components/skeletons/DegreeCardItemSkeleton.vue';
 import { CacheKey } from '@/cache/cacheService';
-import { useApiRequest } from '@/composables/useApiRequest';
-import { Degree } from '@/interfaces/degree';
+import { Degree } from '@/models/degree';
 import FadeTransition from '@/components/FadeTransition.vue';
+import { useQuery } from 'vue-query';
 
 export default defineComponent({
   name: 'DegreeSection',
@@ -103,19 +103,19 @@ export default defineComponent({
   },
 
   setup() {
-    const { result: degrees, isLoading } = useApiRequest(
-      {
-        cacheKey: CacheKey.ALL_DEGREES,
-        apiCallback: getDegrees,
-      },
-    );
+    const { data, isLoading } = useQuery({
+      queryKey: [CacheKey.DEGREES],
+      queryFn: () => getDegrees(),
+    });
+
+    const degrees = computed<Degree[]>(() => data.value?.items ?? []);
 
     function getDateYear(dateStr: string): string {
       return DateTime.fromISO(dateStr).toFormat('yyyy');
     }
 
     return {
-      degrees: degrees as Ref<Degree[]>,
+      degrees,
       getDateYear,
       openInNewTab,
       isLoading,

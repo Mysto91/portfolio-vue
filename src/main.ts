@@ -2,7 +2,8 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { vue3Debounce } from 'vue-debounce';
 import { register } from 'swiper/element/bundle';
-import { clearCache } from '@/cache/cacheService';
+import { VueQueryPlugin } from 'vue-query';
+
 import App from './App.vue';
 import router from './router';
 
@@ -19,10 +20,9 @@ const pinia = createPinia();
 
 register();
 
-clearCache();
-
 createApp(App)
   .use(router)
   .use(pinia)
+  .use(VueQueryPlugin)
   .directive('debounce', vue3Debounce({ lock: true }))
   .mount('#app');

@@ -1,14 +1,16 @@
-import { ProjectItem } from '@/interfaces/projectItem';
+import { ProjectItem } from '@/models/projectItem';
 import { UUID } from '@/types/request';
 import { apiClient } from '@/api/apiClient';
 import { SearchParams } from '@/interfaces/searchParams';
+import { getModelCollection, ModelCollection } from '@/models/model';
+import deserializeHydraHttpCollection from '@/deserializers/hydraDeserializer';
 
-export async function getProjects(params: SearchParams = {}): Promise<ProjectItem[]> {
+export async function getProjects(params: SearchParams = {}): Promise<ModelCollection<ProjectItem>> {
   try {
     const { data } = await apiClient.get('/projects', { params });
-    return data;
+    return deserializeHydraHttpCollection(data);
   } catch (e) {
-    return [];
+    return getModelCollection();
   }
 }
 

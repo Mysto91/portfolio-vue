@@ -1,21 +1,18 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import { SocialNetwork } from '@/interfaces/socialNetwork';
-import { useLoading } from '@/composables/useLoading';
+import { computed } from 'vue';
+import { SocialNetwork } from '@/models/socialNetwork';
 import { getSocialNetworks } from '@/api/socialNetworkApi';
+import { useQuery } from 'vue-query';
+import { CacheKey } from '@/cache/cacheService';
 
 // eslint-disable-next-line import/prefer-default-export
 export const useSocialNetworkStore = defineStore('socialNetwork', () => {
-  const socialNetworks = ref<SocialNetwork[] | null>(null);
-  const { isLoading, startLoading, stopLoading } = useLoading();
+  const { data, isLoading } = useQuery({
+    queryKey: [CacheKey.SOCIAL_NETWORKS],
+    queryFn: () => getSocialNetworks(),
+  });
 
-  async function fetchSocialNetworks(): Promise<void> {
-    startLoading();
-    socialNetworks.value = await getSocialNetworks();
-    stopLoading();
-  }
-
-  fetchSocialNetworks();
+  const socialNetworks = computed<SocialNetwork[] | null>(() => data.value?.items ?? null);
 
   return {
     socialNetworks,

@@ -1,7 +1,7 @@
-import { Company } from '@/interfaces/company';
+import { Company } from '@/models/company';
 import { UUID } from '@/types/request';
 import { ContractType } from '@/enums/contractType';
-import { Technology } from '@/interfaces/technology';
+import { Technology } from '@/models/technology';
 
 export interface ExperienceTechnology extends Technology{
   showInOverview: boolean;
