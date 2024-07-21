@@ -49,7 +49,7 @@
 import { defineComponent, PropType } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { ProjectItem } from '@/interfaces/projectItem';
+import { ProjectItem } from '@/models/projectItem';
 
 export default defineComponent({
   name: 'ProjectCaroussel',

@@ -5,6 +5,7 @@
     <SearchInput
       :model-value="searchQuery"
       @update:modelValue="handleSearchChange"
+      :debounce="300"
     />
 
     <ProjectList

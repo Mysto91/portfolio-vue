@@ -68,25 +68,23 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent, PropType, Ref, watch,
-} from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import CardItem from '@/components/CardItem.vue';
 import { Framework } from '@/enums/framework';
 import { Language } from '@/enums/language';
-import { ProjectItem as Project } from '@/interfaces/projectItem';
+import { ProjectItem as Project } from '@/models/projectItem';
 import { getProjects } from '@/api/projectApi';
 import { findFrameworks } from '@/utils/search';
 import NoData from '@/components/NoData.vue';
 import { SearchParams } from '@/interfaces/searchParams';
-import { debounce } from 'vue-debounce';
 import IconRocketColored from '@/components/icons/IconRocketColored.vue';
 import IconNewTab from '@/components/icons/IconNewTab.vue';
 import { openInNewTab } from '@/utils/window';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
-import { useApiRequest } from '@/composables/useApiRequest';
 import FadeTransition from '@/components/FadeTransition.vue';
 import ProjectListSkeleton from '@/components/skeletons/ProjectListSkeleton.vue';
+import { useQuery } from 'vue-query';
+import { CacheKey } from '@/cache/cacheService';
 
 export default defineComponent({
   name: 'ProjectList',
@@ -104,25 +102,21 @@ export default defineComponent({
   props: {
     searchParams: {
       type: Object as PropType<SearchParams>,
-      default: undefined,
     },
   },
 
   setup(props) {
-    const {
-      result: projects,
-      isLoading,
-      getData,
-    } = useApiRequest({ apiCallback: getProjects });
+    const search = computed<SearchParams>(() => props.searchParams ?? {});
 
-    watch(
-      () => props.searchParams,
-      debounce(async (searchParams) => getData(searchParams), 400),
-      { deep: true },
-    );
+    const { data, isLoading } = useQuery({
+      queryKey: [CacheKey.EXPERIENCES, search],
+      queryFn: () => getProjects(search.value),
+    });
+
+    const projects = computed<Project[]>(() => data.value?.items ?? []);
 
     return {
-      projects: projects as Ref<Project[]>,
+      projects,
       Framework,
       Language,
       findFrameworks,

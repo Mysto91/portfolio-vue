@@ -23,7 +23,7 @@ export default defineComponent({
 
   render() {
     function getSocialNetworkIcon(socialNetwork: SocialNetwork) {
-      switch (socialNetwork) {
+      switch (socialNetwork.toLowerCase()) {
         case SocialNetwork.FACEBOOK:
           return IconFacebook;
         case SocialNetwork.GITHUB:

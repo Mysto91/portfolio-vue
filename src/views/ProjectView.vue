@@ -120,10 +120,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import { Routes } from '@/enums/routes';
-import { ProjectItem } from '@/interfaces/projectItem';
 import IconRocket from '@/components/icons/IconRocket.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
 import IconPlay from '@/components/icons/IconPlay.vue';
@@ -131,13 +130,14 @@ import { getProjectById } from '@/api/projectApi';
 import NoData from '@/components/NoData.vue';
 import { findFrameworks, findLanguages } from '@/utils/search';
 import { UUID } from '@/types/request';
-import { useLoading } from '@/composables/useLoading';
-import { Technology } from '@/interfaces/technology';
+import { Technology } from '@/models/technology';
 import BackButton from '@/components/BackButton.vue';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
 import ProjectSkeleton from '@/components/skeletons/ProjectSkeleton.vue';
 import NotFoundView from '@/views/NotFoundView.vue';
 import ProjectCaroussel from '@/components/project/ProjectCarrousel.vue';
+import { CacheKey } from '@/cache/cacheService';
+import { useQuery } from 'vue-query';
 
 export default defineComponent({
   name: 'ProjectViewList',
@@ -155,20 +155,12 @@ export default defineComponent({
   },
 
   setup() {
-    const projectItem = ref<ProjectItem | null>(null);
     const route = useRoute();
 
-    const {
-      isLoading,
-      startLoading,
-      stopLoading,
-    } = useLoading();
-
-    async function fetchProjectItem(): Promise<void> {
-      startLoading();
-      projectItem.value = await getProjectById(route.params.workId as UUID);
-      stopLoading();
-    }
+    const { data: projectItem, isLoading } = useQuery({
+      queryKey: [CacheKey.PROJECTS, route.params.workId],
+      queryFn: () => getProjectById(route.params.workId as UUID),
+    });
 
     const languages = computed<Technology[]>(() => {
       if (!projectItem.value) {
@@ -185,8 +177,6 @@ export default defineComponent({
 
       return findFrameworks(projectItem.value.technologies);
     });
-
-    fetchProjectItem();
 
     return {
       projectItem,

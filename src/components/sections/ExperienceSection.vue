@@ -65,17 +65,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref } from 'vue';
-import { Experience, ExperienceTechnology } from '@/interfaces/Experience';
+import { computed, defineComponent } from 'vue';
+import { Experience, ExperienceTechnology } from '@/models/experience';
 import { getExperiences } from '@/api/experienceApi';
 import NoData from '@/components/NoData.vue';
 import { ContractType } from '@/enums/contractType';
 import { Size } from '@/enums/size';
 import TimeLineSkeleton from '@/components/skeletons/TimeLineSkeleton.vue';
 import { CacheKey } from '@/cache/cacheService';
-import { useApiRequest } from '@/composables/useApiRequest';
 import TechnologyTagList from '@/components/TechnologyTagList.vue';
 import FadeTransition from '@/components/FadeTransition.vue';
+import { useQuery } from 'vue-query';
 import TimelineItem from '../TimelineItem.vue';
 
 export default defineComponent({
@@ -90,19 +90,19 @@ export default defineComponent({
   },
 
   setup() {
-    const { result: experiences, isLoading } = useApiRequest(
-      {
-        cacheKey: CacheKey.ALL_EXPERIENCES,
-        apiCallback: getExperiences,
-      },
-    );
+    const { data, isLoading } = useQuery({
+      queryKey: [CacheKey.EXPERIENCES],
+      queryFn: () => getExperiences(),
+    });
+
+    const experiences = computed<Experience[]>(() => data.value?.items ?? []);
 
     function getShowableTechnologies(technologies : ExperienceTechnology[]): ExperienceTechnology[] {
       return technologies.filter((technology) => technology.showInOverview);
     }
 
     return {
-      experiences: experiences as Ref<Experience[]>,
+      experiences,
       isLoading,
       ContractType,
       Size,

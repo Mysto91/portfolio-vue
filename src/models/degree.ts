@@ -1,5 +1,5 @@
 import { UUID } from '@/types/request';
-import { Company } from '@/interfaces/company';
+import { Company } from '@/models/company';
 
 interface Subject {
   id: number,

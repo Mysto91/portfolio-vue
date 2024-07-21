@@ -1,5 +1,5 @@
 import { Url, UUID } from '@/types/request';
-import { Technology } from '@/interfaces/technology';
+import { Technology } from '@/models/technology';
 
 interface Funtionality {
   id: number;

@@ -1,4 +1,4 @@
-import { Technology } from '@/interfaces/technology';
+import { Technology } from '@/models/technology';
 import { TechnologyType } from '@/enums/technologyType';
 
 export function findTechnologiesByType(technologies: Technology[], technologyType: TechnologyType): Technology[] {
