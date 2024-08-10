@@ -1,15 +1,14 @@
 <template>
   <label
-    :for="name"
+    for="message"
     class="text-sm font-medium text-gray-500"
   >
-    {{ label }}
-    <input
-      type="text"
+    Votre message
+    <textarea
       :id="name"
+      :name="name"
       v-model="value"
-      name="name"
-      class="mt-1 w-full h-14 px-4 rounded-lg focus-visible:outline-secondary"
+      class="mt-1 w-full h-36 px-4 py-3 rounded-lg focus-visible:outline-secondary"
       :placeholder="placeholder"
       v-on="validationListeners"
     />
@@ -38,5 +37,5 @@ const props = defineProps({
   },
 });
 
-const { value, errorMessage, validationListeners } = useInputValidation({ name: props.name });
+const { value, validationListeners, errorMessage } = useInputValidation({ name: props.name });
 </script>

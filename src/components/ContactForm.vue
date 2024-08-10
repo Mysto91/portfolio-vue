@@ -13,9 +13,10 @@
     >
       Vous voulez en savoir plus ?
     </h3>
-    <form>
+    <form @submit="onSubmit">
       <div class="md:flex md:space-x-8">
           <AppInput
+            id="name"
             class="flex-1"
             label="Nom"
             name="name"
@@ -23,6 +24,7 @@
           />
 
           <AppInput
+            id="email"
             class="flex-1 mt-5 md:mt-0"
             label="Email"
             name="email"
@@ -30,22 +32,24 @@
           />
 
       </div>
+
       <div class="mt-5">
-        <label
-          for="message"
-          class="text-sm font-medium text-gray-500"
-        >
-          Votre message
-          <textarea
-            id="message"
-            name="message"
-            class="mt-1 w-full h-36 px-4 py-3 rounded-lg focus-visible:outline-secondary"
-            placeholder="Votre message"
-          />
-        </label>
+        <AppTextArea
+          id="message"
+          label="Votre message"
+          name="message"
+        />
       </div>
+
       <div class="w-full flex justify-center lg:justify-start">
-        <button class="btn bg-primary text-background mt-5 w-36 lg:w-28">
+        <div v-if="isLoading">envoi...</div>
+        <button
+          v-else
+          type="submit"
+          class="btn bg-primary text-background mt-5 w-36 lg:w-28"
+          :class="{ 'opacity-50': !meta.valid}"
+          :disabled="!meta.valid"
+        >
           Envoyer
         </button>
       </div>
@@ -53,12 +57,29 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import AppInput from '@/components/AppInput.vue';
+import { useForm } from 'vee-validate';
+import { contactFormSchema } from '@/validators/schemas/contactFormSchema';
+import AppTextArea from '@/components/AppTextArea.vue';
+import { useMutation } from 'vue-query';
+import { sendEmail as apiSendEmail } from '@/api/emailApi';
 
-export default defineComponent({
-  name: 'ContactForm',
-  components: { AppInput },
+const { handleSubmit, meta } = useForm({
+  validationSchema: contactFormSchema,
+});
+
+const { mutate, isLoading } = useMutation({
+  mutationFn: apiSendEmail,
+  onSuccess: () => {
+    console.log('email envoyé');
+  },
+  onError: () => {
+    console.log("Une erreur s'est produite lors de l'envoi du mail");
+  },
+});
+
+const onSubmit = handleSubmit(({ name, message, email }) => {
+  mutate({ name, message, email });
 });
 </script>
