@@ -1,15 +1,15 @@
 <template>
-  <div v-if="message" class="text-red-400">
+  <div class="p-1 text-red-400 text-xs">
     {{ message }}
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import { defineProps } from 'vue';
 
 defineProps({
   message: {
-    type: String as PropType<string | undefined>,
+    type: String,
     required: true,
   },
 });

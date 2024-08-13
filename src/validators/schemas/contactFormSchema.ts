@@ -14,6 +14,5 @@ export const contactFormSchema = yup.object({
     .email("L'email n'est pas valide"),
   message: yup.string()
     .required('Le message est obligatoire')
-    .min(5, 'Le message doit comporter au moins 5 caractères')
-    .max(500, 'Le message ne doit pas dépaser 500 caractères'),
+    .min(5, 'Le message doit comporter au moins 5 caractères'),
 });

@@ -1,4 +1,4 @@
-import { ImageStyle } from '@/interfaces/style';
+import { Style } from '@/interfaces/style';
 import { computed, ref } from 'vue';
 import { Url } from '@/types/request';
 
@@ -26,7 +26,7 @@ export function useImageStyle({ imageUrl, defaultImageUrl }: ImageStyleParams) {
 
   fetchImage();
 
-  const imageStyle = computed<ImageStyle>(() => {
+  const imageStyle = computed<Style>(() => {
     const defaultImage = defaultImageUrl ? `url(${defaultImageUrl})` : 'url(/images/default-placeholder.png)';
 
     return {
