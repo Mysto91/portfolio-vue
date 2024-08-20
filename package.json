@@ -41,5 +41,8 @@
     "eslint-plugin-vue": "^8.0.3",
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
     "typescript": "~4.5.5"
+  },
+  "resolutions": {
+    "type-fest": "2.0.0"
   }
 }
