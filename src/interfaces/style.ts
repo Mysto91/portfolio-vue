@@ -1,3 +1,1 @@
-export interface ImageStyle {
-  backgroundImage: string;
-}
+export type Style = Partial<CSSStyleDeclaration>
