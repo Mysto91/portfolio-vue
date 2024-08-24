@@ -3,13 +3,13 @@ import { UUID } from '@/types/request';
 import { ContractType } from '@/enums/contractType';
 import { Technology } from '@/models/technology';
 
-export interface ExperienceTechnology extends Technology{
+export interface ExperienceTechnology extends Technology {
   showInOverview: boolean;
 }
 
 export interface Experience {
   uuid: UUID;
-  title: string;
+  position: string;
   overview: string;
   startDate: string;
   endDate: string | null;
