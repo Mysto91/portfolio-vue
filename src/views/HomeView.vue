@@ -7,9 +7,9 @@
     >
       <EllipseAnimated />
     </div>
-    <div class="absolute top-20 md:top-32 lg:top-44 pr-7">
-      <HomepageHeader class="animate-slide-up" />
-      <ProjectList class="mt-20 sm:mt-40 animate-slide-up" />
+    <div class="absolute top-16 sm:top-20 lg:top-44 pr-7">
+      <HomepageHeader class="animate-slide-up h-[100vh] sm:h-screen lg:h-[85vh]" />
+      <ProjectList class="animate-slide-up" />
     </div>
   </div>
 </template>
