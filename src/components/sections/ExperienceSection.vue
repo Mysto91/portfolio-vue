@@ -31,7 +31,7 @@
               <template #title>
                 {{ experience.company.name }} -
                 {{ experience.contractType === ContractType.INTERNSHIP ? '(Stage)' : '' }}
-                {{ experience.title }}
+                {{ experience.position }}
               </template>
 
               <template #icon>
