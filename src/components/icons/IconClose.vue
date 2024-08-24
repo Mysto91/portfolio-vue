@@ -1,7 +1,6 @@
 <template>
   <svg
     viewBox="0 0 24 24"
-    fill="none"
   >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

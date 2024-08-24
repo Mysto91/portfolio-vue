@@ -74,6 +74,9 @@ import TextField from '@/components/TextField.vue';
 import { FieldType } from '@/interfaces/Field';
 import { computed } from 'vue';
 import AppSpinner from '@/components/AppSpinner.vue';
+import { useFlashMessageStore } from '@/stores/useFlashMessageStore';
+
+const flashMessageStore = useFlashMessageStore();
 
 const { handleSubmit, meta, resetForm } = useForm({
   validationSchema: contactFormSchema,
@@ -89,10 +92,10 @@ const { mutate: sendEmail, isLoading } = useMutation({
         message: '',
       },
     });
+
+    flashMessageStore.addSuccessMessage('Le message a été envoyé avec succès !');
   },
-  onError: () => {
-    console.error("Une erreur s'est produite lors de l'envoi du mail");
-  },
+  onError: () => flashMessageStore.addErrorMessage("Une erreur s'est produite lors de l'envoi du mail, veuillez réessayer plus tard."),
 });
 
 const onSubmit = handleSubmit(({ name, message, email }) => sendEmail({ name, message, email }));
