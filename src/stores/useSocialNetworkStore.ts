@@ -5,7 +5,6 @@ import { getSocialNetworks } from '@/api/socialNetworkApi';
 import { useQuery } from 'vue-query';
 import { CacheKey } from '@/cache/cacheService';
 
-// eslint-disable-next-line import/prefer-default-export
 export const useSocialNetworkStore = defineStore('socialNetwork', () => {
   const { data, isLoading } = useQuery({
     queryKey: [CacheKey.SOCIAL_NETWORKS],

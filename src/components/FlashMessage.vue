@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 import {
-  defineProps, computed, PropType, Component,
+  computed, PropType, type Component,
 } from 'vue';
 import { StatusEnums } from '@/enums/statusEnums';
 import { FlashMessage } from '@/interfaces/flashMessageInterface';
