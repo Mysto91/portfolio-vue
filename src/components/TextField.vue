@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts" >
-import { computed, defineProps, PropType } from 'vue';
+import { computed, PropType } from 'vue';
 import { useInputValidation } from '@/composables/useInputValidation';
 import AppErrorMessage from '@/components/AppErrorMessage.vue';
 import AppCounter from '@/components/AppCounter.vue';

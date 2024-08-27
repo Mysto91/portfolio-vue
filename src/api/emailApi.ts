@@ -1,7 +1,6 @@
 import { apiClient } from '@/api/apiClient';
 import { ContactForm } from '@/validators/schemas/contactFormSchema';
 
-// eslint-disable-next-line import/prefer-default-export
 export async function sendEmail({ name, email, message } : ContactForm): Promise<void> {
   await apiClient.post('/send-email', {
     subject: `Message portfolio de ${name}`,

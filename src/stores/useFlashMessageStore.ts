@@ -10,7 +10,6 @@ interface FlashMessageContextInterface {
   clearMessage: () => void
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const useFlashMessageStore = defineStore('flash-message-store', (): FlashMessageContextInterface => {
   const flashMessage = ref<FlashMessage | null>(null);
 

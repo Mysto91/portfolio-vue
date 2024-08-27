@@ -7,7 +7,6 @@ interface ImageStyleParams {
   defaultImageUrl?: Url;
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export function useImageStyle({ imageUrl, defaultImageUrl }: ImageStyleParams) {
   const imageFound = ref<boolean>(false);
 
