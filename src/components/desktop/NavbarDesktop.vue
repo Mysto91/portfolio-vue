@@ -1,62 +1,57 @@
 <template>
     <nav
-      class="px-12 py-5"
-      :class="scrollValue > 0 ? 'border-b bg-background' : 'bg-transparent'"
+      class="px-12 py-2"
     >
-        <div class="h-12 flex justify-between">
+        <div class="h-auto flex justify-between">
+          <NavbarWrapper class="px-0">
             <AppBrand />
-            <ul class="flex items-center justify-center space-x-3">
-                <li>
-                    <NavigationLink :route="Routes.ABOUT">
-                      <template #title>
-                        À propos
-                      </template>
-                    </NavigationLink>
-                </li>
-                <li>
-                    <NavigationLink :route="Routes.CONTACT">
-                      <template #title>
-                        Contact
-                      </template>
-                    </NavigationLink>
-                </li>
-                <li>
-                    <NavigationLink :route="Routes.PROJECTLIST">
-                      <template #title>
-                        Mes projets
-                      </template>
-                    </NavigationLink>
-                </li>
-            </ul>
+          </NavbarWrapper>
+
+          <NavbarWrapper>
+            <NavigationLink :route="Routes.ABOUT">
+              <template #title>
+                À propos
+              </template>
+            </NavigationLink>
+
+            <NavigationLink :route="Routes.CONTACT">
+              <template #title>
+                Contact
+              </template>
+            </NavigationLink>
+
+            <NavigationLink :route="Routes.PROJECTLIST">
+              <template #title>
+                Mes projets
+              </template>
+            </NavigationLink>
+          </NavbarWrapper>
+
+          <NavbarWrapper class="!px-4">
+            <NavbarBulletLink link="https://www.linkedin.com/in/etienne-tran/">
+              <SocialNetworkIcon
+                :social-network="SocialNetwork.LINKEDIN"
+                class="w-4 h-4"
+              />
+            </NavbarBulletLink>
+
+            <NavbarBulletLink link="https://github.com/Mysto91">
+              <SocialNetworkIcon
+                :social-network="SocialNetwork.GITHUB"
+                class="w-4 h-4"
+              />
+            </NavbarBulletLink>
+          </NavbarWrapper>
         </div>
     </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { Routes } from '@/enums/routes';
-import { useScrollStore } from '@/stores/useScrollStore';
-import { storeToRefs } from 'pinia';
+import { SocialNetwork } from '@/enums/socialNetwork';
+import SocialNetworkIcon from '@/components/SocialNetworkIcon.vue';
+import NavbarBulletLink from '@/components/desktop/NavbarBulletLink.vue';
+import NavbarWrapper from '@/components/desktop/NavbarWrapper.vue';
 import NavigationLink from '../NavigationLink.vue';
 import AppBrand from '../AppBrand.vue';
-
-export default defineComponent({
-  name: 'NavbarDesktop',
-
-  components: {
-    NavigationLink,
-    AppBrand,
-  },
-
-  setup() {
-    const store = useScrollStore();
-
-    const { scrollValue } = storeToRefs(store);
-
-    return {
-      Routes,
-      scrollValue,
-    };
-  },
-});
 </script>

@@ -32,9 +32,11 @@ export default defineComponent({
     }
   }
 
-  .animate-slide-down {
-    animation-name: slide-down;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
+  @media screen and (min-width: 1024px) {
+    .animate-slide-down {
+      animation-name: slide-down;
+      animation-duration: 500ms;
+      animation-timing-function: ease-in-out;
+    }
   }
 </style>

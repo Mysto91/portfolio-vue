@@ -1,7 +1,7 @@
 <template>
   <div class="relative h-[2000px]">
     <div class="
-      absolute top-96
+      absolute top-48 lg:top-96
       w-1/2
       flex items-center justify-center"
     >
@@ -14,19 +14,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import EllipseAnimated from '@/components/EllipseAnimated.vue';
 import HomepageHeader from '@/components/homepage/HomepageHeader.vue';
 import ProjectList from '@/components/homepage/ProjectList.vue';
-
-export default defineComponent({
-  name: 'HomeView',
-
-  components: {
-    ProjectList,
-    HomepageHeader,
-    EllipseAnimated,
-  },
-});
 </script>

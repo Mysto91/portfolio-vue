@@ -36,7 +36,7 @@
 
         <ul
           v-else-if="socialNetworks && socialNetworks.length"
-          class="flex flex-wrap gap-2"
+          class="flex justify-center flex-wrap gap-2"
         >
           <li
             v-for="socialNetwork in socialNetworks"

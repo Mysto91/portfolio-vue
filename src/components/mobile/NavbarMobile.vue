@@ -1,8 +1,8 @@
 <template>
   <nav>
     <div
-      class="px-7 py-6 h-20 w-full flex justify-between"
-      :class="scrollValue > 0 ?'border-b bg-background': 'bg-transparent'"
+      class="px-7 py-6 h-20 w-full flex justify-between border-b"
+      :class="scrollValue > 0 ?'bg-background': 'border-transparent bg-transparent'"
     >
       <AppBrand />
     </div>
@@ -63,8 +63,7 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { useScrollStore } from '@/stores/useScrollStore';
 import { storeToRefs } from 'pinia';
 import { Routes } from '@/enums/routes';
@@ -75,27 +74,6 @@ import IconCube from '@/components/icons/IconCube.vue';
 import ContactMenu from '@/components/mobile/ContactMenu.vue';
 import AppBrand from '../AppBrand.vue';
 
-export default defineComponent({
-  name: 'NavbarMobile',
-
-  components: {
-    ContactMenu,
-    IconCube,
-    IconPerson,
-    IconHome,
-    NavigationLink,
-    AppBrand,
-  },
-
-  setup() {
-    const store = useScrollStore();
-
-    const { scrollValue } = storeToRefs(store);
-
-    return {
-      Routes,
-      scrollValue,
-    };
-  },
-});
+const store = useScrollStore();
+const { scrollValue } = storeToRefs(store);
 </script>
