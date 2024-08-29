@@ -1,13 +1,13 @@
 <template>
-    <router-link to="/" class="flex items-center justify-center text-lg font-semibold transition-opacity duration-300 hover:opacity-50">
-        Etienne TRAN
+    <router-link
+      to="/"
+      class="
+        h-full
+        px-5
+        flex items-center
+        text-md font-semibold transition ease-in-out duration-200
+        hover:text-primary"
+    >
+        Etienne
     </router-link>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'AppBrand',
-});
-</script>
