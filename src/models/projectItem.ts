@@ -6,13 +6,13 @@ interface Funtionality {
   description: string;
 }
 
-export enum ProjectImageType {
+enum ProjectImageType {
   MAIN_IMAGE_URL = 'main_image_url',
   FIRST_IMAGE_URL = 'first_image_url',
   SECOND_IMAGE_URL = 'second_image_url',
 }
 
-interface ProjectImages {
+export interface ProjectImage {
   type: ProjectImageType;
   url: Url;
 }
@@ -27,5 +27,5 @@ export interface ProjectItem {
   credits: string | null;
   functionalities: Funtionality[];
   overview: string;
-  images: ProjectImages[];
+  images: ProjectImage[];
 }

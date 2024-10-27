@@ -1,30 +1,30 @@
 <template>
   <Swiper
     :effect="'coverflow'"
-    :grab-cursor="true"
+    grab-cursor
     :slidesPerView="'auto'"
     :coverflowEffect="{
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }"
-    :centered-slides="true"
-    :pagination="true"
-    :navigation="true"
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: false,
+    }"
+    centered-slides
+    pagination
+    navigation
     :autoplay="{
-          delay: 4000,
-          disableOnInteraction: false ,
-        }"
+      delay: 4000,
+      disableOnInteraction: true,
+    }"
     :speed="800"
     :keyboard="{
-          enabled: true,
-        }"
+      enabled: true,
+    }"
     :modules="[EffectCoverflow, Pagination]"
     class="py-16 select-none"
   >
     <SwiperSlide
-      v-for="image in projectItem.images"
+      v-for="image in images"
       :key="`project-image-${image.type}`"
       class="
             h-72 w-72 md:h-96 md:w-96 lg:w-[500px] lg:h-[500px]
@@ -46,15 +46,17 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from 'vue';
+import { computed, PropType } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { ProjectItem } from '@/models/projectItem';
+import { ProjectImage, ProjectItem } from '@/models/projectItem';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
-defineProps({
+const props = defineProps({
   projectItem: {
     type: Object as PropType<ProjectItem>,
     required: true,
   },
 });
+
+const images = computed<ProjectImage[]>(() => props.projectItem.images.filter((image) => image.url));
 </script>
