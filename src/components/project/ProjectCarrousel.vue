@@ -20,7 +20,7 @@
     :keyboard="{
           enabled: true,
         }"
-    :modules="modules"
+    :modules="[EffectCoverflow, Pagination]"
     class="py-16 select-none"
   >
     <SwiperSlide
@@ -45,31 +45,16 @@
   </Swiper>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
+<script lang="ts" setup>
+import { PropType } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { ProjectItem } from '@/models/projectItem';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 
-export default defineComponent({
-  name: 'ProjectCaroussel',
-
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-
-  props: {
-    projectItem: {
-      type: Object as PropType<ProjectItem>,
-      required: true,
-    },
-  },
-
-  setup() {
-    return {
-      modules: [EffectCoverflow, Pagination],
-    };
+defineProps({
+  projectItem: {
+    type: Object as PropType<ProjectItem>,
+    required: true,
   },
 });
 </script>
