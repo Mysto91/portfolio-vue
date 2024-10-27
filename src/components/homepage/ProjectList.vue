@@ -55,6 +55,7 @@
               <TechnologyTagList
                 class="gap-1 md:gap-2"
                 :technologies="findFrameworks(projectItem.technologies)"
+                :search="searchParams.search"
                 text-class="text-sm"
               />
             </template>
@@ -67,11 +68,9 @@
   </section>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+<script lang="ts" setup>
+import { computed, PropType } from 'vue';
 import CardItem from '@/components/CardItem.vue';
-import { Framework } from '@/enums/framework';
-import { Language } from '@/enums/language';
 import { ProjectItem as Project } from '@/models/projectItem';
 import { getProjects } from '@/api/projectApi';
 import { findFrameworks } from '@/utils/search';
@@ -86,43 +85,18 @@ import ProjectListSkeleton from '@/components/skeletons/ProjectListSkeleton.vue'
 import { useQuery } from 'vue-query';
 import { CacheKey } from '@/cache/cacheService';
 
-export default defineComponent({
-  name: 'ProjectList',
-
-  components: {
-    ProjectListSkeleton,
-    FadeTransition,
-    TechnologyTagList,
-    IconNewTab,
-    IconRocketColored,
-    NoData,
-    CardItem,
-  },
-
-  props: {
-    searchParams: {
-      type: Object as PropType<SearchParams>,
-    },
-  },
-
-  setup(props) {
-    const search = computed<SearchParams>(() => props.searchParams ?? {});
-
-    const { data, isLoading } = useQuery({
-      queryKey: [CacheKey.EXPERIENCES, search],
-      queryFn: () => getProjects(search.value),
-    });
-
-    const projects = computed<Project[]>(() => data.value?.items ?? []);
-
-    return {
-      projects,
-      Framework,
-      Language,
-      findFrameworks,
-      isLoading,
-      openInNewTab,
-    };
+const props = defineProps({
+  searchParams: {
+    type: Object as PropType<SearchParams>,
   },
 });
+
+const search = computed<SearchParams>(() => props.searchParams ?? {});
+
+const { data, isLoading } = useQuery({
+  queryKey: [CacheKey.EXPERIENCES, search],
+  queryFn: () => getProjects(search.value),
+});
+
+const projects = computed<Project[]>(() => data.value?.items ?? []);
 </script>
